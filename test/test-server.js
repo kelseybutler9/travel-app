@@ -6,7 +6,7 @@ var should = chai.should();
 var app = server.app;
 var storage = server.storage;
 
-chai.use('chaiHttp');
+chai.use(chaiHttp);
 
 describe('initial page', function() {
   it('exists', function(done) {
