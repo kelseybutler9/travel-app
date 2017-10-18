@@ -4,7 +4,7 @@
   "description": "app to document new and old trips",
   "main": "index.js",
   "scripts": {
-    "start": "server.js",
+    "start": "node server.js",
     "test": "mocha"
   },
   "author": "",
