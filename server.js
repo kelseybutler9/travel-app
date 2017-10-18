@@ -1,10 +1,7 @@
 const express = require('express');
 const app = express();
-const morgan = require('morgan');
 
 app.use(express.static('public'));
-//app.listen(process.env.PORT || 8080);
-app.use(morgan('common'));
 
 let server;
 
@@ -12,7 +9,7 @@ function runServer() {
   const port = process.env.PORT || 8080;
   return new Promise((resolve, reject) => {
     server = app.listen(port, () => {
-      console.log('Your app is listening on port ${port}');
+      console.log(`Your app is listening on port ${port}`);
       resolve(server);
     }).on('error', err => {
       reject(err);
@@ -37,4 +34,4 @@ if(require.main === module) {
   runServer().catch(err => console.error(err));
 };
 
-exports = {app, runServer, closeServer};
+module.exports = {app, runServer, closeServer};

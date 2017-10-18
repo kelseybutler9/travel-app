@@ -1,11 +1,9 @@
 const chai = require('chai');
 const chaiHttp = require('chai-http');
-// var server = require('../server.js');
 const {app,runServer,closeServer} = require('../server.js');
 
 const should = chai.should();
-// var app = server.app;
-// var storage = server.storage;
+
 
 chai.use(chaiHttp);
 
@@ -15,7 +13,7 @@ describe('Users', function() {
   });
 
   after(function() {
-    return closServer();
+    return closeServer();
   });
 
   it('should exist on GET', function() {
@@ -25,15 +23,4 @@ describe('Users', function() {
         res.should.be.html;
       });
   });
-
-// describe('initial page', function() {
-//   it('exists', function(done) {
-//     chai.request(app).get('/')
-//       .end(function(err, res) {
-//         console.log('Response:'+ res);
-//         res.should.have.status(200);
-//         res.should.be.html;
-//         done();
-//       });
-// });
 });
