@@ -12,9 +12,77 @@
 </head>
 <body>
   <main role="main">
-  <form class="Homescreen">
+  <form class="homescreen">
+    <h2>Select one of the following buttons.</h2>
     <button type="submit">Create a new Trip</button>
     <button type="submit">View Past Trips</button>
+  </form>
+  <div class="past-trips-list">
+    <div class="past-trip">
+      <h2>Placeholder for Location Name</h2>
+      <h3>General Info</h3>
+      <ul>
+        <ls class="characteristic">Start Date</ls>
+        <ls class="characteristic">End Date</ls>
+      </ul>
+      <h3>Travel</h3>
+      <ul>
+        <ls class="characteristic">Airport</ls>
+        <ls class="characteristic">Flight Information</ls>
+      </ul>
+      <h3>Hotel</h3>
+      <ul>
+        <ls class="characteristic">Hotel</ls>
+        <ls class="characteristic">Hotel Comment</ls>
+      </ul>
+      <h3>Restaurants</h3>
+      <ul>
+        <ls class="characteristic">Restaurant</ls>
+        <ls class="characteristic">Restaurant Comment</ls>
+      </ul>
+      <h3>Activties</h3>
+      <ul>
+        <ls class="characteristic">Activity</ls>
+        <ls class="characteristic">Activity Comment</ls>
+      </ul>
+    </div>
+  </div>
+  <form class="update-past-trip-form">
+    <div class="update-past-trip">
+      <h2>Placeholder for Location Name</h2>
+      <h3>General Info</h3>
+        <ul>
+          <ls class="characteristic">Date</ls>
+          <label>Enter the start date of your trip.
+            <input type="text" name="start-date" required>
+          </label>
+          <label>Enter the end date of your trip.
+            <input type="text" name="end-date" required>
+          </label>
+        </ul>
+      <h3>Travel</h3>
+        <ul>
+          <ls class="characteristic">Airport</ls>
+          <ls class="characteristic">Flight Information</ls>
+        </ul>
+      <h3>Hotel</h3>
+        <ul>
+          <ls class="characteristic">Hotel</ls>
+          <ls class="characteristic">Hotel Comment</ls>
+        </ul>
+      <h3>Restaurants</h3>
+        <ul>
+          <ls class="characteristic">Restaurant</ls>
+          <ls class="characteristic">Restaurant Comment</ls>
+        </ul>
+      <h3>Activties</h3>
+        <ul>
+          <ls class="characteristic">Activity</ls>
+          <ls class="characteristic">Activity Comment</ls>
+        </ul>
+    </div>
+    <button type="submit">Create a new Trip</button>
+    <button type="submit">View More Past Trips</button>
   </form>
 </main>
 </body>
