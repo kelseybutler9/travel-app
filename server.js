@@ -3,7 +3,7 @@ const app = express();
 
 app.use(express.static('public'));
 
-app.get("/trips", (request, response) => {
+app.get("/", (request, response) => {
   response.sendFile(__dirname + '/views/index.html');
 });
 
