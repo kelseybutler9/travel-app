@@ -55,60 +55,75 @@
   </div>
   <form class="update-past-trip-form" hidden>
     <div class="update-past-trip">
-      <h2>Placeholder for Location Name</h2>
-      <h3>General Info</h3>
-        <!-- <ul> -->
-          <!-- <ls class="characteristic">Date</ls> -->
-          <label>Enter the start date of your trip.
-            <input type="text" name="start-date">
-          </label>
-          <label>Enter the end date of your trip.
-            <input type="text" name="end-date">
-          </label>
-        <!-- </ul> -->
-      <h3>Travel</h3>
-        <label>Enter the airport used during your trip.
-          <input type="text" name="airport">
-        </label>
-        <label>Enter more information about your travel.
-          <input type="text" name="flight-information">
-        </label>
-      <h3>Hotel</h3>
-        <label>Enter the hotel you stayed at during your trip.
-          <input type="text" name="hotel">
-        </label>
-        <label>Enter more information about your hotel.
-          <input type="text" name="hotel-information">
-        </label>
-        <!-- <ul>
-          <ls class="characteristic">Hotel</ls>
-          <ls class="characteristic">Hotel Comment</ls>
-        </ul> -->
-      <h3>Restaurants</h3>
-        <label>Enter a restaurant you visited during your trip.
-          <input type="text" name="restaurant" placeholder="restaurant" required>
-        </label>
-        <label>Enter more information about the restaurant.
-          <input type="text" name="restaurant-information" placeholder="restaurant information" required>
-        </label>
-        <!-- <ul>
-          <ls class="characteristic">Restaurant</ls>
-          <ls class="characteristic">Restaurant Comment</ls>
-        </ul> -->
-      <h3>Activties</h3>
-        <label>Enter an activtiy you did during your trip.
-          <input type="text" name="activity" placeholder="Activity" required>
-        </label>
-        <label>Enter more information about the activity.
-          <input type="text" name="activity-information" placeholder="activity information" required>
-        </label>
-        <!-- <ul>
-          <ls class="characteristic">Activity</ls>
-          <ls class="characteristic">Activity Comment</ls>
-        </ul> -->
+        <h3>General Info</h3>
+        <form class="general-info">
+          <div class="general-info-html">
+            <label>Enter the title of your trip.
+              <input type="text" name="title">
+            </label>
+            <label>Enter the location of your trip.
+              <input type="text" name="location">
+            </label>
+            <label>Enter the start date of your trip.
+              <input type="text" name="start-date">
+            </label>
+            <label>Enter the end date of your trip.
+              <input type="text" name="end-date">
+            </label>
+          </div>
+        </form>
+        <h3>Travel</h3>
+        <form class="travel">
+          <div class="travel-html">
+            <label>Enter the type of transportation for this trip.
+              <input type="text" name="airport">
+            </label>
+            <label>Enter more information about your travel.
+              <input type="text" name="flight-information">
+            </label>
+          </div>
+          <button type="submit">Add another travel item</button>
+        </form>
+        <h3>Residence</h3>
+        <form class="residence">
+          <div class="residence-html">
+            <label>Enter the place you stayed at during your trip.
+              <input type="text" name="hotel">
+            </label>
+            <label>Enter more information about your place of stay.
+              <input type="text" name="hotel-information">
+            </label>
+          </div>
+          <button type="submit">Add another residence item</button>
+        </form>
+        <h3>Restaurants</h3>
+        <form class="restaurants">
+          <div class="restaurants-html">
+            <label>Enter a restaurant you visited during your trip.
+              <input type="text" name="restaurant">
+            </label>
+            <label>Enter more information about the restaurant.
+              <input type="text" name="restaurant-information">
+            </label>
+          </div>
+          <button type="submit">Add another restaurant</button>
+        </form>
+        <h3>Activties</h3>
+        <form class="activities">
+          <div class="activities-html">
+            <label>Enter an activtiy you did during your trip.
+              <input type="text" name="activity">
+            </label>
+            <label>Enter more information about the activity.
+              <input type="text" name="activity-information">
+            </label>
+          </div>
+          <button type="submit">Add another activity</button>
+        </form>
+        <button type="submit" id="submit-trip-update">Submit Updated Trip</button>
+        <button type="submit" id="new-trip-update">Create a new Trip</button>
+        <button type="submit" id="past-trips-update">View More Past Trips</button>
     </div>
-    <button type="submit">Create a new Trip</button>
-    <button type="submit">View More Past Trips</button>
   </form>
 
   <form class="create-a-trip-forms">
@@ -178,9 +193,9 @@
           </div>
           <button type="submit">Add another activity</button>
         </form>
-      <button type="submit">Submit New Trip</button>
-      <button type="submit" class="new-trip">Create a new Trip</button>
-      <button type="submit" class="past-trip">View More Past Trips</button>
+      <button type="submit" id="submit-trip-create">Submit New Trip</button>
+      <button type="submit" id="new-trip-create">Create a new Trip</button>
+      <button type="submit" id="past-trips-create">View More Past Trips</button>
     </div>
   </form>
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"

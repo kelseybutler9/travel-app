@@ -166,3 +166,29 @@ function createNewActivityItem() {
     <input type="text" name="activity"></label><label>Enter more information about the activity.
     <input type="text" name="activity-information"></label>`);
 }
+
+$('.submit-trip-create').on('submit', function(event) {
+	event.preventDefault();
+  $(create-a-trip-form).prop(hidden, true);
+  //add in a function to redirect to a new screen
+  addTripToDatabase();
+});
+
+$('.new-trip-create').on('submit', function(event) {
+	event.preventDefault();
+  createNewTripForm();
+});
+
+$('.past-trips-create').on('submit', function(event) {
+	event.preventDefault();
+  $(create-a-trip-form).prop(hidden, true);
+  viewPastTripsList();
+});
+
+function addTripToDatabase() {
+  console.log('add trip to database');
+}
+
+function viewPastTripsList() {
+  console.log('view past trips list');
+}
