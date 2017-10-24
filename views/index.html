@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang ='en'>
+<head>
+  <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title>Pantry Meal</title>
+        <link href="style.css" rel="stylesheet" type="text/css" />
+  <nav>
+    <ul>
+      <li>Log In</li>
+      <li>Sign Up</li>
+    </ul>
+  </nav>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <main role="main">
+  <header role="banner">Travel App</header>
+  <h1>Explore past, present, and future Travel</h1>
+  <form class="homescreen">
+    <h2>Select one of the following buttons.</h2>
+    <button type="submit">Create a new Trip</button>
+    <button type="submit">View Past Trips</button>
+  </form>
+
+  <div class="past-trips-list" hidden>
+    <div class="past-trip">
+      <h2>Placeholder for Location Name</h2>
+      <h3>General Info</h3>
+      <ul>
+        <ls class="characteristic">Start Date</ls>
+        <ls class="characteristic">End Date</ls>
+      </ul>
+      <h3>Travel</h3>
+      <ul>
+        <ls class="characteristic">Airport</ls>
+        <ls class="characteristic">Flight Information</ls>
+      </ul>
+      <h3>Hotel</h3>
+      <ul>
+        <ls class="characteristic">Hotel</ls>
+        <ls class="characteristic">Hotel Comment</ls>
+      </ul>
+      <h3>Restaurants</h3>
+      <ul>
+        <ls class="characteristic">Restaurant</ls>
+        <ls class="characteristic">Restaurant Comment</ls>
+      </ul>
+      <h3>Activties</h3>
+      <ul>
+        <ls class="characteristic">Activity</ls>
+        <ls class="characteristic">Activity Comment</ls>
+      </ul>
+    </div>
+  </div>
+  <form class="update-past-trip-form" hidden>
+    <div class="update-past-trip">
+      <h2>Placeholder for Location Name</h2>
+      <h3>General Info</h3>
+        <!-- <ul> -->
+          <!-- <ls class="characteristic">Date</ls> -->
+          <label>Enter the start date of your trip.
+            <input type="text" name="start-date" required>
+          </label>
+          <label>Enter the end date of your trip.
+            <input type="text" name="end-date" placeholder="End Date"required>
+          </label>
+        <!-- </ul> -->
+      <h3>Travel</h3>
+        <label>Enter the airport used during your trip.
+          <input type="text" name="airport" placeholder="Airport" required>
+        </label>
+        <label>Enter more information about your travel.
+          <input type="text" name="flight-information" placeholder="flight information"required>
+        </label>
+        <!-- <ul>
+          <ls class="characteristic">Airport</ls>
+          <ls class="characteristic">Flight Information</ls>
+        </ul> -->
+      <h3>Hotel</h3>
+        <label>Enter the hotel you stayed at during your trip.
+          <input type="text" name="hotel" placeholder="Hotel" required>
+        </label>
+        <label>Enter more information about your hotel.
+          <input type="text" name="hotel-information" placeholder="hotel information" required>
+        </label>
+        <!-- <ul>
+          <ls class="characteristic">Hotel</ls>
+          <ls class="characteristic">Hotel Comment</ls>
+        </ul> -->
+      <h3>Restaurants</h3>
+        <label>Enter a restaurant you visited during your trip.
+          <input type="text" name="restaurant" placeholder="restaurant" required>
+        </label>
+        <label>Enter more information about the restaurant.
+          <input type="text" name="restaurant-information" placeholder="restaurant information" required>
+        </label>
+        <!-- <ul>
+          <ls class="characteristic">Restaurant</ls>
+          <ls class="characteristic">Restaurant Comment</ls>
+        </ul> -->
+      <h3>Activties</h3>
+        <label>Enter an activtiy you did during your trip.
+          <input type="text" name="activity" placeholder="Activity" required>
+        </label>
+        <label>Enter more information about the activity.
+          <input type="text" name="activity-information" placeholder="activity information" required>
+        </label>
+        <!-- <ul>
+          <ls class="characteristic">Activity</ls>
+          <ls class="characteristic">Activity Comment</ls>
+        </ul> -->
+    </div>
+    <button type="submit">Create a new Trip</button>
+    <button type="submit">View More Past Trips</button>
+  </form>
+
+  <form class="create-a-trip-form" hidden>
+    <div class="create-trip">
+      <h2>Placeholder for Location Name</h2>
+      <h3>General Info</h3>
+        <div class="general-info">
+          <label>Enter the start date of your trip.
+            <input type="text" name="start-date" required>
+          </label>
+          <label>Enter the end date of your trip.
+            <input type="text" name="end-date" required>
+          </label>
+        </div>
+      <h3>Travel</h3>
+        <div class="travel">
+          <label>Enter the type of transportation for this trip.
+            <input type="text" name="airport" required>
+          </label>
+          <label>Enter more information about your travel.
+            <input type="text" name="flight-information" required>
+          </label>
+          <button type="submit">Add another travel item</button>
+        </div>
+      <h3>Residence</h3>
+        <div class="residence">
+          <label>Enter the place you stayed at during your trip.
+            <input type="text" name="hotel" required>
+          </label>
+          <label>Enter more information about your place of stay.
+            <input type="text" name="hotel-information" required>
+          </label>
+          <button type="submit">Add another residence item</button>
+        </div>
+      <h3>Restaurants</h3>
+        <div class="restaurants">
+          <label>Enter a restaurant you visited during your trip.
+            <input type="text" name="restaurant" required>
+          </label>
+          <label>Enter more information about the restaurant.
+            <input type="text" name="restaurant-information" required>
+          </label>
+          <button type="submit">Add another restaurant</button>
+        </div>
+      <h3>Activties</h3>
+        <div class="activities">
+          <label>Enter an activtiy you did during your trip.
+            <input type="text" name="activity" required>
+          </label>
+          <label>Enter more information about the activity.
+            <input type="text" name="activity-information" required>
+          </label>
+          <button type="submit">Add another activity</button>
+        </div>
+    </div>
+    <button type="submit">Submit New Trip</button>
+    <button type="submit" class="new-trip">Create a new Trip</button>
+    <button type="submit" class="past-trip">View More Past Trips</button>
+  </form>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+  <script src="app.js"></script>
+</main>
+</body>
+</html>
