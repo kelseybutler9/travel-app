@@ -19,9 +19,22 @@
   <h1>Explore past, present, and future Travel</h1>
   <form class="homescreen">
     <h2>Select one of the following buttons.</h2>
-    <button type="submit">Create a new Trip</button>
-    <button type="submit">View Past Trips</button>
+    <button type="button" class="new-trip-button">Create a new Trip</button>
+    <button type="button" class="view-past-trips">View Past Trips</button>
   </form>
+
+  <div class="past-trips-list" hidden>
+    <form class="past-trip-list">
+      <h2>Past Trips</h2>
+      <label>Enter a location to search past trips.
+        <input type="text" name="location-search">
+      </label>
+      <div class="past-trips">
+      </div>
+      <button type="button">Create a new Trip</button>
+      <button type="button">Return to Homescreen</button>
+    </form>
+  </div>
 
   <form class="update-past-trip-form" hidden>
     <div class="update-past-trip">

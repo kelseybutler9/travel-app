@@ -113,16 +113,25 @@ $(function() {
     getAndDisplayTrips();
 })
 
-$('.homescreen').on('submit', function(event) {
+$('.new-trip-button').click(function(event) {
 	event.preventDefault();
   createNewTripForm();
 	$('.homescreen').prop('hidden', true);
 });
 
+$('.view-past-trips').click(function(event) {
+	event.preventDefault();
+  $('.create-a-trip-form').prop('hidden', true);
+  $(`.homescreen`).prop('hidden', true);
+  $(`.past-trips-list`).prop('hidden', false);
+	$('.homescreen').prop('hidden', true);
+  //add in function to retrieve all past trips
+});
+
 function createNewTripForm () {
   $('.create-a-trip-form').prop('hidden', false);
   $(`.homescreen`).prop('hidden', true);
-  $(`.past-trips-form`).prop('hidden', true);
+  $(`.past-trips-list`).prop('hidden', true);
   $('.travel-input').val('');
 }
 
@@ -173,25 +182,25 @@ function createNewActivityItem() {
 $('.submit-trip-button').click(function(event) {
 	event.preventDefault();
   $(`.create-a-trip-form`).prop('hidden', true);
-  $(`.past-trips-form`).prop('hidden', true);
+  $(`.past-trips-list`).prop('hidden', true);
   $(`.homescreen`).prop('hidden', false);
   console.log('submit trip ran');
   //add in a function to redirect to a new screen if not homescreen
   addTripToDatabase();
 });
 
-$('.new-trip-button').click(function(event) {
-	event.preventDefault();
-  console.log('new trip ran');
-  //clear out all of the values
-  createNewTripForm();
-});
+// $('.new-trip-button').click(function(event) {
+// 	event.preventDefault();
+//   console.log('new trip ran');
+//   //clear out all of the values
+//   createNewTripForm();
+// });
 
 $('.homescreen-button').click(function(event) {
 	event.preventDefault();
   console.log('past trip ran');
   $(`.create-a-trip-form`).prop('hidden', true);
-  $(`.past-trips-form`).prop('hidden', true);
+  $(`.past-trips-list`).prop('hidden', true);
   $(`.homescreen`).prop('hidden', false);
   viewPastTripsList();
 });
