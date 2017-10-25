@@ -21,9 +21,9 @@ let MOCK_TRIP_UPDATES = {
             }]
         },
         {
-            "id": "1111111",
-            "title": "Vacation",
-            "location": "Chicago, Illinois",
+            "id": "22222",
+            "title": "Vacation 2",
+            "location": "Loop, Illinois",
             "startDate": 10201992,
             "endDate": 10301992,
             "travel": [{
@@ -41,9 +41,9 @@ let MOCK_TRIP_UPDATES = {
             }]
         },
         {
-            "id": "1111111",
-            "title": "Vacation",
-            "location": "Chicago, Illinois",
+            "id": "33",
+            "title": "Business",
+            "location": "Cleveland, Ohio",
             "startDate": 10201992,
             "endDate": 10301992,
             "travel": [{
@@ -61,9 +61,9 @@ let MOCK_TRIP_UPDATES = {
             }]
         },
         {
-            "id": "1111111",
-            "title": "Vacation",
-            "location": "Chicago, Illinois",
+            "id": "444",
+            "title": "Wedding",
+            "location": "Bahamas",
             "startDate": 10201992,
             "endDate": 10301992,
             "travel": [{
@@ -98,20 +98,20 @@ function getPastTrips(callbackFn) {
     setTimeout(function(){ callbackFn(MOCK_TRIP_UPDATES)}, 100);
 }
 
-function displayTrips(data) {
+function displayPastTrips(data) {
     for (index in data.trips) {
-       $('past-trips-list').append(
-        '<p>' + data.trips[index].text + '</p>');//update this to be a past trip
+      console.log(data.trips[index]);
+      $('.past-trips').append(`<ls class="past-trip"><h3>${data.trips[index].title}<h3><p>${data.trips[index].location}</p><p>${data.trips[index].startDate}</p><p>${data.trips[index].endDate}</p></ls>`);
     }
 }
 
 function getAndDisplayTrips() {
-    getPastTrips(displayTrips);
+    getPastTrips(displayPastTrips);
 }
 
-$(function() {
-    getAndDisplayTrips();
-})
+// $(function() {
+//     getAndDisplayTrips();
+// })
 
 $('.new-trip-button').click(function(event) {
 	event.preventDefault();
@@ -127,6 +127,7 @@ $('.view-past-trips').click(function(event) {
   $(`.past-trips-list`).prop('hidden', false);
 	$('.homescreen').prop('hidden', true);
   //add in function to retrieve list of trips
+  viewPastTripsList();
 });
 
 function createNewTripForm () {
@@ -210,7 +211,6 @@ $('.homescreen-button').click(function(event) {
   $(`.past-trips-list`).prop('hidden', true);
   $(`.homescreen`).prop('hidden', false);
   $('.update-past-trip-form').prop('hidden', true);
-  viewPastTripsList();
 });
 
 function addTripToDatabase() {
@@ -219,6 +219,10 @@ function addTripToDatabase() {
 
 function viewPastTripsList() {
   console.log('view past trips list');
+  getAndDisplayTrips();
+  // $(function() {
+  //     getAndDisplayTrips();
+  // })
 }
 
 function updateTripInDatabase() {
