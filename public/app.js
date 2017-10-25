@@ -121,6 +121,7 @@ $('.homescreen').on('submit', function(event) {
 
 function createNewTripForm () {
   $('.create-a-trip-form').prop('hidden', false);
+  $('.travel-input').val('');
 }
 
 $('.travel').on('submit', function(event) {
@@ -167,21 +168,53 @@ function createNewActivityItem() {
     <input type="text" name="activity-information"></label>`);
 }
 
-$('.submit-trip-create').on('submit', function(event) {
+// $('.submit-trip-create').on('submit', function(event) {
+// 	event.preventDefault();
+//   $(create-a-trip-form).prop(hidden, true);
+//   console.log('submit trip ran');
+//   //add in a function to redirect to a new screen
+//   addTripToDatabase();
+// });
+
+$('#submit-trip-create').click(function(event) {
 	event.preventDefault();
-  $(create-a-trip-form).prop(hidden, true);
+  //$(`.create-a-trip-form`).prop(hidden, true);
+  console.log('submit trip ran');
   //add in a function to redirect to a new screen
   addTripToDatabase();
 });
 
-$('.new-trip-create').on('submit', function(event) {
+$('.new-trip-create').click(function(event) {
 	event.preventDefault();
+  console.log('new trip ran');
+  //clear out all of the values
   createNewTripForm();
 });
 
 $('.past-trips-create').on('submit', function(event) {
 	event.preventDefault();
+  console.log('past trip ran');
   $(create-a-trip-form).prop(hidden, true);
+  viewPastTripsList();
+});
+
+$('.submit-trip-update').on('submit', function(event) {
+	event.preventDefault();
+  console.log('submit trip ran');
+  $(update-a-trip-form).prop(hidden, true);
+  //add in a function to redirect to a new screen
+  updateTripInDatabase();
+});
+
+$('.new-trip-update').on('submit', function(event) {
+	event.preventDefault();
+  $(update-past-trip-form).prop(hidden, true);
+  createNewTripForm();
+});
+
+$('.past-trips-update').on('submit', function(event) {
+	event.preventDefault();
+  $(update-a-trip-form).prop(hidden, true);
   viewPastTripsList();
 });
 
@@ -191,4 +224,8 @@ function addTripToDatabase() {
 
 function viewPastTripsList() {
   console.log('view past trips list');
+}
+
+function updateTripInDatabase() {
+  console.log('update trip in database');
 }
