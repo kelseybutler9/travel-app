@@ -121,6 +121,8 @@ $('.homescreen').on('submit', function(event) {
 
 function createNewTripForm () {
   $('.create-a-trip-form').prop('hidden', false);
+  $(`.homescreen`).prop('hidden', true);
+  $(`.past-trips-form`).prop('hidden', true);
   $('.travel-input').val('');
 }
 
@@ -168,53 +170,29 @@ function createNewActivityItem() {
     <input type="text" name="activity-information"></label>`);
 }
 
-// $('.submit-trip-create').on('submit', function(event) {
-// 	event.preventDefault();
-//   $(create-a-trip-form).prop(hidden, true);
-//   console.log('submit trip ran');
-//   //add in a function to redirect to a new screen
-//   addTripToDatabase();
-// });
-
-$('#submit-trip-create').click(function(event) {
+$('.submit-trip-button').click(function(event) {
 	event.preventDefault();
-  //$(`.create-a-trip-form`).prop(hidden, true);
+  $(`.create-a-trip-form`).prop('hidden', true);
+  $(`.past-trips-form`).prop('hidden', true);
+  $(`.homescreen`).prop('hidden', false);
   console.log('submit trip ran');
-  //add in a function to redirect to a new screen
+  //add in a function to redirect to a new screen if not homescreen
   addTripToDatabase();
 });
 
-$('.new-trip-create').click(function(event) {
+$('.new-trip-button').click(function(event) {
 	event.preventDefault();
   console.log('new trip ran');
   //clear out all of the values
   createNewTripForm();
 });
 
-$('.past-trips-create').on('submit', function(event) {
+$('.homescreen-button').click(function(event) {
 	event.preventDefault();
   console.log('past trip ran');
-  $(create-a-trip-form).prop(hidden, true);
-  viewPastTripsList();
-});
-
-$('.submit-trip-update').on('submit', function(event) {
-	event.preventDefault();
-  console.log('submit trip ran');
-  $(update-a-trip-form).prop(hidden, true);
-  //add in a function to redirect to a new screen
-  updateTripInDatabase();
-});
-
-$('.new-trip-update').on('submit', function(event) {
-	event.preventDefault();
-  $(update-past-trip-form).prop(hidden, true);
-  createNewTripForm();
-});
-
-$('.past-trips-update').on('submit', function(event) {
-	event.preventDefault();
-  $(update-a-trip-form).prop(hidden, true);
+  $(`.create-a-trip-form`).prop('hidden', true);
+  $(`.past-trips-form`).prop('hidden', true);
+  $(`.homescreen`).prop('hidden', false);
   viewPastTripsList();
 });
 

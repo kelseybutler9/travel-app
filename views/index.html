@@ -23,36 +23,6 @@
     <button type="submit">View Past Trips</button>
   </form>
 
-  <div class="past-trips-list" hidden>
-    <div class="past-trip">
-      <h2>Placeholder for Location Name</h2>
-      <h3>General Info</h3>
-      <ul>
-        <ls class="characteristic">Start Date</ls>
-        <ls class="characteristic">End Date</ls>
-      </ul>
-      <h3>Travel</h3>
-      <ul>
-        <ls class="characteristic">Airport</ls>
-        <ls class="characteristic">Flight Information</ls>
-      </ul>
-      <h3>Hotel</h3>
-      <ul>
-        <ls class="characteristic">Hotel</ls>
-        <ls class="characteristic">Hotel Comment</ls>
-      </ul>
-      <h3>Restaurants</h3>
-      <ul>
-        <ls class="characteristic">Restaurant</ls>
-        <ls class="characteristic">Restaurant Comment</ls>
-      </ul>
-      <h3>Activties</h3>
-      <ul>
-        <ls class="characteristic">Activity</ls>
-        <ls class="characteristic">Activity Comment</ls>
-      </ul>
-    </div>
-  </div>
   <form class="update-past-trip-form" hidden>
     <div class="update-past-trip">
         <h3>General Info</h3>
@@ -120,9 +90,9 @@
           </div>
           <button type="submit">Add another activity</button>
         </form>
-        <!-- <button type="submit" id="submit-trip-update">Submit Updated Trip</button>
-        <button type="submit" id="new-trip-update">Create a new Trip</button>
-        <button type="submit" id="past-trips-update">View More Past Trips</button> -->
+      <button type="submit" class="submit-trip-button">Submit Updated Trip</button>
+      <button type="submit" class="new-trip-button">Create a new Trip</button>
+      <button type="submit" class="homescreen-button">Return to Homescreen</button>
     </div>
   </form>
 
@@ -193,10 +163,10 @@
           </div>
           <button type="submit">Add another activity</button>
         </form>
+      <button type="button" class="submit-trip-button">Submit New Trip</button>
+      <button type="button" class="new-trip-button">Create a new Trip</button>
+      <button type="button" class="homescreen-button">Return to Homescreen</button>
     </div>
-    <button type="button" id="submit-trip-create">Submit New Trip</button>
-    <button type="reset" id="new-trip-create">Create a new Trip</button>
-    <button type="button" id="past-trips-create">View More Past Trips</button>
   </form>
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"
         integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
