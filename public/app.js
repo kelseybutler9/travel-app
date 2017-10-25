@@ -122,16 +122,18 @@ $('.new-trip-button').click(function(event) {
 $('.view-past-trips').click(function(event) {
 	event.preventDefault();
   $('.create-a-trip-form').prop('hidden', true);
+  $('.update-past-trip-form').prop('hidden', true);
   $(`.homescreen`).prop('hidden', true);
   $(`.past-trips-list`).prop('hidden', false);
 	$('.homescreen').prop('hidden', true);
-  //add in function to retrieve all past trips
+  //add in function to retrieve list of trips
 });
 
 function createNewTripForm () {
   $('.create-a-trip-form').prop('hidden', false);
   $(`.homescreen`).prop('hidden', true);
   $(`.past-trips-list`).prop('hidden', true);
+  $('.update-past-trip-form').prop('hidden', true);
   $('.travel-input').val('');
 }
 
@@ -184,17 +186,22 @@ $('.submit-trip-button').click(function(event) {
   $(`.create-a-trip-form`).prop('hidden', true);
   $(`.past-trips-list`).prop('hidden', true);
   $(`.homescreen`).prop('hidden', false);
+  $('.update-past-trip-form').prop('hidden', true);
   console.log('submit trip ran');
   //add in a function to redirect to a new screen if not homescreen
   addTripToDatabase();
 });
 
-// $('.new-trip-button').click(function(event) {
-// 	event.preventDefault();
-//   console.log('new trip ran');
-//   //clear out all of the values
-//   createNewTripForm();
-// });
+$('.submit-updated-trip-button').click(function(event) {
+	event.preventDefault();
+  $(`.create-a-trip-form`).prop('hidden', true);
+  $(`.past-trips-list`).prop('hidden', true);
+  $(`.homescreen`).prop('hidden', false);
+  $('.update-past-trip-form').prop('hidden', true);
+  console.log('submit updated trip ran');
+  //add in a function to redirect to a new screen if not homescreen
+  updateTripInDatabase();
+});
 
 $('.homescreen-button').click(function(event) {
 	event.preventDefault();
@@ -202,6 +209,7 @@ $('.homescreen-button').click(function(event) {
   $(`.create-a-trip-form`).prop('hidden', true);
   $(`.past-trips-list`).prop('hidden', true);
   $(`.homescreen`).prop('hidden', false);
+  $('.update-past-trip-form').prop('hidden', true);
   viewPastTripsList();
 });
 
