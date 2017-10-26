@@ -13,10 +13,10 @@ let MOCK_TRIP_UPDATES = {
               stay: "Hilton Inn",
               residenceComments: "nice staff, clean room"}],
             "restaurants": [{
-              name: "Taco Bell",
+              restaurantName: "Taco Bell",
               comments: "great burritos" }],
             "activities": [{
-              name: "Surfing",
+              activityName: "Surfing",
               activtiyInformation: "Fun!"
             }]
         },
@@ -33,10 +33,10 @@ let MOCK_TRIP_UPDATES = {
               stay: "Hilton Inn",
               residenceComments: "nice staff, clean room"}],
             "restaurants": [{
-              name: "Taco Bell",
+              restaurantName: "Taco Bell",
               comments: "great burritos" }],
             "activities": [{
-              name: "Surfing",
+              activityName: "Surfing",
               activtiyInformation: "Fun!"
             }]
         },
@@ -53,10 +53,10 @@ let MOCK_TRIP_UPDATES = {
               stay: "Hilton Inn",
               residenceComments: "nice staff, clean room"}],
             "restaurants": [{
-              name: "Taco Bell",
+              restaurantName: "Taco Bell",
               comments: "great burritos" }],
             "activities": [{
-              name: "Surfing",
+              activityName: "Surfing",
               activtiyInformation: "Fun!"
             }]
         },
@@ -73,10 +73,10 @@ let MOCK_TRIP_UPDATES = {
               stay: "Hilton Inn",
               residenceComments: "nice staff, clean room"}],
             "restaurants": [{
-              name: "Taco Bell",
+              restaurantName: "Taco Bell",
               comments: "great burritos" }],
             "activities": [{
-              name: "Surfing",
+              activityName: "Surfing",
               activtiyInformation: "Fun!"
             }]
         }
@@ -108,10 +108,6 @@ function displayPastTrips(data) {
 function getAndDisplayTrips() {
     getPastTrips(displayPastTrips);
 }
-
-// $(function() {
-//     getAndDisplayTrips();
-// })
 
 $('.new-trip-button').click(function(event) {
 	event.preventDefault();
@@ -220,9 +216,6 @@ function addTripToDatabase() {
 function viewPastTripsList() {
   console.log('view past trips list');
   getAndDisplayTrips();
-  // $(function() {
-  //     getAndDisplayTrips();
-  // })
 }
 
 function updateTripInDatabase() {
