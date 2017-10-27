@@ -360,8 +360,12 @@ function getInputtedValues(callbackFn) {
   };
 
   Object.keys(newTrip).forEach(function (key) {
-    if(key==="travel" || "residence" || "restaurants" || "activities"){
-      //update here
+    if(key === "travel" || "residence" || "restaurants" || "activities"){
+      console.log(key);
+      key.forEach(function(item) {
+        //START HERE TO UPDATE FOR ARRAY KEYS
+        item.keys(item).forEach(arrayKey => item[key] = $(`[name='${key}']`).val());  
+      });
     }
     else {
       newTrip[key] = $(`[name='${key}']`).val();
