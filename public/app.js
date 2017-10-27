@@ -171,8 +171,8 @@ function displayPastTrip(data, tripId) {
 
    $('.update-past-trip').append(`
      <h3>General Info</h3>
-   <form class="general-info">
-     <div class="general-info-html">
+   <form class="general-info-form">
+     <div class="general-info">
        <label>Enter the title of your trip.
          <input type="text" name="title" value=${data.trips[tripId].title}>
        </label>
@@ -188,29 +188,29 @@ function displayPastTrip(data, tripId) {
      </div>
    </form>
    <h3>Travel</h3>
-   <form class="travel">
-     <div class="travel-html">
+   <form class="travel-form">
+     <div class="travel">
         ${travelDetails}
      </div>
      <button type="submit">Add another travel item</button>
    </form>
    <h3>Residence</h3>
-   <form class="residence">
-     <div class="residence-html">
+   <form class="residence-form">
+     <div class="residence">
          ${residenceDetails}
      </div>
      <button type="submit">Add another residence item</button>
    </form>
    <h3>Restaurants</h3>
-   <form class="restaurants">
-     <div class="restaurants-html">
+   <form class="restaurants-form">
+     <div class="restaurants">
        ${restaurantDetails}
      </div>
      <button type="submit">Add another restaurant</button>
    </form>
    <h3>Activties</h3>
-   <form class="activities">
-     <div class="activities-html">
+   <form class="activities-form">
+     <div class="activities">
        ${activityDetails}
      </div>
      <button type="submit">Add another activity</button>
@@ -240,7 +240,6 @@ $('.view-past-trips').click(function(event) {
   $(`.homescreen`).prop('hidden', true);
   $(`.past-trips-list`).prop('hidden', false);
 	$('.homescreen').prop('hidden', true);
-  //add in function to retrieve list of trips
   viewPastTripsList();
 });
 
@@ -252,46 +251,46 @@ function createNewTripForm () {
   $('.travel-input').val('');
 }
 
-$('.travel').on('submit', function(event) {
+$('.travel-form').on('submit', function(event) {
 	event.preventDefault();
   createNewTravelItem();
 });
 
-$('.residence').on('submit', function(event) {
+$('.residence-form').on('submit', function(event) {
 	event.preventDefault();
   createNewResidenceItem();
 });
 
-$('.restaurants').on('submit', function(event) {
+$('.restaurants-form').on('submit', function(event) {
 	event.preventDefault();
   createNewRestaurantItem();
 });
 
-$('.activities').on('submit', function(event) {
+$('.activities-form').on('submit', function(event) {
 	event.preventDefault();
   createNewActivityItem();
 });
 
 function createNewTravelItem() {
-  $('.travel-html').append(`<label>Enter the type of transportation for this trip.
+  $('.travel').append(`<label>Enter the type of transportation for this trip.
     <input type="text" name="airport"></label><label>Enter more information about your travel.
     <input type="text" name="flight-information"></label>`);
 }
 
 function createNewResidenceItem() {
-  $('.residence-html').append(`<label>Enter the place you stayed at during your trip.
+  $('.residence').append(`<label>Enter the place you stayed at during your trip.
     <input type="text" name="hotel"></label><label>Enter more information about your place of stay.
     <input type="text" name="hotel-information"></label>`);
 }
 
 function createNewRestaurantItem() {
-  $('.restaurants-html').append(`<label>Enter a restaurant you visited during your trip.
+  $('.restaurants').append(`<label>Enter a restaurant you visited during your trip.
     <input type="text" name="restaurant"></label><label>Enter more information about the restaurant.
     <input type="text" name="restaurant-information"></label>`);
 }
 
 function createNewActivityItem() {
-  $('.activities-html').append(`<label>Enter an activtiy you did during your trip.
+  $('.activities').append(`<label>Enter an activtiy you did during your trip.
     <input type="text" name="activity"></label><label>Enter more information about the activity.
     <input type="text" name="activity-information"></label>`);
 }
@@ -303,8 +302,7 @@ $('.submit-trip-button').click(function(event) {
   $(`.homescreen`).prop('hidden', false);
   $('.update-past-trip-form').prop('hidden', true);
   console.log('submit trip ran');
-  //add in a function to redirect to a new screen if not homescreen
-  addTripToDatabase();
+  getInputtedValues(addTripToDatabase);
 });
 
 $('.submit-updated-trip-button').click(function(event) {
@@ -315,7 +313,7 @@ $('.submit-updated-trip-button').click(function(event) {
   $('.update-past-trip-form').prop('hidden', true);
   console.log('submit updated trip ran');
   //add in a function to redirect to a new screen if not homescreen
-  updateTripInDatabase();
+  getInputtedValues(updateTripInDatabase);
 });
 
 $('.homescreen-button').click(function(event) {
@@ -340,6 +338,46 @@ function viewPastTrip(tripId) {
   getAndDisplayPastTrip(tripId);
 }
 
+function getInputtedValues(callbackFn) {
+  console.log('getInputtedValues');
+  let newTrip = {
+    "title": "",
+    "location": "",
+    "startDate": "",
+    "endDate": "",
+    "travel": [{
+      travelType: "",
+      travelInformation: "" }],
+    "residence": [{
+      stay: "",
+      residenceComments: ""}],
+    "restaurants": [{
+      restaurantName: "",
+      restaurantComments: "" }],
+    "activities": [{
+      activityName: "",
+      activtiyInformation: ""}]
+  };
+
+  Object.keys(newTrip).forEach(function (key) {
+    if(key==="travel" || "residence" || "restaurants" || "activities"){
+      //update here
+    }
+    else {
+      newTrip[key] = $(`[name='${key}']`).val();
+    }
+  });
+  console.log(newTrip);
+  //callbackFn();
+}
 function updateTripInDatabase() {
   console.log('update trip in database');
 }
+
+// var x = document.getElementsByName("animal");
+// var i;
+// for (i = 0; i < x.length; i++) {
+//     if (x[i].type == "checkbox") {
+//         x[i].checked = true;
+//     }
+// }

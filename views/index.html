@@ -47,8 +47,8 @@
   <form class="create-a-trip-forms">
     <div class ="create-a-trip-form" hidden>
       <h3>General Info</h3>
-        <form class="general-info">
-          <div class="general-info-html">
+        <form class="general-info-form">
+          <div class="general-info">
             <label>Enter the title of your trip.
               <input type="text" name="title">
             </label>
@@ -56,63 +56,62 @@
               <input type="text" name="location">
             </label>
             <label>Enter the start date of your trip.
-              <input type="text" name="start-date">
+              <input type="text" name="startDate">
             </label>
             <label>Enter the end date of your trip.
-              <input type="text" name="end-date">
+              <input type="text" name="endDate">
             </label>
           </div>
         </form>
       <h3>Travel</h3>
-        <form class="travel">
-          <div class="travel-html">
+        <form class="travel-form">
+          <div class="travel">
             <label>Enter the type of transportation for this trip.
-              <input type="text" class="travel-input" name="airport">
+              <input type="text" name="travelType">
             </label>
             <label>Enter more information about your travel.
-              <input type="text" name="flight-information">
+              <input type="text" name="travelInformation">
             </label>
           </div>
           <button type="submit">Add another travel item</button>
         </form>
       <h3>Residence</h3>
-        <form class="residence">
-          <div class="residence-html">
+        <form class="residence-form">
+          <div class="residence">
             <label>Enter the place you stayed at during your trip.
-              <input type="text" name="hotel">
+              <input type="text" name="stay">
             </label>
             <label>Enter more information about your place of stay.
-              <input type="text" name="hotel-information">
+              <input type="text" name="residenceComments">
             </label>
           </div>
           <button type="submit">Add another residence item</button>
         </form>
       <h3>Restaurants</h3>
-        <form class="restaurants">
-          <div class="restaurants-html">
+        <form class="restaurants-form">
+          <div class="restaurants">
             <label>Enter a restaurant you visited during your trip.
-              <input type="text" name="restaurant">
+              <input type="text" name="restaurantName">
             </label>
             <label>Enter more information about the restaurant.
-              <input type="text" name="restaurant-information">
+              <input type="text" name="restaurantComments">
             </label>
           </div>
           <button type="submit">Add another restaurant</button>
         </form>
       <h3>Activties</h3>
-        <form class="activities">
-          <div class="activities-html">
+        <form class="activities-form">
+          <div class="activities">
             <label>Enter an activtiy you did during your trip.
-              <input type="text" name="activity">
+              <input type="text" name="activityName">
             </label>
             <label>Enter more information about the activity.
-              <input type="text" name="activity-information">
+              <input type="text" name="activityInformation">
             </label>
           </div>
           <button type="submit">Add another activity</button>
         </form>
       <button type="button" class="submit-trip-button">Submit New Trip</button>
-      <!-- <button type="button" class="new-trip-button">Create a new Trip</button> -->
       <button type="button" class="homescreen-button">Return to Homescreen</button>
     </div>
   </form>
