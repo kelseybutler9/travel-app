@@ -121,11 +121,10 @@ function displayPastTrip(data, tripId) {
   $(`.homescreen`).prop('hidden', true);
   $(`.past-trips-list`).prop('hidden', true);
 	$('.homescreen').prop('hidden', true);
-  //let identifiedTrip = data.trips.map(trip => {if(trip.id === tripId) { return trip}});
-  //let index = data.trips.find(trip => trip.id === 'tripId');
-  //console.log(index + ": index");
-  $('.update-past-trip-form').html('');
-  let travelDetails;
+
+  $('.update-past-trip').html('');
+
+  let travelDetails = '';
   data.trips[tripId].travel.forEach(function (travel) {
     travelDetails += `<label>Enter the type of transportation for this trip.
       <input type="text" name="airport" value=${travel.travelType}>
@@ -135,67 +134,87 @@ function displayPastTrip(data, tripId) {
     </label>`
   });
   console.log(travelDetails);
-  //  $('.update-past-trip-form').append(`
-  //    <h3>General Info</h3>
-  //  <form class="general-info">
-  //    <div class="general-info-html">
-  //      <label>Enter the title of your trip.
-  //        <input type="text" name="title" value=${data.trips[tripId].title}>
-  //      </label>
-  //      <label>Enter the location of your trip.
-  //        <input type="text" name="location" value=${data.trips[tripId].location}>
-  //      </label>
-  //      <label>Enter the start date of your trip.
-  //        <input type="text" name="start-date" value=${data.trips[tripId].startDate}>
-  //      </label>
-  //      <label>Enter the end date of your trip.
-  //        <input type="text" name="end-date" value=${data.trips[tripId].endDate}>
-  //      </label>
-  //    </div>
-  //  </form>
-  //  <h3>Travel</h3>
-  //  <form class="travel">
-  //    <div class="travel-html">
-  //       ${travelDetails}
-  //    </div>
-  //    <button type="submit">Add another travel item</button>
-  //  </form>
-  //  <h3>Residence</h3>
-  //  <form class="residence">
-  //    <div class="residence-html">
-  //      <label>Enter the place you stayed at during your trip.
-  //        <input type="text" name="hotel" value=${data.trips[tripId].residence}>
-  //      </label>
-  //      <label>Enter more information about your place of stay.
-  //        <input type="text" name="hotel-information" value=${data.trips[tripId].residenceComments}>
-  //      </label>
-  //    </div>
-  //    <button type="submit">Add another residence item</button>
-  //  </form>
-  //  <h3>Restaurants</h3>
-  //  <form class="restaurants">
-  //    <div class="restaurants-html">
-  //      <label>Enter a restaurant you visited during your trip.
-  //        <input type="text" name="restaurant" value=${data.trips[tripId].restaurantName}>
-  //      </label>
-  //      <label>Enter more information about the restaurant.
-  //        <input type="text" name="restaurant-information" value=${data.trips[tripId].restaurantComments}>
-  //      </label>
-  //    </div>
-  //    <button type="submit">Add another restaurant</button>
-  //  </form>
-  //  <h3>Activties</h3>
-  //  <form class="activities">
-  //    <div class="activities-html">
-  //      <label>Enter an activtiy you did during your trip.
-  //        <input type="text" name="activity" value=${data.trips[tripId].activityName}>
-  //      </label>
-  //      <label>Enter more information about the activity.
-  //        <input type="text" name="activity-information" value=${data.trips[tripId].activtiyInformation}>
-  //      </label>
-  //    </div>
-  //    <button type="submit">Add another activity</button>
-  //  </form>`);
+
+  let residenceDetails = '';
+  data.trips[tripId].residence.forEach(function (item) {
+    residenceDetails += `<label>Enter the place you stayed at during your trip.
+        <input type="text" name="hotel" value=${item.stay}>
+       </label>
+       <label>Enter more information about your place of stay.
+         <input type="text" name="hotel-information" value=${item.residenceComments}>
+       </label>`
+  });
+  console.log(residenceDetails);
+
+  let restaurantDetails = '';
+  data.trips[tripId].restaurants.forEach(function (item) {
+    restaurantDetails += `<label>Enter a restaurant you visited during your trip.
+          <input type="text" name="restaurant" value=${item.restaurantName}>
+        </label>
+        <label>Enter more information about the restaurant.
+           <input type="text" name="restaurant-information" value=${item.restaurantComments}>
+        </label>`
+  });
+  console.log(residenceDetails);
+
+  let activityDetails = '';
+  data.trips[tripId].activities.forEach(function (item) {
+    activityDetails += `<label>Enter an activtiy you did during your trip.
+        <input type="text" name="activity" value=${item.activityName}>
+      </label>
+      <label>Enter more information about the activity.
+        <input type="text" name="activity-information" value=${item.activtiyInformation}>
+      </label>`
+  });
+  console.log(residenceDetails);
+
+
+   $('.update-past-trip').append(`
+     <h3>General Info</h3>
+   <form class="general-info">
+     <div class="general-info-html">
+       <label>Enter the title of your trip.
+         <input type="text" name="title" value=${data.trips[tripId].title}>
+       </label>
+       <label>Enter the location of your trip.
+         <input type="text" name="location" value=${data.trips[tripId].location}>
+       </label>
+       <label>Enter the start date of your trip.
+         <input type="text" name="start-date" value=${data.trips[tripId].startDate}>
+       </label>
+       <label>Enter the end date of your trip.
+         <input type="text" name="end-date" value=${data.trips[tripId].endDate}>
+       </label>
+     </div>
+   </form>
+   <h3>Travel</h3>
+   <form class="travel">
+     <div class="travel-html">
+        ${travelDetails}
+     </div>
+     <button type="submit">Add another travel item</button>
+   </form>
+   <h3>Residence</h3>
+   <form class="residence">
+     <div class="residence-html">
+         ${residenceDetails}
+     </div>
+     <button type="submit">Add another residence item</button>
+   </form>
+   <h3>Restaurants</h3>
+   <form class="restaurants">
+     <div class="restaurants-html">
+       ${restaurantDetails}
+     </div>
+     <button type="submit">Add another restaurant</button>
+   </form>
+   <h3>Activties</h3>
+   <form class="activities">
+     <div class="activities-html">
+       ${activityDetails}
+     </div>
+     <button type="submit">Add another activity</button>
+   </form>`);
 }
 
 function getAndDisplayPastTrip(tripId) {
