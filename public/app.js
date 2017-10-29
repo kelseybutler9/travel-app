@@ -116,14 +116,11 @@ function getUpdatePastTrip(callbackFn, tripId) {
 }
 
 function displayPastTrip(data, tripId) {
-  $('.create-a-trip-forms').prop('hidden', true);
-  $('.update-past-trip-form').prop('hidden', false);
-  $(`.homescreen`).prop('hidden', true);
-  $(`.past-trips-list`).prop('hidden', true);
-	$('.homescreen').prop('hidden', true);
+  let displayItem = '.update-past-trip-form';
+  hideAllSections();
+  //clearHtmlForms();
 
-  $('.update-past-trip').html('');
-
+  //$('.update-past-trip').html('');
   let travelDetails = '';
   data.trips[tripId].travel.forEach(function (travel) {
     travelDetails += `<label>Enter the type of transportation for this trip.
@@ -217,48 +214,101 @@ function displayPastTrip(data, tripId) {
    </form>`);
 }
 
-function getAndDisplayPastTrip(tripId) {
-    getUpdatePastTrip(displayPastTrip, tripId);
-}
+
 
 $('.past-trips').on('click', '.update-trip-button', function(event) {
   let tripId = this.parentElement.id;
-  hideAllSections(viewPastTrip(tripId));
+  let displayItem = ''//update with the form to show
+  hideAllSections(displayItem);
   //viewPastTrip(tripId);
 })
 
 
 $('.new-trip-button').click(function(event) {
 	event.preventDefault();
-  hideAllSections(createNewTripForm);
-  // createNewTripForm();
+  let displayItem = '.create-a-trip-forms';
+  hideAllSections(displayItem);
+  createNewTripForm();
 });
 
-function hideAllSections(callbackFn) {
+function hideAllSections(string) {
+  console.log('this ran:' + string);
   $('.create-a-trip-forms').prop('hidden', true);
   $('.update-past-trip-form').prop('hidden', true);
-  $(`.homescreen`).prop('hidden', true);
-  $(`.past-trips-list`).prop('hidden', true);
   $('.homescreen').prop('hidden', true);
-  callbackFn();
+  $('.past-trips-list').prop('hidden', true);
+  $('.homescreen').prop('hidden', true);
+  $('string').prop('hidden', false);
 }
 
 $('.view-past-trips').click(function(event) {
 	event.preventDefault();
-  // $('.create-a-trip-forms').prop('hidden', true);
-  // $('.update-past-trip-form').prop('hidden', true);
-  // $(`.homescreen`).prop('hidden', true);
-  $(`.past-trips-list`).prop('hidden', false);
-	// $('.homescreen').prop('hidden', true);
+  let displayItem = '.past-trips-list';
+  hideAllSections(displayItem);
   viewPastTripsList();
 });
 
+$('.submit-trip-button').on('click',function(event) {
+	event.preventDefault();
+  let displayItem = '.homescreen';
+  hideAllSections(displayItem);
+});
+
+$('.submit-updated-trip-button').on('click',function(event) {
+	event.preventDefault();
+  let displayItem = '.homescreen';
+  hideAllSections(displayItem);//refactor hide All Sections to show one
+  clearHtmlForms();
+  console.log('submit updated trip ran');
+  //getInputtedValues(updateTripInDatabase);
+});
+
+$('.homescreen-button').click(function(event) {
+	event.preventDefault();
+  console.log('past trip ran');
+  let displayItem = '.homescreen';
+  hideAllSections(displayItem);
+});
+
+function addTripToDatabase() {
+  console.log('add trip to database');
+  clearHtmlForms();
+}
+
+function viewPastTripsList() {
+  console.log('view past trips list');
+  getAndDisplayTrips();
+}
+
+function viewPastTrip(tripId) {
+  getAndDisplayPastTrip(tripId);//combine into one
+}
+
+function getAndDisplayPastTrip(tripId) {
+    getUpdatePastTrip(displayPastTrip, tripId);
+}
+
+function getInputtedValues(callbackFn) {
+  let displayItem = '.homescreen';
+  hideAllSections(displayItem);
+  console.log($( ":input" ).serializeArray());
+  callbackFn();
+
+}
+
+function clearHtmlForms() {
+  $('.past-trips').html('');
+  $('.update-past-trip').html('');
+  $('.create-a-trip').html('');
+}
+
+function updateTripInDatabase() {
+  console.log('update trip in database');
+}
+
 function createNewTripForm () {
-  $(`.create-a-trip-forms`).prop('hidden', false);
-  // console.log(`false hide for create trip`);
-  // $(`.homescreen`).prop('hidden', true);
-  // $(`.past-trips-list`).prop('hidden', true);
-  // $('.update-past-trip-form').prop('hidden', true);
+  // let displayItem = '.create-a-trip-forms';
+  // hideAllSections(displayItem);
   $(`.create-a-trip-form`).html(`
     <h3>General Info</h3>
       <form class="general-info-form">
@@ -325,12 +375,10 @@ function createNewTripForm () {
         </div>
         <button type="button" class="addActivites">Add another activity</button>
       </form>`);
-  //$('.travel-input').val('');
 }
 
 $('form').on('click', '.addTravel', function(event) {
 	event.preventDefault();
-  console.log('ran');
   createNewTravelItem();
 });
 
@@ -369,62 +417,4 @@ function createNewActivityItem() {
   $('.activities').append(`<label>Enter an activtiy you did during your trip.
     <input type="text" name="activityName"></label><label>Enter more information about the activity.
     <input type="text" name="activityInformation"></label>`);
-}
-
-$('.submit-trip-button').on('click',function(event) {
-	event.preventDefault();
-
-  hideAllSections(getInputtedValues(addTripToDatabase));
-
-});
-
-
-$('.submit-updated-trip-button').on('click',function(event) {
-	event.preventDefault();
-  $(`.create-a-trip-forms`).prop('hidden', true);
-  $(`.past-trips-list`).prop('hidden', true);
-  $(`.homescreen`).prop('hidden', false);
-  $('.update-past-trip-form').prop('hidden', true);
-  clearHtmlForms();
-  console.log('submit updated trip ran');
-  //getInputtedValues(updateTripInDatabase);
-});
-
-$('.homescreen-button').click(function(event) {
-	event.preventDefault();
-  console.log('past trip ran');
-  $(`.create-a-trip-forms`).prop('hidden', true);
-  $(`.past-trips-list`).prop('hidden', true);
-  $(`.homescreen`).prop('hidden', false);
-  $('.update-past-trip-form').prop('hidden', true);
-});
-
-function addTripToDatabase() {
-  console.log('add trip to database');
-  clearHtmlForms();
-}
-
-function viewPastTripsList() {
-  console.log('view past trips list');
-  getAndDisplayTrips();
-}
-
-function viewPastTrip(tripId) {
-  getAndDisplayPastTrip(tripId);
-}
-
-function getInputtedValues(callbackFn) {
-  $(`.homescreen`).prop('hidden', false);
-  console.log($( ":input" ).serializeArray());
-  callbackFn();
-
-}
-
-function clearHtmlForms() {
-  $('.past-trips').html('');
-  $('.update-past-trip').html('');
-  $('.create-a-trip').html('');
-}
-function updateTripInDatabase() {
-  console.log('update trip in database');
 }
