@@ -116,7 +116,7 @@ function getUpdatePastTrip(callbackFn, tripId) {
 }
 
 function displayPastTrip(data, tripId) {
-  $('.create-a-trip-form').prop('hidden', true);
+  $('.create-a-trip-forms').prop('hidden', true);
   $('.update-past-trip-form').prop('hidden', false);
   $(`.homescreen`).prop('hidden', true);
   $(`.past-trips-list`).prop('hidden', true);
@@ -127,10 +127,10 @@ function displayPastTrip(data, tripId) {
   let travelDetails = '';
   data.trips[tripId].travel.forEach(function (travel) {
     travelDetails += `<label>Enter the type of transportation for this trip.
-      <input type="text" name="airport" value=${travel.travelType}>
+      <input type="text" name="travelType" value=${travel.travelType}>
     </label>
     <label>Enter more information about your travel.
-      <input type="text" name="flight-information" value=${travel.travelInformation}>
+      <input type="text" name="travelInformation" value=${travel.travelInformation}>
     </label>`
   });
   console.log(travelDetails);
@@ -138,10 +138,10 @@ function displayPastTrip(data, tripId) {
   let residenceDetails = '';
   data.trips[tripId].residence.forEach(function (item) {
     residenceDetails += `<label>Enter the place you stayed at during your trip.
-        <input type="text" name="hotel" value=${item.stay}>
+        <input type="text" name="stay" value=${item.stay}>
        </label>
        <label>Enter more information about your place of stay.
-         <input type="text" name="hotel-information" value=${item.residenceComments}>
+         <input type="text" name="residenceInformation" value=${item.residenceComments}>
        </label>`
   });
   console.log(residenceDetails);
@@ -149,10 +149,10 @@ function displayPastTrip(data, tripId) {
   let restaurantDetails = '';
   data.trips[tripId].restaurants.forEach(function (item) {
     restaurantDetails += `<label>Enter a restaurant you visited during your trip.
-          <input type="text" name="restaurant" value=${item.restaurantName}>
+          <input type="text" name="restaurantName" value=${item.restaurantName}>
         </label>
         <label>Enter more information about the restaurant.
-           <input type="text" name="restaurant-information" value=${item.restaurantComments}>
+           <input type="text" name="restaurantInformation" value=${item.restaurantComments}>
         </label>`
   });
   console.log(residenceDetails);
@@ -160,10 +160,10 @@ function displayPastTrip(data, tripId) {
   let activityDetails = '';
   data.trips[tripId].activities.forEach(function (item) {
     activityDetails += `<label>Enter an activtiy you did during your trip.
-        <input type="text" name="activity" value=${item.activityName}>
+        <input type="text" name="activityName" value=${item.activityName}>
       </label>
       <label>Enter more information about the activity.
-        <input type="text" name="activity-information" value=${item.activtiyInformation}>
+        <input type="text" name="activityInformation" value=${item.activtiyInformation}>
       </label>`
   });
   console.log(residenceDetails);
@@ -180,10 +180,10 @@ function displayPastTrip(data, tripId) {
          <input type="text" name="location" value=${data.trips[tripId].location}>
        </label>
        <label>Enter the start date of your trip.
-         <input type="text" name="start-date" value=${data.trips[tripId].startDate}>
+         <input type="text" name="startDate" value=${data.trips[tripId].startDate}>
        </label>
        <label>Enter the end date of your trip.
-         <input type="text" name="end-date" value=${data.trips[tripId].endDate}>
+         <input type="text" name="endDate" value=${data.trips[tripId].endDate}>
        </label>
      </div>
    </form>
@@ -192,28 +192,28 @@ function displayPastTrip(data, tripId) {
      <div class="travel">
         ${travelDetails}
      </div>
-     <button type="submit">Add another travel item</button>
+     <button type="button" class="addTravel">Add another travel item</button>
    </form>
    <h3>Residence</h3>
    <form class="residence-form">
      <div class="residence">
          ${residenceDetails}
      </div>
-     <button type="submit">Add another residence item</button>
+     <button type="button" class="addResidence">Add another residence item</button>
    </form>
    <h3>Restaurants</h3>
    <form class="restaurants-form">
      <div class="restaurants">
        ${restaurantDetails}
      </div>
-     <button type="submit">Add another restaurant</button>
+     <button type="button" class="addRestaurant">Add another restaurant</button>
    </form>
    <h3>Activties</h3>
    <form class="activities-form">
      <div class="activities">
        ${activityDetails}
      </div>
-     <button type="submit">Add another activity</button>
+     <button type="button" class="addActivity">Add another activity</button>
    </form>`);
 }
 
@@ -223,103 +223,177 @@ function getAndDisplayPastTrip(tripId) {
 
 $('.past-trips').on('click', '.update-trip-button', function(event) {
   let tripId = this.parentElement.id;
-  viewPastTrip(tripId);
+  hideAllSections(viewPastTrip(tripId));
+  //viewPastTrip(tripId);
 })
 
 
 $('.new-trip-button').click(function(event) {
 	event.preventDefault();
-  createNewTripForm();
-	$('.homescreen').prop('hidden', true);
+  hideAllSections(createNewTripForm);
+  // createNewTripForm();
 });
+
+function hideAllSections(callbackFn) {
+  $('.create-a-trip-forms').prop('hidden', true);
+  $('.update-past-trip-form').prop('hidden', true);
+  $(`.homescreen`).prop('hidden', true);
+  $(`.past-trips-list`).prop('hidden', true);
+  $('.homescreen').prop('hidden', true);
+  callbackFn();
+}
 
 $('.view-past-trips').click(function(event) {
 	event.preventDefault();
-  $('.create-a-trip-form').prop('hidden', true);
-  $('.update-past-trip-form').prop('hidden', true);
-  $(`.homescreen`).prop('hidden', true);
+  // $('.create-a-trip-forms').prop('hidden', true);
+  // $('.update-past-trip-form').prop('hidden', true);
+  // $(`.homescreen`).prop('hidden', true);
   $(`.past-trips-list`).prop('hidden', false);
-	$('.homescreen').prop('hidden', true);
+	// $('.homescreen').prop('hidden', true);
   viewPastTripsList();
 });
 
 function createNewTripForm () {
-  $('.create-a-trip-form').prop('hidden', false);
-  $(`.homescreen`).prop('hidden', true);
-  $(`.past-trips-list`).prop('hidden', true);
-  $('.update-past-trip-form').prop('hidden', true);
-  $('.travel-input').val('');
+  $(`.create-a-trip-forms`).prop('hidden', false);
+  // console.log(`false hide for create trip`);
+  // $(`.homescreen`).prop('hidden', true);
+  // $(`.past-trips-list`).prop('hidden', true);
+  // $('.update-past-trip-form').prop('hidden', true);
+  $(`.create-a-trip-form`).html(`
+    <h3>General Info</h3>
+      <form class="general-info-form">
+        <div class="general-info">
+          <label>Enter the title of your trip.
+            <input type="text" name="title">
+          </label>
+          <label>Enter the location of your trip.
+            <input type="text" name="location">
+          </label>
+          <label>Enter the start date of your trip.
+            <input type="text" name="startDate">
+          </label>
+          <label>Enter the end date of your trip.
+            <input type="text" name="endDate">
+          </label>
+        </div>
+      </form>
+    <h3>Travel</h3>
+      <form class="travel-form">
+        <div class="travel">
+          <label>Enter the type of transportation for this trip.
+            <input type="text" name="travelType">
+          </label>
+          <label>Enter more information about your travel.
+            <input type="text" name="travelInformation">
+          </label>
+        </div>
+        <button type="button" class="addTravel">Add another travel item</button>
+      </form>
+    <h3>Residence</h3>
+      <form class="residence-form">
+        <div class="residence">
+          <label>Enter the place you stayed at during your trip.
+            <input type="text" name="stay">
+          </label>
+          <label>Enter more information about your place of stay.
+            <input type="text" name="residenceComments">
+          </label>
+        </div>
+        <button type="button" class="addResidence">Add another residence item</button>
+      </form>
+    <h3>Restaurants</h3>
+      <form class="restaurants-form">
+        <div class="restaurants">
+          <label>Enter a restaurant you visited during your trip.
+            <input type="text" name="restaurantName">
+          </label>
+          <label>Enter more information about the restaurant.
+            <input type="text" name="restaurantComments">
+          </label>
+        </div>
+        <button type="button" class="addRestaurant">Add another restaurant</button>
+      </form>
+    <h3>Activties</h3>
+      <form class="activities-form">
+        <div class="activities">
+          <label>Enter an activtiy you did during your trip.
+            <input type="text" name="activityName">
+          </label>
+          <label>Enter more information about the activity.
+            <input type="text" name="activityInformation">
+          </label>
+        </div>
+        <button type="button" class="addActivites">Add another activity</button>
+      </form>`);
+  //$('.travel-input').val('');
 }
 
-$('.travel-form').on('submit', function(event) {
+$('form').on('click', '.addTravel', function(event) {
 	event.preventDefault();
+  console.log('ran');
   createNewTravelItem();
 });
 
-$('.residence-form').on('submit', function(event) {
+$('form').on('click', '.addResidence', function(event) {
 	event.preventDefault();
   createNewResidenceItem();
 });
 
-$('.restaurants-form').on('submit', function(event) {
+$('form').on('click', '.addRestaurant', function(event) {
 	event.preventDefault();
   createNewRestaurantItem();
 });
 
-$('.activities-form').on('submit', function(event) {
+$('form').on('click', '.addActivity', function(event) {
 	event.preventDefault();
   createNewActivityItem();
 });
 
 function createNewTravelItem() {
-  $('.travel').append(`<label>Enter the type of transportation for this trip.
-    <input type="text" name="airport"></label><label>Enter more information about your travel.
-    <input type="text" name="flight-information"></label>`);
+  $('.travel').append(`<label>Enter the type of transportation for this trip.<input type="text" name="travelType"></label><label>Enter more information about your travel.<input type="text" name="travelInformation></label>`);
 }
 
 function createNewResidenceItem() {
   $('.residence').append(`<label>Enter the place you stayed at during your trip.
-    <input type="text" name="hotel"></label><label>Enter more information about your place of stay.
-    <input type="text" name="hotel-information"></label>`);
+    <input type="text" name="stay"></label><label>Enter more information about your place of stay.
+    <input type="text" name="residenceInformation"></label>`);
 }
 
 function createNewRestaurantItem() {
   $('.restaurants').append(`<label>Enter a restaurant you visited during your trip.
-    <input type="text" name="restaurant"></label><label>Enter more information about the restaurant.
-    <input type="text" name="restaurant-information"></label>`);
+    <input type="text" name="restaurantName"></label><label>Enter more information about the restaurant.
+    <input type="text" name="restaurantInformation"></label>`);
 }
 
 function createNewActivityItem() {
   $('.activities').append(`<label>Enter an activtiy you did during your trip.
-    <input type="text" name="activity"></label><label>Enter more information about the activity.
-    <input type="text" name="activity-information"></label>`);
+    <input type="text" name="activityName"></label><label>Enter more information about the activity.
+    <input type="text" name="activityInformation"></label>`);
 }
 
-$('.submit-trip-button').click(function(event) {
+$('.submit-trip-button').on('click',function(event) {
 	event.preventDefault();
-  $(`.create-a-trip-form`).prop('hidden', true);
-  $(`.past-trips-list`).prop('hidden', true);
-  $(`.homescreen`).prop('hidden', false);
-  $('.update-past-trip-form').prop('hidden', true);
-  console.log('submit trip ran');
-  getInputtedValues(addTripToDatabase);
+
+  hideAllSections(getInputtedValues(addTripToDatabase));
+
 });
 
-$('.submit-updated-trip-button').click(function(event) {
+
+$('.submit-updated-trip-button').on('click',function(event) {
 	event.preventDefault();
-  $(`.create-a-trip-form`).prop('hidden', true);
+  $(`.create-a-trip-forms`).prop('hidden', true);
   $(`.past-trips-list`).prop('hidden', true);
   $(`.homescreen`).prop('hidden', false);
   $('.update-past-trip-form').prop('hidden', true);
+  clearHtmlForms();
   console.log('submit updated trip ran');
-  //add in a function to redirect to a new screen if not homescreen
-  getInputtedValues(updateTripInDatabase);
+  //getInputtedValues(updateTripInDatabase);
 });
 
 $('.homescreen-button').click(function(event) {
 	event.preventDefault();
   console.log('past trip ran');
-  $(`.create-a-trip-form`).prop('hidden', true);
+  $(`.create-a-trip-forms`).prop('hidden', true);
   $(`.past-trips-list`).prop('hidden', true);
   $(`.homescreen`).prop('hidden', false);
   $('.update-past-trip-form').prop('hidden', true);
@@ -327,6 +401,7 @@ $('.homescreen-button').click(function(event) {
 
 function addTripToDatabase() {
   console.log('add trip to database');
+  clearHtmlForms();
 }
 
 function viewPastTripsList() {
@@ -339,49 +414,17 @@ function viewPastTrip(tripId) {
 }
 
 function getInputtedValues(callbackFn) {
-  console.log('getInputtedValues');
-  let newTrip = {
-    "title": "",
-    "location": "",
-    "startDate": "",
-    "endDate": "",
-    "travel": [{
-      travelType: "",
-      travelInformation: "" }],
-    "residence": [{
-      stay: "",
-      residenceComments: ""}],
-    "restaurants": [{
-      restaurantName: "",
-      restaurantComments: "" }],
-    "activities": [{
-      activityName: "",
-      activtiyInformation: ""}]
-  };
+  $(`.homescreen`).prop('hidden', false);
+  console.log($( ":input" ).serializeArray());
+  callbackFn();
 
-  Object.keys(newTrip).forEach(function (key) {
-    if(key === "travel" || "residence" || "restaurants" || "activities"){
-      console.log(key);
-      key.forEach(function(item) {
-        //START HERE TO UPDATE FOR ARRAY KEYS
-        item.keys(item).forEach(arrayKey => item[key] = $(`[name='${key}']`).val());  
-      });
-    }
-    else {
-      newTrip[key] = $(`[name='${key}']`).val();
-    }
-  });
-  console.log(newTrip);
-  //callbackFn();
+}
+
+function clearHtmlForms() {
+  $('.past-trips').html('');
+  $('.update-past-trip').html('');
+  $('.create-a-trip').html('');
 }
 function updateTripInDatabase() {
   console.log('update trip in database');
 }
-
-// var x = document.getElementsByName("animal");
-// var i;
-// for (i = 0; i < x.length; i++) {
-//     if (x[i].type == "checkbox") {
-//         x[i].checked = true;
-//     }
-// }
