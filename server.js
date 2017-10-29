@@ -7,6 +7,18 @@ app.get("/", (request, response) => {
   response.sendFile(__dirname + '/views/index.html');
 });
 
+app.get("/new", (request, response) => {
+  response.sendFile(__dirname + '/views/new.html');
+});
+
+app.get("/pastTrips", (request, response) => {
+  response.sendFile(__dirname + '/views/pastTrips.html');
+});
+
+app.get("/edit", (request, response) => {
+  response.sendFile(__dirname + '/views/edit.html');
+});
+
 let server;
 
 function runServer() {

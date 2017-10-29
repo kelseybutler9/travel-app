@@ -165,53 +165,6 @@ function displayPastTrip(data, tripId) {
   });
   console.log(residenceDetails);
 
-
-   $('.update-past-trip').append(`
-     <h3>General Info</h3>
-   <form class="general-info-form">
-     <div class="general-info">
-       <label>Enter the title of your trip.
-         <input type="text" name="title" value=${data.trips[tripId].title}>
-       </label>
-       <label>Enter the location of your trip.
-         <input type="text" name="location" value=${data.trips[tripId].location}>
-       </label>
-       <label>Enter the start date of your trip.
-         <input type="text" name="startDate" value=${data.trips[tripId].startDate}>
-       </label>
-       <label>Enter the end date of your trip.
-         <input type="text" name="endDate" value=${data.trips[tripId].endDate}>
-       </label>
-     </div>
-   </form>
-   <h3>Travel</h3>
-   <form class="travel-form">
-     <div class="travel">
-        ${travelDetails}
-     </div>
-     <button type="button" class="addTravel">Add another travel item</button>
-   </form>
-   <h3>Residence</h3>
-   <form class="residence-form">
-     <div class="residence">
-         ${residenceDetails}
-     </div>
-     <button type="button" class="addResidence">Add another residence item</button>
-   </form>
-   <h3>Restaurants</h3>
-   <form class="restaurants-form">
-     <div class="restaurants">
-       ${restaurantDetails}
-     </div>
-     <button type="button" class="addRestaurant">Add another restaurant</button>
-   </form>
-   <h3>Activties</h3>
-   <form class="activities-form">
-     <div class="activities">
-       ${activityDetails}
-     </div>
-     <button type="button" class="addActivity">Add another activity</button>
-   </form>`);
 }
 
 
@@ -307,74 +260,7 @@ function updateTripInDatabase() {
 }
 
 function createNewTripForm () {
-  // let displayItem = '.create-a-trip-forms';
-  // hideAllSections(displayItem);
-  $(`.create-a-trip-form`).html(`
-    <h3>General Info</h3>
-      <form class="general-info-form">
-        <div class="general-info">
-          <label>Enter the title of your trip.
-            <input type="text" name="title">
-          </label>
-          <label>Enter the location of your trip.
-            <input type="text" name="location">
-          </label>
-          <label>Enter the start date of your trip.
-            <input type="text" name="startDate">
-          </label>
-          <label>Enter the end date of your trip.
-            <input type="text" name="endDate">
-          </label>
-        </div>
-      </form>
-    <h3>Travel</h3>
-      <form class="travel-form">
-        <div class="travel">
-          <label>Enter the type of transportation for this trip.
-            <input type="text" name="travelType">
-          </label>
-          <label>Enter more information about your travel.
-            <input type="text" name="travelInformation">
-          </label>
-        </div>
-        <button type="button" class="addTravel">Add another travel item</button>
-      </form>
-    <h3>Residence</h3>
-      <form class="residence-form">
-        <div class="residence">
-          <label>Enter the place you stayed at during your trip.
-            <input type="text" name="stay">
-          </label>
-          <label>Enter more information about your place of stay.
-            <input type="text" name="residenceComments">
-          </label>
-        </div>
-        <button type="button" class="addResidence">Add another residence item</button>
-      </form>
-    <h3>Restaurants</h3>
-      <form class="restaurants-form">
-        <div class="restaurants">
-          <label>Enter a restaurant you visited during your trip.
-            <input type="text" name="restaurantName">
-          </label>
-          <label>Enter more information about the restaurant.
-            <input type="text" name="restaurantComments">
-          </label>
-        </div>
-        <button type="button" class="addRestaurant">Add another restaurant</button>
-      </form>
-    <h3>Activties</h3>
-      <form class="activities-form">
-        <div class="activities">
-          <label>Enter an activtiy you did during your trip.
-            <input type="text" name="activityName">
-          </label>
-          <label>Enter more information about the activity.
-            <input type="text" name="activityInformation">
-          </label>
-        </div>
-        <button type="button" class="addActivites">Add another activity</button>
-      </form>`);
+  console.log('createNewTripForm');
 }
 
 $('form').on('click', '.addTravel', function(event) {
