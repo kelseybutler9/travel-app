@@ -8,15 +8,15 @@ app.get("/", (request, response) => {
 });
 
 app.get("/new", (request, response) => {
-  response.sendFile(__dirname + '/views/new.html');
+  response.redirect(__dirname + '/new.html');
 });
 
-app.get("/pastTrips", (request, response) => {
-  response.sendFile(__dirname + '/views/pastTrips.html');
+app.get("/past-trips", (request, response) => {
+  response.redirect(__dirname + '/views/history.html');
 });
 
 app.get("/edit", (request, response) => {
-  response.sendFile(__dirname + '/views/edit.html');
+  response.redirect(__dirname + '/edit.html');
 });
 
 let server;

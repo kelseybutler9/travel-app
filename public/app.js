@@ -169,48 +169,29 @@ function displayPastTrip(data, tripId) {
 
 
 
-$('.past-trips').on('click', '.update-trip-button', function(event) {
+$('.past-trips-btn').on('click',  function(event) {
   let tripId = this.parentElement.id;
-  let displayItem = ''//update with the form to show
-  hideAllSections(displayItem);
-  //viewPastTrip(tripId);
+  viewPastTrip(tripId);
 })
 
 
 $('.new-trip-button').click(function(event) {
 	event.preventDefault();
-  let displayItem = '.create-a-trip-forms';
-  hideAllSections(displayItem);
   createNewTripForm();
 });
 
-function hideAllSections(string) {
-  console.log('this ran:' + string);
-  $('.create-a-trip-forms').prop('hidden', true);
-  $('.update-past-trip-form').prop('hidden', true);
-  $('.homescreen').prop('hidden', true);
-  $('.past-trips-list').prop('hidden', true);
-  $('.homescreen').prop('hidden', true);
-  $('string').prop('hidden', false);
-}
-
-$('.view-past-trips').click(function(event) {
+$('.past-trips-btn').click(function(event) {
 	event.preventDefault();
-  let displayItem = '.past-trips-list';
-  hideAllSections(displayItem);
+  //button is clicked
   viewPastTripsList();
 });
 
 $('.submit-trip-button').on('click',function(event) {
 	event.preventDefault();
-  let displayItem = '.homescreen';
-  hideAllSections(displayItem);
 });
 
 $('.submit-updated-trip-button').on('click',function(event) {
 	event.preventDefault();
-  let displayItem = '.homescreen';
-  hideAllSections(displayItem);//refactor hide All Sections to show one
   clearHtmlForms();
   console.log('submit updated trip ran');
   //getInputtedValues(updateTripInDatabase);
@@ -219,8 +200,6 @@ $('.submit-updated-trip-button').on('click',function(event) {
 $('.homescreen-button').click(function(event) {
 	event.preventDefault();
   console.log('past trip ran');
-  let displayItem = '.homescreen';
-  hideAllSections(displayItem);
 });
 
 function addTripToDatabase() {
@@ -242,8 +221,6 @@ function getAndDisplayPastTrip(tripId) {
 }
 
 function getInputtedValues(callbackFn) {
-  let displayItem = '.homescreen';
-  hideAllSections(displayItem);
   console.log($( ":input" ).serializeArray());
   callbackFn();
 
