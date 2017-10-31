@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang ='en'>
+<head>
+  <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title>Travel App</title>
+        <link href="style.css" rel="stylesheet" type="text/css" />
+  <nav>
+    <ul>
+      <li>Log In</li>
+      <li>Sign Up</li>
+    </ul>
+  </nav>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <main role="main">
+  <header role="banner">Travel App</header>
+  <h1>Explore past, present, and future Travel</h1>
+
+  <form>
+    <section>
+      <h3>General Trip Information</h3>
+        <label>Enter the title of your trip.
+          <input type="text" name="title" value=${data.trips[tripId].title}>
+        </label>
+        <label>Enter the location of your trip.
+          <input type="text" name="location" value=${data.trips[tripId].location}>
+        </label>
+        <label>Enter the start date of your trip.
+          <input type="text" name="startDate" value=${data.trips[tripId].startDate}>
+        </label>
+        <label>Enter the end date of your trip.
+          <input type="text" name="endDate" value=${data.trips[tripId].endDate}>
+        </label>
+    </section>
+    <section>
+      <h3>Travel</h3>
+        <div class="travel">
+           <!-- ${travelDetails} -->
+        </div>
+        <button type="button" class="addTravel">Add another travel item</button>
+    </section>
+    <section>
+      <h3>Residence</h3>
+      <div class="residence">
+        <!-- ${residenceDetails} -->
+      </div>
+      <button type="button" class="addResidence">Add another residence item</button>
+    </section>
+    <section>
+      <h3>Restaurants</h3>
+      <div class="restaurants">
+        <!-- ${restaurantDetails} -->
+      </div>
+      <button type="button" class="addRestaurant">Add another restaurant</button>
+    </section>
+    <section>
+      <h3>Activties</h3>
+        <div class="activities">
+          <!-- ${activityDetails} -->
+        </div>
+        <button type="button" class="addActivity">Add another activity</button>
+    </section>
+    <a href="/" class="submit update-button" role="button">Submit Updated Trip</a>
+    <a href="/new">Create a new Trip</a>
+    <a href="/">Return to Homescreen</a>
+  </form>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+  <script src="app.js"></script>
+</main>
+</body>
+</html>
