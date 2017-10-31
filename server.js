@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
+const path = require('path');
 
+app.use(express.static('views'));
 app.use(express.static('public'));
 
 app.get("/", (request, response) => {
@@ -8,15 +10,19 @@ app.get("/", (request, response) => {
 });
 
 app.get("/new", (request, response) => {
-  response.redirect(__dirname + '/new.html');
+  response.sendFile(path.join(__dirname + '/views/new.html'));
+
 });
 
 app.get("/past-trips", (request, response) => {
-  response.redirect(__dirname + '/views/history.html');
+  //response.send(__dirname + '/views/history.html');
+  response.sendFile(path.join(__dirname + '/views/history.html'));
+
 });
 
-app.get("/edit", (request, response) => {
-  response.redirect(__dirname + '/edit.html');
+app.get("/edit/:id", (request, response) => {
+  //response.send('/views/edit.html');
+  response.sendFile(path.join(__dirname + '/views/edit.html'));
 });
 
 let server;

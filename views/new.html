@@ -18,7 +18,7 @@
   <header role="banner">Travel App</header>
   <h1>Explore past, present, and future Travel</h1>
 
-  <form>
+  <form id="new-trip-form">
     <section>
       <h3>General Info</h3>
           <div class="general-info">
@@ -38,53 +38,54 @@
     </section>
     <section>
       <h3>Travel</h3>
-      <div class="travel">
         <label>Enter the type of transportation for this trip.
           <input type="text" name="new-travelType">
         </label>
         <label>Enter more information about your travel.
           <input type="text" name="new-travelInformation">
         </label>
+      <div class="new-travel">
       </div>
-    <button type="button" class="addTravel">Add another travel item</button>
+    <button type="button" class="new-addTravel">Add another travel item</button>
     </section>
     <section>
       <h3>Residence</h3>
-      <div class="residence">
         <label>Enter the place you stayed at during your trip.
             <input type="text" name="new-stay">
           </label>
           <label>Enter more information about your place of stay.
             <input type="text" name="new-residenceComments">
           </label>
+      <div class="new-residence">
       </div>
-      <button type="button" class="addResidence">Add another residence item</button>
+      <button type="button" class="new-addResidence">Add another residence item</button>
     </section>
     <section>
       <h3>Restaurants</h3>
-      <div class="restaurants">
         <label>Enter a restaurant you visited during your trip.
           <input type="text" name="new-rest-Name">
         </label>
         <label>Enter more information about the restaurant.
           <input type="text" name="new-rest-Comments">
         </label>
+      <div class="new-restaurant">
       </div>
-      <button type="button" class="addRestaurant">Add another restaurant</button>
+      <button type="button" class="new-addRestaurant">Add another restaurant</button>
     </section>
     <section>
       <h3>Activties</h3>
-       <div class="activities">
         <label>Enter an activtiy you did during your trip.
           <input type="text" name="new-actName">
         </label>
         <label>Enter more information about the activity.
           <input type="text" name="new-act-Info">
         </label>
+      <div class="new-activitiy">
       </div>
-      <button type="button" class="addActivites">Add another activity</button>
+      <button type="button" class="new-addActivites">Add another activity</button>
     </section>
-    <a href="/" class="submit new-button" role="button">Submit New Trip</a>
+    <!-- <a href="/" class="submit-new-button" role="button">Submit New Trip</a> -->
+    <input type="submit" class="button_new" onclick="location.href='/';" />
     <a href="/">Return to Homescreen</a>
   </form>
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"
