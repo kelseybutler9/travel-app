@@ -102,14 +102,16 @@ function displayPastTrips(data) {
     $('.past-trips').html('');
     for (index in data.trips) {
       console.log(data.trips[index]);
-      $('.past-trips').append(`<ls id="${index}"class="past-trip"><button type="button" id="${data.trips[index].id} "class="update-trip-button">${data.trips[index].title}</button><p>${data.trips[index].location}</p><p>${data.trips[index].startDate}</p><p>${data.trips[index].endDate}</p></ls>`);
+      $('.past-trips').append(`<ls id="${index}"class="past-trip">
+      <button type="button" id="${data.trips[index].id} "class="update-trip-button">${data.trips[index].title}</button>
+      <p>${data.trips[index].location}</p><p>${data.trips[index].startDate}</p><p>${data.trips[index].endDate}</p>
+      </ls>`);
       //update buttons to anchors
     }
 }
 
-function getAndDisplayTrips() {
-    getPastTrips(displayPastTrips);
-}
+$(getPastTrips(displayPastTrips));
+
 
 $("history-btn").on("click", function() {
   console.log('view past trips ran');
@@ -122,7 +124,7 @@ function getUpdatePastTrip(callbackFn, tripId) {
 }
 
 function displayPastTrip(data, tripId) {
-  //clearHtmlForms();
+  $('.past-trips').html('');
   let travelDetails = '';
   data.trips[tripId].travel.forEach(function (travel) {
     travelDetails += `<label>Enter the type of transportation for this trip.
@@ -168,8 +170,8 @@ function displayPastTrip(data, tripId) {
   console.log(residenceDetails);
 }
 
-$('#new-trip-form').submit(function(event){
-  //event.preventDefault();
+$('.button-new').on('submit', function(event){
+  event.preventDefault();
   console.log('submit ran');
   console.log($( ":input" ).serializeArray());
   //getInputtedValues();
@@ -216,7 +218,6 @@ function getInputtedValues(callbackFn) {
 
 function addTripToDatabase() {
   console.log('add trip to database');
-  clearHtmlForms();
 }
 
 function viewPastTrip(tripId) {
@@ -227,23 +228,9 @@ function getAndDisplayPastTrip(tripId) {
     getUpdatePastTrip(displayPastTrip, tripId);
 }
 
-
-
-function clearHtmlForms() {//rework
-  $('.past-trips').html('');
-  $('.update-past-trip').html('');
-  $('.create-a-trip').html('');
-}
-
 function updateTripInDatabase() {
   console.log('update trip in database');
 }
-
-// function createNewTripForm () {
-//   console.log('createNewTripForm');
-// }
-
-
 
 /////// for both edit and new
 $('.new-addTravel').click(function(event) {

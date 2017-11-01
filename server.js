@@ -15,13 +15,11 @@ app.get("/new", (request, response) => {
 });
 
 app.get("/past-trips", (request, response) => {
-  //response.send(__dirname + '/views/history.html');
   response.sendFile(path.join(__dirname + '/views/history.html'));
 
 });
 
 app.get("/edit/:id", (request, response) => {
-  //response.send('/views/edit.html');
   response.sendFile(path.join(__dirname + '/views/edit.html'));
 });
 

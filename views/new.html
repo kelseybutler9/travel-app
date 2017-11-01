@@ -18,7 +18,7 @@
   <header role="banner">Travel App</header>
   <h1>Explore past, present, and future Travel</h1>
 
-  <form id="new-trip-form">
+  <form id="new-trip-form" action="/">
     <section>
       <h3>General Info</h3>
           <div class="general-info">
@@ -60,7 +60,7 @@
       </div>
       <button type="button" class="new-addResidence">Add another residence item</button>
     </section>
-    <section>
+    <section class = "Restaurants">
       <h3>Restaurants</h3>
         <label>Enter a restaurant you visited during your trip.
           <input type="text" name="new-rest-Name">
@@ -84,8 +84,7 @@
       </div>
       <button type="button" class="new-addActivites">Add another activity</button>
     </section>
-    <!-- <a href="/" class="submit-new-button" role="button">Submit New Trip</a> -->
-    <input type="submit" class="button_new" onclick="location.href='/';" />
+    <button type="submit" class="button-new">Submit</button>
     <a href="/">Return to Homescreen</a>
   </form>
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"
