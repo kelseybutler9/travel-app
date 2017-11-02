@@ -11,12 +11,10 @@ app.get("/", (request, response) => {
 
 app.get("/new", (request, response) => {
   response.sendFile(path.join(__dirname + '/views/new.html'));
-
 });
 
-app.get("/past-trips", (request, response) => {
+app.get("/history", (request, response) => {
   response.sendFile(path.join(__dirname + '/views/history.html'));
-
 });
 
 app.get("/edit/:id", (request, response) => {

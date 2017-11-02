@@ -1,5 +1,3 @@
-//let TRIPS_URL = 'localhost:8080/trips';
-
 let MOCK_TRIP_UPDATES = {
     "trips": [
         {
@@ -12,7 +10,7 @@ let MOCK_TRIP_UPDATES = {
               travelType: "Flight",
               travelInformation: "Afternoon flight, $700" }],
             "residence": [{
-              stay: "Hilton Inn",
+              residenceName: "Hilton Inn",
               residenceComments: "nice staff, clean room"}],
             "restaurants": [{
               restaurantName: "Taco Bell",
@@ -32,11 +30,11 @@ let MOCK_TRIP_UPDATES = {
               travelType: "Flight",
               travelInformation: "Afternoon flight, $700" }],
             "residence": [{
-              stay: "Hilton Inn",
-              residenceComments: "nice staff, clean room"}],
+              residenceName: "Hilton Inn",
+              residenceInformation: "nice staff, clean room"}],
             "restaurants": [{
               restaurantName: "Taco Bell",
-              restaurantComments: "great burritos" }],
+              restaurantInformation: "great burritos" }],
             "activities": [{
               activityName: "Surfing",
               activtiyInformation: "Fun!"
@@ -52,11 +50,11 @@ let MOCK_TRIP_UPDATES = {
               travelType: "Flight",
               travelInformation: "Afternoon flight, $700" }],
             "residence": [{
-              stay: "Hilton Inn",
-              residenceComments: "nice staff, clean room"}],
+              residenceName: "Hilton Inn",
+              residenceInformation: "nice staff, clean room"}],
             "restaurants": [{
               restaurantName: "Taco Bell",
-              restaurantComments: "great burritos" }],
+              restaurantInformation: "great burritos" }],
             "activities": [{
               activityName: "Surfing",
               activtiyInformation: "Fun!"
@@ -72,11 +70,11 @@ let MOCK_TRIP_UPDATES = {
               type: "Flight",
               travelInformation: "Afternoon flight, $700" }],
             "residence": [{
-              stay: "Hilton Inn",
-              residenceComments: "nice staff, clean room"}],
+              residenceName: "Hilton Inn",
+              residenceInformation: "nice staff, clean room"}],
             "restaurants": [{
               restaurantName: "Taco Bell",
-              comments: "great burritos" }],
+              restaurantInformation: "great burritos" }],
             "activities": [{
               activityName: "Surfing",
               activtiyInformation: "Fun!"
@@ -88,8 +86,8 @@ let MOCK_TRIP_UPDATES = {
 
 $('#new-trip-form').submit(function(event) {
     event.preventDefault();
-    let inputs = $(":input").serializeArray();
-    inputs = handleInputs(inputs);
+    // let inputs = $(":input").serializeArray();
+    // inputs = handleInputs(inputs);
     //addTripToDatabase();
 });
 
@@ -98,7 +96,7 @@ $('#edit-trip-form').submit(function(event) {
     event.preventDefault();
     let inputs = $(":input").serializeArray();
     let trip = handleInputs(inputs);
-     console.log(trip);
+    console.log(trip);
     //updateTripInDatabase();
 });
 
@@ -152,7 +150,10 @@ function displayPastTrips(data) {
 $(getPastTrips(displayPastTrips));
 ///////////
 
-$(getPastTrip(0));
+$.getJSON('/edit').done(function(result) {
+  console.log(result);
+});
+//$(getPastTrip(0));
 
 ////////
 function getPastTrip(tripId) {
@@ -161,6 +162,7 @@ function getPastTrip(tripId) {
 }
 
 function displayPastTrip(data, tripId) {
+
   let travelDetails = '';
   data.trips[tripId].travel.forEach(function (travel) {
     travelDetails += `<label>Enter the type of transportation for this trip.
@@ -174,7 +176,7 @@ function displayPastTrip(data, tripId) {
   let residenceDetails = '';
   data.trips[tripId].residence.forEach(function (item) {
     residenceDetails += `<label>Enter the place you stayed at during your trip.
-        <input type="text" name="stay" value=${item.stay}>
+        <input type="text" name="residenceName" value=${item.stay}>
        </label>
        <label>Enter more information about your place of stay.
          <input type="text" name="residenceInformation" value=${item.residenceComments}>
@@ -200,14 +202,16 @@ function displayPastTrip(data, tripId) {
         <input type="text" name="activityInformation" value=${item.activtiyInformation}>
       </label>`
   });
-
+  $("#edit-trip-form").getJSON('/one').done(function(result) {
+    console.log(result);
+  });
   //$("#edit-trip-form").find('[input=title]').text('title');
   //$('[input=title]').val(data.trips[tripId].title);
     //console.log($( ":input" ).serializeArray());
 }
 
 function getInputtedValues(callbackFn) {
-  console.log($( ":input" ).serializeArray());
+  //console.log($( ":input" ).serializeArray());
   callbackFn();
 }
 
