@@ -86,15 +86,43 @@ let MOCK_TRIP_UPDATES = {
 };
 
 
-  $('#new-trip-form').submit(function(event) {
+$('#new-trip-form').submit(function(event) {
     event.preventDefault();
     let inputs = $(":input").serializeArray();
     inputs = handleInputs(inputs);
     //addTripToDatabase();
-  });
+});
+
+
+$('#edit-trip-form').submit(function(event) {
+    event.preventDefault();
+    let inputs = $(":input").serializeArray();
+    let trip = handleInputs(inputs);
+     console.log(trip);
+    //updateTripInDatabase();
+});
 
 function handleInputs(inputs) {
   console.log(inputs);
+  let trip = {travel: [], residence: [], restaurants: [], activities: []};
+  let field = {};
+  for(i=0 ;i < inputs.length; i++) {
+    field = inputs[i];
+    console.log(field);
+    if(field.name === "travelType") {
+      //travel.push({trip[field.name] = field.value});
+    }
+    else if (field.name === "travelInformation") {
+      //"residenceInformation" || "restaurantInformation" || "activityInformation"
+      trip.travel[trip.travel.length - 1].push(field.value);
+      console.log(trip.travel[trip.travel.length - 1])
+      //= field.value;
+    }
+    else {
+      trip[field.name] = field.value;
+    }
+  }
+  return trip;
 }
 // function getData() {
 //   const settings ={
@@ -114,7 +142,6 @@ function getPastTrips(callbackFn) {
 function displayPastTrips(data) {
     $('.past-trips').html('');
     for (index in data.trips) {
-      //console.log(data.trips[index]);
       $('.past-trips').append(`<ls id="${index}"class="past-trip">
       <a href = "/edit/${data.trips[index].id}">${data.trips[index].title}</a>
       <p>${data.trips[index].location}</p><p>${data.trips[index].startDate}</p><p>${data.trips[index].endDate}</p>
@@ -143,7 +170,6 @@ function displayPastTrip(data, tripId) {
       <input type="text" name="travelInformation" value=${travel.travelInformation}>
     </label>`
   });
-  //console.log(travelDetails);
 
   let residenceDetails = '';
   data.trips[tripId].residence.forEach(function (item) {
@@ -154,7 +180,6 @@ function displayPastTrip(data, tripId) {
          <input type="text" name="residenceInformation" value=${item.residenceComments}>
        </label>`
   });
-  //console.log(residenceDetails);
 
   let restaurantDetails = '';
   data.trips[tripId].restaurants.forEach(function (item) {
@@ -165,7 +190,6 @@ function displayPastTrip(data, tripId) {
            <input type="text" name="restaurantInformation" value=${item.restaurantComments}>
         </label>`
   });
-  //console.log(residenceDetails);
 
   let activityDetails = '';
   data.trips[tripId].activities.forEach(function (item) {
@@ -176,62 +200,16 @@ function displayPastTrip(data, tripId) {
         <input type="text" name="activityInformation" value=${item.activtiyInformation}>
       </label>`
   });
-  //console.log(residenceDetails);
-  $("#edit-trip-form").find('[input=title]').text('title');
+
+  //$("#edit-trip-form").find('[input=title]').text('title');
   //$('[input=title]').val(data.trips[tripId].title);
     //console.log($( ":input" ).serializeArray());
 }
-
-// $('.button-new').on('submit', function(event){
-//   event.preventDefault();
-//   console.log('submit ran');
-//   //console.log($( ":input" ).serializeArray());
-//   //getInputtedValues();
-//   //update here
-// })
 
 function getInputtedValues(callbackFn) {
   console.log($( ":input" ).serializeArray());
   callbackFn();
 }
-//
-// $('.past-trips-btn').on('click',  function(event) {
-//   let tripId = this.parentElement.id;
-//   viewPastTrip(tripId);
-// })
-//
-//
-// $('.new-trip-button').click(function(event) {
-// 	event.preventDefault();
-//   createNewTripForm();
-// });
-//
-// $('.past-trips-btn').click(function(event) {
-// 	event.preventDefault();
-//   //button is clicked
-//   viewPastTripsList();
-// });
-//
-// $('.submit-trip-button').on('click',function(event) {
-// 	event.preventDefault();
-// });
-//
-// $('.submit-updated-trip-button').on('click',function(event) {
-// 	event.preventDefault();
-//   clearHtmlForms();
-//   console.log('submit updated trip ran');
-//   //getInputtedValues(updateTripInDatabase);
-// });
-
-// $('.homescreen-button').click(function(event) {
-// 	event.preventDefault();
-//   console.log('past trip ran');
-// });
-
-
-
-
-
 
 function addTripToDatabase(trip) {
   console.log('add trip to database');
@@ -246,9 +224,6 @@ function addTripToDatabase(trip) {
   //     contentType: 'application/json'
   //   });
 }
-
-
-
 
 function updateTripInDatabase(trip) {
   console.log('update trip in database');
@@ -319,7 +294,9 @@ $('.edit-addActivity').click(function(event) {
 });
 
 function createNewTravelItem(classString) {
-  $(classString).append(`<label>Enter the type of transportation for this trip.<input type="text" name="travelType"></label><label>Enter more information about your travel.<input type="text" name="travelInformation></label>`);
+  $(classString).append(`<label>Enter the type of transportation for this trip.
+    <input type="text" name="travelType"></label><label>Enter more information about your travel.
+    <input type="text" name="travelInformation"></label>`);
 }
 
 function createNewResidenceItem(classString) {
