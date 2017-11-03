@@ -86,9 +86,9 @@ let MOCK_TRIP_UPDATES = {
 
 $('#new-trip-form').submit(function(event) {
     event.preventDefault();
-    // let inputs = $(":input").serializeArray();
-    // inputs = handleInputs(inputs);
-    //addTripToDatabase();
+    let inputs = $(":input").serializeArray();
+    inputs = handleInputs(inputs);
+    addTripToDatabase();
 });
 
 
