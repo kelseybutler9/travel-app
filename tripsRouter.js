@@ -13,9 +13,9 @@ app.use(bodyParser.json());
 
 mongoose.Promise = global.Promise;
 
-app.get('trips', (req, res) => {
+app.get('/trips', (req, res) => {
   Trips
-    .find()
+    .findAll()
     .then(trips => {
       res.json(trips.map(post => trips.apiRepr()));
     })

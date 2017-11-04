@@ -22,7 +22,7 @@
     <main role="main">
       <h1>Travel App</h1>
       <h1>Explore past, present, and future Travel</h1>
-      <form id="new-trip-form">
+      <form new-trip-form="form">
         <section>
           <h3>General Info</h3>
               <div class="general-info">
@@ -43,14 +43,14 @@
         <section>
           <h3>Transportation</h3>
             <label>Enter the type of transportation for this trip.
-              <input type="text" name="travelType">
+              <input type="text" name="transType">
             </label>
-            <label>Enter more information about your travel.
-              <input type="text" name="travelInformation">
+            <label>Enter more information about your transportation.
+              <input type="text" name="transInformation">
             </label>
-          <div class="new-travel">
+          <div class="new-trans">
           </div>
-        <button type="button" class="new-addTravel">Add another travel item</button>
+        <button type="button" class="new-addTrans">Add another transportation item</button>
         </section>
         <section>
           <h3>Residence</h3>
@@ -84,7 +84,7 @@
             <label>Enter more information about the activity.
               <input type="text" name="activityInformation">
             </label>
-          <div class="new-activitiy">
+          <div class="new-activity">
           </div>
           <button type="button" class="new-addActivity">Add another activity</button>
         </section>
@@ -93,14 +93,15 @@
         <a href="/">Return to Homescreen</a>
       </form>
 
-      <div class="success-screen">
+      <div class="success-screen" hidden>
           <p>You have successfully submitted your trip! You may now <a href="/history">View Past Trips</a>. Or hit close, to create a new trip.</p>
-          <button type=button>Close</button>
+          <button type=button class="success-btn">Close</button>
       </div>
       </main>
       <script src="https://code.jquery.com/jquery-3.2.1.min.js"
             integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
             crossorigin="anonymous"></script>
+      <script src="formhandler.js"></script>
       <script src="app.js"></script>
     </body>
 </html>
