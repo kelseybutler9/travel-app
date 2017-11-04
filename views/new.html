@@ -22,7 +22,7 @@
     <main role="main">
       <h1>Travel App</h1>
       <h1>Explore past, present, and future Travel</h1>
-      <form new-trip-form="form">
+      <form id="new-trip-form">
         <section>
           <h3>General Info</h3>
               <div class="general-info">
@@ -30,7 +30,7 @@
                   <input type="text" name="title">
                 </label>
                 <label>Enter the location of your trip.
-                  <input type="text" name="location">
+                  <input type="text" name="place">
                 </label>
                 <label>Enter the start date of your trip.
                   <input type="text" name="startDate">
@@ -40,7 +40,7 @@
                 </label>
               </div>
         </section>
-        <section>
+        <section new-transportation="repeating">
           <h3>Transportation</h3>
             <label>Enter the type of transportation for this trip.
               <input type="text" name="transType">
@@ -52,7 +52,7 @@
           </div>
         <button type="button" class="new-addTrans">Add another transportation item</button>
         </section>
-        <section>
+        <section new-residence="repeating">
           <h3>Residence</h3>
             <label>Enter the place you stayed at during your trip.
                 <input type="text" name="residenceName">
@@ -64,7 +64,7 @@
           </div>
           <button type="button" class="new-addResidence">Add another residence item</button>
         </section>
-        <section class = "Restaurants">
+        <section new-restaurant="repeating">
           <h3>Restaurants</h3>
             <label>Enter a restaurant you visited during your trip.
               <input type="text" name="restaurantName">
@@ -76,7 +76,7 @@
           </div>
           <button type="button" class="new-addRestaurant">Add another restaurant</button>
         </section>
-        <section>
+        <section new-activity="repeating">
           <h3>Activties</h3>
             <label>Enter an activtiy you did during your trip.
               <input type="text" name="activityName">

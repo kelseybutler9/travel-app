@@ -1,4 +1,4 @@
-(function (exports) {
+//(function (exports) {
   // console.log(exports);
   // const {FormHandler} = exports.app
   // const newformHandler = new FormHandler('[new-trip-form="form"]');
@@ -17,7 +17,7 @@
           {
               "id": "1111111",
               "title": "Vacation",
-              "location": "Chicago, Illinois",
+              "place": "Chicago, Illinois",
               "startDate": 10201992,
               "endDate": 10301992,
               "transportation": [{
@@ -37,7 +37,7 @@
           {
               "id": "22222",
               "title": "Vacation 2",
-              "location": "Loop, Illinois",
+              "place": "Loop, Illinois",
               "startDate": 10201992,
               "endDate": 10301992,
               "transportation": [{
@@ -57,37 +57,6 @@
       ]
   };
 
-// $('#new-trip-form').submit(function(event) {
-//     event.preventDefault();
-//
-//     let inputs = $(":input").serializeArray();
-//     console.log(inputs);
-//     inputs = handleInputs(inputs);
-//     addTripToDatabase(handleInputs(inputs));
-// });
-//
-//
-// $('#edit-trip-form').submit(function(event) {
-//     event.preventDefault();
-//     let inputs = $(":input").serializeArray();
-//     let trip = handleInputs(inputs);
-//     console.log(trip);
-//     //updateTripInDatabase();
-// });
-
-
-// function getData() {
-//   const settings ={
-//     url: '/trips',
-//     data: {
-//
-//     }
-//
-//   }
-//
-// }
-
-
 setTimeout(function(){displayPastTrips(MOCK_TRIP_UPDATES)}, 100);
 
 function displayPastTrips(data) {
@@ -95,29 +64,24 @@ function displayPastTrips(data) {
     for (index in data.trips) {
       $('.past-trips').append(`<ls id="${index}"class="past-trip">
       <a href = "/edit/${data.trips[index].id}">${data.trips[index].title}</a>
-      <p>${data.trips[index].location}</p><p>${data.trips[index].startDate}</p><p>${data.trips[index].endDate}</p>
+      <p>${data.trips[index].place}</p><p>${data.trips[index].startDate}</p><p>${data.trips[index].endDate}</p>
       </ls>`);
     }
 }
-
-
 
 // $.getJSON('/edit').done(function(result) {
 //   console.log(result);
 // });
 //$(getPastTrip(0));
+let tripId = 0;
 
-////////
-function getPastTrip(tripId) {
-  setTimeout(function() {displayPastTrip(MOCK_TRIP_UPDATES, tripId)}, 100);
+setTimeout(function() {displayPastTrip(MOCK_TRIP_UPDATES, tripId)}, 100);
 
-}
 
 function displayPastTrip(data, tripId) {
-
   let transportationDetails = '';
   data.trips[tripId].transportation.forEach(function (transportation) {
-    transDetails += `<label>Enter the type of transportation for this trip.
+    transportationDetails += `<label>Enter the type of transportation for this trip.
       <input type="text" name="transType" value=${transportation.transType}>
     </label>
     <label>Enter more information about your transportation.
@@ -154,22 +118,23 @@ function displayPastTrip(data, tripId) {
         <input type="text" name="activityInformation" value=${item.activtiyInformation}>
       </label>`
   });
-  $("#edit-trip-form").getJSON('/one').done(function(result) {
-    console.log(result);
-  });
+  console.log(transportationDetails);
+  $(".edit-trans").html(transportationDetails);
+  // $("#edit-trip-form").getJSON('/edit').done(function(result) {
+  //   console.log(result);
+  // });
   //$("#edit-trip-form").find('[input=title]').text('title');
   //$('[input=title]').val(data.trips[tripId].title);
     //console.log($( ":input" ).serializeArray());
 }
+//
+// $("#edit-trip-form").getJSON('/edit').done(function(result) {
+//   console.log(result);
+// });
 
 $(".success-btn").on('click', function() {
   $('.success-screen').prop(hidden, true);
 });
-
-function getInputtedValues(callbackFn) {
-  //console.log($( ":input" ).serializeArray());
-  callbackFn();
-}
 
 function addTripToDatabase(trip) {
   console.log('add trip to database');
@@ -212,8 +177,13 @@ function deleteTripInDatabase(tripId) {
 }
 
 /////// for both edit and new
+  //
+  // const newarrayItem = new ArrayItem('[new-transportation="repeating"]');
+  // const editarrayItem = new ArrayItem('[edit-]')
+
   $('.new-addTrans').click(function(event) {
   	event.preventDefault();
+  //  const newarrayItem = new ArrayItem('.new-trans');
     createNewTransItem('.new-trans');
   });
 
@@ -235,7 +205,7 @@ function deleteTripInDatabase(tripId) {
 
   $('.edit-addTrans').click(function(event) {
   	event.preventDefault();
-    createNewTransItem('.edit-trans');
+    ArrayItem.createNewTransItem('.edit-trans');
   });
 
   $('.edit-addResidence').click(function(event) {
@@ -253,28 +223,59 @@ function deleteTripInDatabase(tripId) {
     createNewActivityItem('.edit-activity');
   });
 
-  function createNewTransItem(classString) {
-    $(classString).append(`<label>Enter the type of transportation for this trip.
-      <input type="text" name="transType"></label><label>Enter more information about your transportation.
-      <input type="text" name="transInformation"></label>`);
-  }
+  // function createNewTransItem(classString) {
+  //   $(classString).append(`<label>Enter the type of transportation for this trip.
+  //     <input type="text" name="transType"></label><label>Enter more information about your transportation.
+  //     <input type="text" name="transInformation"></label>`);
+  // }
+  //
+  // function createNewResidenceItem(classString) {
+  //   $(classString).append(`<label>Enter the place you stayed at during your trip.
+  //     <input type="text" name="stay"></label><label>Enter more information about your place of stay.
+  //     <input type="text" name="residenceInformation"></label>`);
+  // }
+  //
+  // function createNewRestaurantItem(classString) {
+  //   $(classString).append(`<label>Enter a restaurant you visited during your trip.
+  //     <input type="text" name="restaurantName"></label><label>Enter more information about the restaurant.
+  //     <input type="text" name="restaurantInformation"></label>`);
+  // }
+  //
+  // function createNewActivityItem(classString) {
+  //   $(classString).append(`<label>Enter an activtiy you did during your trip.
+  //     <input type="text" name="activityName"></label><label>Enter more information about the activity.
+  //     <input type="text" name="activityInformation"></label>`);
+  // }
 
-  function createNewResidenceItem(classString) {
-    $(classString).append(`<label>Enter the place you stayed at during your trip.
-      <input type="text" name="stay"></label><label>Enter more information about your place of stay.
-      <input type="text" name="residenceInformation"></label>`);
-  }
+//})(typeof exports === 'undefined' ? window : exports)
 
-  function createNewRestaurantItem(classString) {
-    $(classString).append(`<label>Enter a restaurant you visited during your trip.
-      <input type="text" name="restaurantName"></label><label>Enter more information about the restaurant.
-      <input type="text" name="restaurantInformation"></label>`);
-  }
 
-  function createNewActivityItem(classString) {
-    $(classString).append(`<label>Enter an activtiy you did during your trip.
-      <input type="text" name="activityName"></label><label>Enter more information about the activity.
-      <input type="text" name="activityInformation"></label>`);
-  }
+// $('#new-trip-form').submit(function(event) {
+//     event.preventDefault();
+//
+//     let inputs = $(":input").serializeArray();
+//     console.log(inputs);
+//     inputs = handleInputs(inputs);
+//     addTripToDatabase(handleInputs(inputs));
+// });
+//
+//
+// $('#edit-trip-form').submit(function(event) {
+//     event.preventDefault();
+//     let inputs = $(":input").serializeArray();
+//     let trip = handleInputs(inputs);
+//     console.log(trip);
+//     //updateTripInDatabase();
+// });
 
-})(typeof exports === 'undefined' ? window : exports)
+
+// function getData() {
+//   const settings ={
+//     url: '/trips',
+//     data: {
+//
+//     }
+//
+//   }
+//
+// }

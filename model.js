@@ -2,12 +2,12 @@ const mongoose = require('mongoose');
 
 const tripSchema = mongoose.Schema({
     "title": {type: String, required: true},
-    "location": [{City: String, State: String}],
+    "place": [{City: String, State: String}],
     "startDate": {type: Date},
     "endDate": {type: Date},
-    "travel": [{
-        travelType: String,
-        travelInformation:String }],
+    "transportation": [{
+        transType: String,
+        transInformation:String }],
     "residence": [{
         residenceName: String,
         residenceInformation: String}],
@@ -19,19 +19,15 @@ const tripSchema = mongoose.Schema({
         activtiyInformation: String
     }]
 });
-//example
-// tripSchema.virtual('authorName').get(function() {
-//   return `${this.author.firstName} ${this.author.lastName}`.trim();
-// });
 
 tripSchema.methods.apiRepr = function() {
   return {
     id: this._id,
     title: this.title,
-    location: {this.City, this.State },
+    place: {this.City, this.State },
     startDate: this.startDate,
     endDate: this.endDate,
-    travel: [{travelType: this.travelType, travelInformation: this.travelInfromation }],
+    transportation: [{transType: this.transType, transInformation: this.transInfromation }],
     residence: [{
               residenceName: this.stay,
               residenceInformation: this.residenceComments}],

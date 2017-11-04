@@ -47,14 +47,14 @@ app.post('/trips', (req, res) => {
   }
 
   Trips
-    .create({ //add in logic for arrays
+    .create({
       title: req.body.title,
-      location: req.body.location,
+      place: req.body.place,
       "startDate": req.body.startDate,
       "endDate": req.body.endDate},
-      "travel": [{
-          travelType: req.body.travelType,
-          travelInformation: req.body.travelInformation}],
+      "transportation": [{
+          transType: req.body.transType,
+          transInformation: req.body.transInformation}],
       "residence": [{
           residenceName: req.body.residenceName,
           residenceInformation: req.body.residenceInformation}],
@@ -94,9 +94,8 @@ app.put('/trips/:id', (req, res) => {
       error: 'Request path id and request body id values must match'
     });
   }
-
   const updated = {};
-  const updateableFields = ['title', 'location', 'startDate', 'endDate', 'travelType', 'travelInformation', 'residenceName', 'residenceInformation', 'restaurantName', 'restaurantInformation', 'activityName', 'activityInformation'];
+  const updateableFields = ['title', 'place', 'startDate', 'endDate', 'transType', 'transInformation', 'residenceName', 'residenceInformation', 'restaurantName', 'restaurantInformation', 'activityName', 'activityInformation'];
   updateableFields.forEach(field => {
     if (field in req.body) {
       updated[field] = req.body[field];
