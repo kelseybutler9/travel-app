@@ -19,16 +19,16 @@
       const inputs = $(this).serializeArray();
       const data = handleInputs(inputs);
       callback(data);
-      $('.success-screen').prop(hidden, false);
+      //$('.success-screen').prop(hidden, false);
       this.reset();
-      this.elements[1].focus();
+      this.elements[0].focus();
     })
   }
 
   function handleInputs(inputs) {
     console.log(inputs);
     let trip = {travel: [], residence: [], restaurants: [], activities: []};
-    let field = {};
+    //let field = {};
     inputs.forEach(field => {
     // for(i=0 ;i < inputs.length; i++) {//foreach
       // field = inputs[i];
@@ -61,7 +61,7 @@
         trip[field.name] = field.value;
       }
     });
-    console.log(trip);
+    console.log('trip:' + trip);
     return trip;
   }
 

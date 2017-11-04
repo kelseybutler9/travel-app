@@ -99,8 +99,7 @@
     // }
   }
 
-  DataStore.prototype.update = function (k) {
-    // function updateTripInDatabase(trip) {
+  DataStore.prototype.update = function (tripId, data) {
     //   console.log('update trip in database');
     //   //$.ajax({
     //  //       method: 'PUT',

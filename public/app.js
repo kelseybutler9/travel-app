@@ -4,75 +4,30 @@
   //const {FormHandler, DataStore, Trip, ArrayItem} = exports.app
   const formHandler = new FormHandler('[data-trips="form"]');
 
+  const formId = $("form").attr('id');
+  console.log(formId);
+
   formHandler.addSubmitHandler((data) => {
-    addTripToDatabase(data);
-    //trip.createTrip(data);
+    if(formId === "new") {
+      console.log("add to database");
+      //trip.createTrip(data);
+    }
+    else {
+      console.log("update database");
+      //trip.updateTrip(data);
+    }
   });
 
 
-  let MOCK_TRIP_UPDATES = {
-      "trips": [
-          {
-              "id": "1111111",
-              "title": "Vacation",
-              "place": "Chicago, Illinois",
-              "startDate": 10201992,
-              "endDate": 10301992,
-              "transportation": [{
-                transType: "Flight",
-                transInformation: "Afternoon flight, $700" }],
-              "residence": [{
-                residenceName: "Hilton Inn",
-                residenceComments: "nice staff, clean room"}],
-              "restaurants": [{
-                restaurantName: "Taco Bell",
-                restaurantComments: "great burritos" }],
-              "activities": [{
-                activityName: "Surfing",
-                activtiyInformation: "Fun!"
-              }]
-          },
-          {
-              "id": "22222",
-              "title": "Vacation 2",
-              "place": "Loop, Illinois",
-              "startDate": 10201992,
-              "endDate": 10301992,
-              "transportation": [{
-                transType: "Flight",
-                transInformation: "Afternoon flight, $700" }],
-              "residence": [{
-                residenceName: "Hilton Inn",
-                residenceInformation: "nice staff, clean room"}],
-              "restaurants": [{
-                restaurantName: "Taco Bell",
-                restaurantInformation: "great burritos" }],
-              "activities": [{
-                activityName: "Surfing",
-                activtiyInformation: "Fun!"
-              }]
-          }
-      ]
-  };
-
-setTimeout(function(){displayPastTrips(MOCK_TRIP_UPDATES)}, 100);
-
-function displayPastTrips(data) {
-    $('.past-trips').html('');
-    for (index in data.trips) {
-      $('.past-trips').append(`<ls id="${index}"class="past-trip">
-      <a href = "/edit/${data.trips[index].id}">${data.trips[index].title}</a>
-      <p>${data.trips[index].place}</p><p>${data.trips[index].startDate}</p><p>${data.trips[index].endDate}</p>
-      </ls>`);
-    }
-}
 
 // $.getJSON('/edit').done(function(result) {
 //   console.log(result);
 // });
 //$(getPastTrip(0));
 let tripId = 0;
-new trip = Trip(tripId, new DataStore());
+//new trip = Trip(tripId, new DataStore());
+
+
 
 // trip.displayPastTrip()
 //

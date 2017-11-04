@@ -8,8 +8,8 @@
     this.db.add(trip);
   }
 
-  Trip.prototype.updateTrip = function (id) {
-    this.db.update(id);
+  Trip.prototype.updateTrip = function (id, data) {
+    this.db.update(id, data);
   }
 
   Trip.prototype.removeTrip = function (id) {
