@@ -1,16 +1,16 @@
-//(function (exports) {
-  // console.log(exports);
-  // const {FormHandler} = exports.app
-  // const newformHandler = new FormHandler('[new-trip-form="form"]');
-  // const editformHandler = new FormHandler('#edit-trip-form')
-  //
-  // newformHandler.addSubmitHandler((data) => {
-  //   addTripToDatabase(data);
-  // });
-  //
-  // editformHandler.addSubmitHandler((data) => {
-  //   updateTripInDatabase(data);
-  // });
+(function (exports) {
+  console.log(exports);
+  const {FormHandler} = exports.app
+  const newformHandler = new FormHandler('#new-trip-form');
+  const editformHandler = new FormHandler('#edit-trip-form')
+
+  newformHandler.addSubmitHandler((data) => {
+    addTripToDatabase(data);
+  });
+
+  editformHandler.addSubmitHandler((data) => {
+    updateTripInDatabase(data);
+  });
 
   let MOCK_TRIP_UPDATES = {
       "trips": [
@@ -247,7 +247,7 @@ function deleteTripInDatabase(tripId) {
   //     <input type="text" name="activityInformation"></label>`);
   // }
 
-//})(typeof exports === 'undefined' ? window : exports)
+})(typeof exports === 'undefined' ? window : exports)
 
 
 // $('#new-trip-form').submit(function(event) {
