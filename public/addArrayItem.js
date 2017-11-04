@@ -10,14 +10,11 @@
     }
   }
 
-  // ArrayItem.prototype.createNewItem = function(classString, type, firstName, secondName) {
-  //   // $("this.$element:button").on("click", function() {
-  //   //
-  //   // })
-  //   $(classString).append(`<label>Enter the type of ${type} for this trip.
-  //     <input type="text" name="${firstName}"></label><label>Enter more information about your ${type}.
-  //     <input type="text" name="${secondName}"></label>`);
-  // }
+  ArrayItem.prototype.createNewItem = function(type, firstName, secondName) {
+    $(this.$element).append(`<label>Enter the type of ${type} for this trip.
+      <input type="text" name="${firstName}"></label><label>Enter more information about your ${type}.
+      <input type="text" name="${secondName}"></label>`);
+  }
 })
 
 

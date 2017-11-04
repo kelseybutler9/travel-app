@@ -1,14 +1,19 @@
 (function (exports) {
   function Trip (tripId, db) {
-    this.db = db
+    this.tripId = tripId;
+    this.db = db;
   }
 
   Trip.prototype.createTrip = function (trip) {
-    this.db.add(trip)
+    this.db.add(trip);
   }
 
   Trip.prototype.updateTrip = function (id) {
-    this.db.remove(id)
+    this.db.update(id);
+  }
+
+  Trip.prototype.removeTrip = function (id) {
+    this.db.remove(id);
   }
 
   Trip.prototype.viewPastTrips = function () {
