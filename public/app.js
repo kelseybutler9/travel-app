@@ -25,9 +25,11 @@
 // });
 //$(getPastTrip(0));
 let tripId = 0;
-//new trip = Trip(tripId, new DataStore());
+const trip = Trip(tripId, new DataStore());
 
-
+$(".success-btn").on('click', function() {
+  $('.success-screen').prop(hidden, true);
+});
 
 // trip.displayPastTrip()
 //
@@ -88,9 +90,7 @@ let tripId = 0;
 // //   console.log(result);
 // // });
 
-$(".success-btn").on('click', function() {
-  $('.success-screen').prop(hidden, true);
-});
+
 
 // function addTripToDatabase(trip) {
 //   console.log('add trip to database');
@@ -203,34 +203,3 @@ $(".success-btn").on('click', function() {
   // }
 
 })(typeof exports === 'undefined' ? window : exports)
-
-
-// $('#new-trip-form').submit(function(event) {
-//     event.preventDefault();
-//
-//     let inputs = $(":input").serializeArray();
-//     console.log(inputs);
-//     inputs = handleInputs(inputs);
-//     addTripToDatabase(handleInputs(inputs));
-// });
-//
-//
-// $('#edit-trip-form').submit(function(event) {
-//     event.preventDefault();
-//     let inputs = $(":input").serializeArray();
-//     let trip = handleInputs(inputs);
-//     console.log(trip);
-//     //updateTripInDatabase();
-// });
-
-
-// function getData() {
-//   const settings ={
-//     url: '/trips',
-//     data: {
-//
-//     }
-//
-//   }
-//
-// }

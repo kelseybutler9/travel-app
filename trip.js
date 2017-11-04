@@ -16,13 +16,9 @@
     this.db.remove(id);
   }
 
-  Trip.prototype.viewPastTrips = function () {
-    const trips = Object.keys(this.db.getAll())
-
-    trips.forEach(id => {
-      console.log(this.db.get(id))
-    })
-    //update html
+  Trip.prototype.viewPastTrip = function (id) {
+    const trip = this.db.get(id);
+    console.log(trip);
   }
 
   exports.Trip = Trip;

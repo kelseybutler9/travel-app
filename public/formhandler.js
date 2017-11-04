@@ -19,7 +19,7 @@
       const inputs = $(this).serializeArray();
       const data = handleInputs(inputs);
       callback(data);
-      //$('.success-screen').prop(hidden, false);
+      $('.success-screen').prop("hidden", false);
       this.reset();
       this.elements[0].focus();
     })

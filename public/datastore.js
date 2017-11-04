@@ -1,10 +1,12 @@
 (function (exports) {
+  //const TRIPS_URL = 'enter url';
+
   function DataStore () {
-    this.data = {}
+    this.data = {};
   }
 
-  DataStore.prototype.add = function (k, v) {
-    this.data[k] = v
+  DataStore.prototype.add = function (trip) {
+    //this.data[k] = v
     // function addTripToDatabase(trip) {
     //   console.log('add trip to database');
     //   // $.ajax({
@@ -12,7 +14,7 @@
     //   //     url: TRIPS_URL,
     //   //     data: JSON.stringify(trip),
     //   //     success: function(data) {
-    //   //         displayPastTrips();
+    //   //         $(".success-screen").prop("hidden", false);
     //   //     },
     //   //     dataType: 'json',
     //   //     contentType: 'application/json'
@@ -20,7 +22,7 @@
     // }
   }
 
-  DataStore.prototype.get = function (k) {
+  DataStore.prototype.get = function (data, id) {
     return this.data[k]
     // function displayPastTrip(data, tripId) {
     //   let transportationDetails = '';
@@ -106,11 +108,11 @@
     //  //       url: TRIPS_URL + '/' + tripId,
     //  //       data: JSON.stringify(trip),
     //  //       success: function(data) {
-    //  //           displayPastTrips();
+    //  //           $(".success-screen").prop("hidden", false);
     //  //       }
     //  //     });
     // }
   }
 
-  exports.DataStore = DataStore
+  exports.DataStore = DataStore;
 })(typeof exports === 'undefined' ? window.app : exports)

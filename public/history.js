@@ -42,7 +42,7 @@ let MOCK_TRIP_UPDATES = {
         }
     ]
 };
-console.log(MOCK_TRIP_UPDATES);
+
 setTimeout(function(){displayPastTrips(MOCK_TRIP_UPDATES)}, 100);
 
 function displayPastTrips(data) {
