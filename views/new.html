@@ -1,95 +1,106 @@
 <!DOCTYPE html>
-<html lang ='en'>
-<head>
-  <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width">
-        <title>Travel App</title>
-        <link href="style.css" rel="stylesheet" type="text/css" />
-  <nav>
-    <ul>
-      <li>Log In</li>
-      <li>Sign Up</li>
-    </ul>
-  </nav>
-  <link rel="stylesheet" href="/style.css">
-</head>
-<body>
-  <main role="main">
-  <header role="banner">Travel App</header>
-  <h1>Explore past, present, and future Travel</h1>
-  <form id="new-trip-form" action="/">
-    <section>
-      <h3>General Info</h3>
-          <div class="general-info">
-            <label>Enter the title of your trip.
-              <input type="text" name="title">
+<html lang="en-US">
+  <head>
+    <title>New Trip | Travel App</title>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="FILL THIS IN LATER">
+    <!-- unique for each file description and title  -->
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  <body id="new">
+    <header role="banner">
+      <nav>
+        <ul>
+          <li><a href="/login">Log In</a></li>
+          <li><a href="/login">Sign Up</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main role="main">
+      <h1>Travel App</h1>
+      <h1>Explore past, present, and future Travel</h1>
+      <form id="new-trip-form">
+        <section>
+          <h3>General Info</h3>
+              <div class="general-info">
+                <label>Enter the title of your trip.
+                  <input type="text" name="title">
+                </label>
+                <label>Enter the location of your trip.
+                  <input type="text" name="location">
+                </label>
+                <label>Enter the start date of your trip.
+                  <input type="text" name="startDate">
+                </label>
+                <label>Enter the end date of your trip.
+                  <input type="text" name="endDate">
+                </label>
+              </div>
+        </section>
+        <section>
+          <h3>Transportation</h3>
+            <label>Enter the type of transportation for this trip.
+              <input type="text" name="travelType">
             </label>
-            <label>Enter the location of your trip.
-              <input type="text" name="location">
+            <label>Enter more information about your travel.
+              <input type="text" name="travelInformation">
             </label>
-            <label>Enter the start date of your trip.
-              <input type="text" name="startDate">
-            </label>
-            <label>Enter the end date of your trip.
-              <input type="text" name="endDate">
-            </label>
+          <div class="new-travel">
           </div>
-    </section>
-    <section>
-      <h3>Travel</h3>
-        <label>Enter the type of transportation for this trip.
-          <input type="text" name="travelType">
-        </label>
-        <label>Enter more information about your travel.
-          <input type="text" name="travelInformation">
-        </label>
-      <div class="new-travel">
+        <button type="button" class="new-addTravel">Add another travel item</button>
+        </section>
+        <section>
+          <h3>Residence</h3>
+            <label>Enter the place you stayed at during your trip.
+                <input type="text" name="residenceName">
+              </label>
+              <label>Enter more information about your place of stay.
+                <input type="text" name="residenceInformation">
+              </label>
+          <div class="new-residence">
+          </div>
+          <button type="button" class="new-addResidence">Add another residence item</button>
+        </section>
+        <section class = "Restaurants">
+          <h3>Restaurants</h3>
+            <label>Enter a restaurant you visited during your trip.
+              <input type="text" name="restaurantName">
+            </label>
+            <label>Enter more information about the restaurant.
+              <input type="text" name="restaurantInformation">
+            </label>
+          <div class="new-restaurant">
+          </div>
+          <button type="button" class="new-addRestaurant">Add another restaurant</button>
+        </section>
+        <section>
+          <h3>Activties</h3>
+            <label>Enter an activtiy you did during your trip.
+              <input type="text" name="activityName">
+            </label>
+            <label>Enter more information about the activity.
+              <input type="text" name="activityInformation">
+            </label>
+          <div class="new-activitiy">
+          </div>
+          <button type="button" class="new-addActivity">Add another activity</button>
+        </section>
+
+        <button type="submit" class="button-new">Submit</button>
+        <a href="/">Return to Homescreen</a>
+      </form>
+
+      <div class="success-screen">
+          <p>You have successfully submitted your trip! You may now <a href="/history">View Past Trips</a>. Or hit close, to create a new trip.</p>
+          <button type=button>Close</button>
       </div>
-    <button type="button" class="new-addTravel">Add another travel item</button>
-    </section>
-    <section>
-      <h3>Residence</h3>
-        <label>Enter the place you stayed at during your trip.
-            <input type="text" name="residenceName">
-          </label>
-          <label>Enter more information about your place of stay.
-            <input type="text" name="residenceInformation">
-          </label>
-      <div class="new-residence">
-      </div>
-      <button type="button" class="new-addResidence">Add another residence item</button>
-    </section>
-    <section class = "Restaurants">
-      <h3>Restaurants</h3>
-        <label>Enter a restaurant you visited during your trip.
-          <input type="text" name="restaurantName">
-        </label>
-        <label>Enter more information about the restaurant.
-          <input type="text" name="restaurantInformation">
-        </label>
-      <div class="new-restaurant">
-      </div>
-      <button type="button" class="new-addRestaurant">Add another restaurant</button>
-    </section>
-    <section>
-      <h3>Activties</h3>
-        <label>Enter an activtiy you did during your trip.
-          <input type="text" name="activityName">
-        </label>
-        <label>Enter more information about the activity.
-          <input type="text" name="activityInformation">
-        </label>
-      <div class="new-activitiy">
-      </div>
-      <button type="button" class="new-addActivity">Add another activity</button>
-    </section>
-    <button type="submit" class="button-new">Submit</button>
-    <a href="/">Return to Homescreen</a>
-  </form>
-  <script src="https://code.jquery.com/jquery-3.2.1.min.js"
-        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-        crossorigin="anonymous"></script>
-  <script src="app.js"></script>
-</main>
-</body>
+      </main>
+      <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
+      <script src="app.js"></script>
+    </body>
 </html>
