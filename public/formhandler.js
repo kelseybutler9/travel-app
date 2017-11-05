@@ -27,41 +27,44 @@
 
   function handleInputs(inputs) {
     console.log(inputs);
-    let trip = {travel: [], residence: [], restaurants: [], activities: []};
-    //let field = {};
+    let trip = {transportation: [{}], residence: [{}], restaurants: [{}], activities: [{}]};
+    console.log(trip);
     inputs.forEach(field => {
-    // for(i=0 ;i < inputs.length; i++) {//foreach
-      // field = inputs[i];
       console.log(field);
       if(field.name === "transType") {
-        trip.travel.push({transType:field.value});
+        //trip.transportation.push({transType:field.value});
+        trip.transportation[trip.transportation.length - 1].transType = field.value;
       }
       else if (field.name === "transInformation") {
-        trip.travel[trip.travel.length - 1].transInformation = field.value ;
+        trip.transportation[trip.transportation.length - 1].transInformation = field.value;
       }
       else if(field.name === "residenceName") {
-        trip.travel.push({residenceName:field.value});
+        //trip.residence.push({residenceName:field.value});
+        trip.residence[trip.residence.length - 1].residenceName = field.value;
       }
       else if (field.name === "residenceInformation") {
-        trip.travel[trip.travel.length - 1].residenceInformation = field.value ;
+        trip.residence[trip.residence.length - 1].residenceInformation = field.value;
       }
       else if(field.name === "restaurantName") {
-        trip.travel.push({restaurantName:field.value});
+        //trip.restaurants.push({restaurantName:field.value});
+        trip.restaurants[trip.restaurants.length - 1].restaurantName = field.value;
       }
       else if (field.name === "restaurantInformation") {
-        trip.travel[trip.travel.length - 1].restaurantInformation = field.value ;
+        trip.restaurants[trip.restaurants.length - 1].restaurantInformation = field.value;
       }
       else if(field.name === "activityName") {
-        trip.travel.push({activityName:field.value});
+        //trip.activities.push({activityName:field.value});
+        trip.activities[trip.activities.length - 1].activityName = field.value;
       }
       else if (field.name === "activityInformation") {
-        trip.travel[trip.travel.length - 1].activityInformation = field.value ;
+        trip.activities[trip.activities.length - 1].activityInformation = field.value ;
       }
       else {
-        trip[field.name] = field.value;
+        trip[`${field.name}`] = field.value;
       }
+      console.log('trip:' + trip);
     });
-    console.log('trip:' + trip);
+
     return trip;
   }
 

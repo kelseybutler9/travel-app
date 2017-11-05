@@ -1,6 +1,5 @@
 (function (exports) {
-  function Trip (tripId, db) {
-    this.tripId = tripId;
+  function Trip (db) {
     this.db = db;
   }
 

@@ -22,7 +22,7 @@
   <h1>Travel App</h1>
   <h1>Explore past, present, and future Travel</h1>
 
-  <form data-trips="form" id="edit">
+  <form data-trips="form" class="edit" id="-1">
     <section>
       <h3>General Trip Information</h3>
         <label>Enter the title of your trip.
@@ -74,6 +74,9 @@
 
   <div class="success-screen" hidden>
       <p>You have successfully updated your trip! You may now <a href="/history">View Past Trips</a> or <a href="/new">Create a New Trip</a></p>
+  </div>
+  <div class="delete-screen" hidden>
+      <p>You have successfully deleted your trip! You may now <a href="/history">View Past Trips</a> or <a href="/new">Create a New Trip</a></p>
   </div>
 
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"

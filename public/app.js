@@ -1,35 +1,36 @@
 (function (exports) {
   console.log(exports);
-  const {FormHandler} = exports.app
-  //const {FormHandler, DataStore, Trip, ArrayItem} = exports.app
+  //const {FormHandler} = exports.app
+  const {FormHandler, DataStore, Trip, ArrayItem} = exports.app
   const formHandler = new FormHandler('[data-trips="form"]');
 
-  const formId = $("form").attr('id');
+  const tripId = $("form").attr('id');
+  const formClass = $("form").attr('class');
   console.log(formId);
 
+  const trip = Trip(new DataStore());
+
   formHandler.addSubmitHandler((data) => {
-    if(formId === "new") {
+    if(formClass === "new") {
       console.log("add to database");
-      //trip.createTrip(data);
+      trip.createTrip(data);
     }
     else {
       console.log("update database");
-      //trip.updateTrip(data);
+      trip.updateTrip(data);
     }
   });
 
+  if(formClass === "edit") {
+    trip.get(tripId);
+  }
 
+  $('.success-screen').prop("hidden", true);
+  $('.delete-screen').prop("hidden", true);
 
-// $.getJSON('/edit').done(function(result) {
-//   console.log(result);
-// });
-//$(getPastTrip(0));
-let tripId = 0;
-const trip = Trip(tripId, new DataStore());
-
-$(".success-btn").on('click', function() {
-  $('.success-screen').prop(hidden, true);
-});
+  $('.button-delete').on("click", function() {
+    trip.removeTrip(tripId);
+  });
 
 // trip.displayPastTrip()
 //
