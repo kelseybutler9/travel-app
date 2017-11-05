@@ -2,45 +2,49 @@ const mongoose = require('mongoose');
 
 const tripSchema = mongoose.Schema({
     "title": {type: String, required: true},
-    "place": [{City: String, State: String}],
-    "startDate": {type: Date},
-    "endDate": {type: Date},
+    "place": String,
+    "startDate": String,
+    "endDate": String,
     "transportation": [{
-        transType: String,
-        transInformation:String }],
+        "transType": String,
+        "transInformation": String}],
     "residence": [{
-        residenceName: String,
-        residenceInformation: String}],
+        "residenceName": String,
+        "residenceInformation": String}],
     "restaurants": [{
-        restaurantName: String,
-        restaurantInformation: String}],
+        "restaurantName": String,
+        "restaurantInformation": String}],
     "activities": [{
-        activityName: String,
-        activtiyInformation: String
-    }]
+        "activityName": String,
+        "activtiyInformation": String}]
 });
 
 tripSchema.methods.apiRepr = function() {
+
   return {
     id: this._id,
     title: this.title,
-    place: {this.City, this.State },
+    place: this.place,
     startDate: this.startDate,
     endDate: this.endDate,
-    transportation: [{transType: this.transType, transInformation: this.transInfromation }],
+    transportation: [{transType: this.transportation[0].transType, transInformation: this.transportation[0].transInfromation }],
     residence: [{
-              residenceName: this.stay,
-              residenceInformation: this.residenceComments}],
+              residenceName: this.residence.residenceName,
+              residenceInformation: this.residence.residenceInformation}],
     restaurants: [{
-              restaurantName: this.name,
-              restaurantInformation: this.comments}],
+              restaurantName: this.restaurants.restaurantName,
+              restaurantInformation: this.restaurants.restaurantInformation}],
     activities: [{
-              activityName: this.activityName,
-              activtiyInformation: this.activityInformation
+              activityName: this.activities.activityName,
+              activtiyInformation: this.activities.activityInformation
                 }]
   };
 }
 
+// function parseArrays() {
+//
+// }
+
 const Trip = mongoose.model('Trip', tripSchema);
 
-module.exports = {tripSchema};
+module.exports = {Trip};

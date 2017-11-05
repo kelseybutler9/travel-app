@@ -1,4 +1,13 @@
-{"title": "Vacation", "place": "Chicago, Illinois", "startDate": "10201992", "endDate": "10301992", "transportation": [{"transType": "Flight", "transInformation": "Afternoon flight, $700"}],"residence": [{"residenceName": "Hilton Inn","residenceComments": "nice staff,clean room"}],"restaurants": [{"restaurantName": "Taco Bell", "restaurantComments": "great burritos"}], "activities":[{"activityName":"Running","activtiyInformation": "Fun!"}]}
+{
+  "title": "Vacation",
+  "place": "Chicago, Illinois",
+  "startDate": "10201992",
+  "endDate": "10301992",
+  "transportation": [{"transType": "Flight", "transInformation": "Afternoon flight, $700"}],
+  "residence": [{"residenceName": "Hilton Inn", "residenceComments": "nice staff,clean room"}],
+  "restaurants": [{"restaurantName": "Taco Bell", "restaurantComments": "great burritos"}],
+  "activities":[{"activityName": "Running", "activtiyInformation": "Fun!"}]
+}
 
 {"title": "Christmas", "place": "Cleveland, Ohio", "startDate": "12251992", "endDate": "12301992", "transportation": [{"transType": "Car", "transInformation": "6 Hour Drive"}], "residence": [{"residenceName": "Home","residenceComments": "Great!"}],
 "restaurants": [{"restaurantName": "Hunan", "restaurantComments": "great food"}], "activities":[{"activityName":"Chess","activtiyInformation": "Won"}]}

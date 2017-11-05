@@ -15,9 +15,13 @@
     this.db.remove(id);
   }
 
-  Trip.prototype.viewPastTrip = function (id) {
-    const trip = this.db.get(id);
+  Trip.prototype.viewPastTrip = function (id, callback) {
+    const trip = this.db.get(id, callback);
     console.log(trip);
+  }
+
+  Trip.prototype.viewPastTrips = function () {
+    this.db.getAll();
   }
 
   exports.Trip = Trip;

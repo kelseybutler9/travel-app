@@ -1,9 +1,16 @@
 const express = require('express');
 const app = express();
 const path = require('path');
+const mongoose = require('mongoose');
+//const tripsRouter = require('./tripsRouter');
+const {Trip} = require('./model');
+mongoose.Promise = global.Promise;
+
+const {DATABASE_URL, PORT} = require('./config');
 
 app.use(express.static('views'));
 app.use(express.static('public'));
+//app.use('/trips', tripsRouter)
 
 app.get("/", (request, response) => {
   response.sendFile(__dirname + '/views/index.html');
@@ -24,26 +31,33 @@ app.get("/edit/:id", (request, response) => {
 let server;
 
 function runServer() {
-  const port = process.env.PORT || 8080;
   return new Promise((resolve, reject) => {
-    server = app.listen(port, () => {
-      console.log(`Your app is listening on port ${port}`);
+    mongoose.connect(DATABASE_URL, err => {
+      if(err) {
+        return reject(err);
+      }
+    })
+
+    server = app.listen(PORT, () => {
+      console.log(`Your app is listening on port ${PORT}`);
       resolve(server);
     }).on('error', err => {
+      mongoose.disconnect();
       reject(err);
     });
   });
 }
 
 function closeServer() {
-  return new Promise((resolve, reject) => {
-    console.log('Closing server');
-    server.close(err => {
-      if(err) {
-        reject(err);
-        return;
-      }
-      resolve();
+  return mongoose.disconnect().then(() => {
+    return new Promise((resolve, reject) => {
+      console.log('Closing server');
+      server.close(err => {
+        if(err) {
+          return reject(err);
+        }
+        resolve();
+      });
     });
   });
 }
@@ -51,5 +65,120 @@ function closeServer() {
 if(require.main === module) {
   runServer().catch(err => console.error(err));
 };
+
+
+//////////////
+
+
+app.get('/trips', (req, res) => {
+  Trip
+    .find()
+    .then(trips => {
+      res.json(trips.map(trip => trip.apiRepr()));
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({error: 'something went terribly wrong'});
+    });
+});
+
+app.get('/trips/:id', (req, res) => {
+  Trip
+    .findById(req.params.id)
+    .then(trip => res.json(trip.apiRepr()))
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({error: 'something went horribly awry'});
+    });
+});
+
+app.post('/trips', (req, res) => {
+  const requiredFields = ['title'];
+  for (let i=0; i<requiredFields.length; i++) {
+    const field = requiredFields[i];
+    if (!(field in req.body)) {
+      const message = `Missing \`${field}\` in request body`
+      console.error(message);
+      return res.status(400).send(message);
+    }
+  }
+
+  Trip
+    .create({
+      title: req.body.title,
+      place: req.body.place,
+      "startDate": req.body.startDate,
+      "endDate": req.body.endDate,
+      "transportation": [{
+          transType: req.body.transType,
+          transInformation: req.body.transInformation}],
+      "residence": [{
+          residenceName: req.body.residenceName,
+          residenceInformation: req.body.residenceInformation}],
+      "restaurants": [{
+          restaurantName: req.body.restaurantName,
+          restaurantInformation: req.body.restaurantInformation}],
+      "activities": [{
+          activityName: req.body.activityName,
+          activtiyInformation: req.body.activtiyInformation
+      }]
+
+    })
+    .then(trip => res.status(201).json(trip.apiRepr()))
+    .catch(err => {
+        console.error(err);
+        res.status(500).json({error: 'Something went wrong'});
+    });
+});
+
+
+app.delete('/trips/:id', (req, res) => {
+  Trip
+    .findByIdAndRemove(req.params.id)
+    .then(() => {
+      res.status(204).json({message: 'success'});
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({error: 'something went terribly wrong'});
+    });
+});
+
+
+app.put('/trips/:id', (req, res) => {
+  if (!(req.params.id && req.body.id && req.params.id === req.body.id)) {
+    res.status(400).json({
+      error: 'Request path id and request body id values must match'
+    });
+  }
+  const updated = {};
+  const updateableFields = ['title', 'place', 'startDate', 'endDate', 'transType', 'transInformation', 'residenceName', 'residenceInformation', 'restaurantName', 'restaurantInformation', 'activityName', 'activityInformation'];
+  updateableFields.forEach(field => {
+    if (field in req.body) {
+      updated[field] = req.body[field];
+      //add logic if it is within an array
+    }
+  });
+
+  Trip
+    .findByIdAndUpdate(req.params.id, {$set: updated}, {new: true})
+    .then(updatedPost => res.status(204).end())
+    .catch(err => res.status(500).json({message: 'Something went wrong'}));
+});
+
+app.delete('/:id', (req, res) => {
+  Trip
+    .findByIdAndRemove(req.params.id)
+    .then(() => {
+      console.log(`Deleted blog post with id \`${req.params.ID}\``);
+      res.status(204).end();
+    });
+});
+
+
+app.use('*', function(req, res) {
+  res.status(404).json({message: 'Not Found'});
+});
+
 
 module.exports = {app, runServer, closeServer};

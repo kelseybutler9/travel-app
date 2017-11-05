@@ -1,84 +1,35 @@
 (function (exports) {
-  const TRIPS_URL = '//localhost:8080/trips';
 
-  function DataStore () {
-    this.data = {};
-  }
+  function DataStore (url) {
+    this.url = url;
 
-  DataStore.prototype.add = function (data) {
-      $.ajax({
-          method: 'POST',
-          url: TRIPS_URL,
-          data: JSON.stringify(data),
-          success: function(data) {
-              $(".success-screen").prop("hidden", false);
-          },
-          dataType: 'json',
-          contentType: 'application/json'
-        });
-  }
-
-  DataStore.prototype.get = function (id) {
-    $.ajax({//edit this function
-           method: 'GET',
-           url: TRIPS_URL + '/' + id,
-           data: JSON.stringify(data),
-           success: displayPastTrip(trip)
-    });
-
-    function displayPastTrip(trip) {
-      let transportationDetails = '';
-      trip.transportation.forEach(function (transportation) {
-        transportationDetails += `<label>Enter the type of transportation for this trip.
-          <input type="text" name="transType" value=${transportation.transType}>
-        </label>
-        <label>Enter more information about your transportation.
-          <input type="text" name="transInformation" value=${transportation.transInformation}>
-        </label>`
-      });
-
-      let residenceDetails = '';
-      trip.residence.forEach(function (item) {
-        residenceDetails += `<label>Enter the place you stayed at during your trip.
-            <input type="text" name="residenceName" value=${item.stay}>
-           </label>
-           <label>Enter more information about your place of stay.
-             <input type="text" name="residenceInformation" value=${item.residenceComments}>
-           </label>`
-      });
-
-      let restaurantDetails = '';
-      trip.restaurants.forEach(function (item) {
-        restaurantDetails += `<label>Enter a restaurant you visited during your trip.
-              <input type="text" name="restaurantName" value=${item.restaurantName}>
-            </label>
-            <label>Enter more information about the restaurant.
-               <input type="text" name="restaurantInformation" value=${item.restaurantComments}>
-            </label>`
-      });
-
-      let activityDetails = '';
-      trip.activities.forEach(function (item) {
-        activityDetails += `<label>Enter an activtiy you did during your trip.
-            <input type="text" name="activityName" value=${item.activityName}>
-          </label>
-          <label>Enter more information about the activity.
-            <input type="text" name="activityInformation" value=${item.activtiyInformation}>
-          </label>`
-      });
-
-      $(".edit-trans").html(transportationDetails);
-      $(".edit-residence").html(residenceDetails);
-      $(".edit-restaurants").html(restaurantDetails);
-      $(".edit-activity").html(activityDetails);
-
-      $("form").attr('id') = trip.id;
-      const updateFields = ["title", "place", "startDate", "endDate"];
-      updateFields.forEach(field => {
-        let input = `input[name=${field}]`;
-        $("input").val(`${trip.field}`);
-      });
+    if(!url) {
+      throw new Error('no endpoint provided');
     }
+  }
+
+  DataStore.prototype.add = function (data, callback) {
+      $.post(this.url, data, function (res) {
+        console.log(res);
+        //callback
+      })//similar to get
+      // $.ajax({
+      //     method: 'POST',
+      //     url: TRIPS_URL,
+      //     data: JSON.stringify(data),
+      //     success: function(data) {
+      //         $(".success-screen").prop("hidden", false);
+      //     },
+      //     dataType: 'json',
+      //     contentType: 'application/json'
+      //   });
+  }
+
+  DataStore.prototype.get = function (id, callback) {
+    $.get(`${this.url}/${id}`, function(res) {
+      console.log(res);
+      callback(res);
+    });
   }
 
   DataStore.prototype.getAll = function () {
