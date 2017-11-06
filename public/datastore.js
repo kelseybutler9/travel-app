@@ -22,15 +22,10 @@
     });
   }
 
-  DataStore.prototype.getAll = function () {
-    $.getJSON(TRIPS_URL, function(trips) {
-      $('.past-trips').html('');
-      for (index in data.trips) {
-        $('.past-trips').append(`<ls id="${index}"class="past-trip">
-        <a href = "/edit/${data.trips[index].id}">${data.trips[index].title}</a>
-        <p>${data.trips[index].place}</p><p>${data.trips[index].startDate}</p><p>${data.trips[index].endDate}</p>
-        </ls>`);
-      }
+  DataStore.prototype.getAll = function (callback) {
+    $.getJSON(TRIPS_URL, function(res) {
+        console.log(res);
+        callback(res);
     });
   }
 
