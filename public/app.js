@@ -8,28 +8,31 @@
   const trip = new Trip(new DataStore(url));
 
 
-  formHandler.addSubmitHandler((data) => {
+  formHandler.addSubmitHandler((trip) => {
     if(formClass === "new") {
       console.log("add to database");
-      trip.createTrip(data);//clean up the function names
+      trip.create(trip, displaySuccessScreen('success-screen'));
     }
     else {
       console.log("update database");
-      trip.updateTrip(data);
+      const tripId = $("form").attr('id');
+      console.log(tripId);
+      trip.update(tripId, trip, displaySuccessScreen('success-screen'));
     }
   });
 
   if(formClass === "edit") {
+    trip.viewItem(tripId, displayPastTrip);
     const tripId = $("form").attr('id');
     console.log(tripId);
-    trip.get(tripId, displayPastTrip());
   }
 
-  $('.success-screen').prop("hidden", true);
-  $('.delete-screen').prop("hidden", true);
-
+  function displaySuccessScreen (screen) {  
+  $('`.${screen}`').prop("hidden", true);
+  //$('.delete-screen').prop("hidden", true); for success and delete screen classes
+  }
   $('.button-delete').on("click", function() {
-    trip.removeTrip(tripId);
+    trip.removeItem(trip, tripId, displaySuccessScreen('delete-screen'));
   });
 
 
