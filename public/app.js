@@ -75,6 +75,17 @@
   	event.preventDefault();
     createNewActivityItem('.edit-activity');
   });
+  
+  ///call this within the viewItems callback
+  function displayPastTrips (trips) {
+      $('.past-trips').html('');
+      for (index in data.trips) {
+        $('.past-trips').append(`<ls id="${index}"class="past-trip">
+        <a href = "/edit/${data.trips[index].id}">${data.trips[index].title}</a>
+        <p>${data.trips[index].place}</p><p>${data.trips[index].startDate}</p><p>${data.trips[index].endDate}</p>
+        </ls>`);
+      }
+    }
 
   // function createNewTransItem(classString) {
   //   $(classString).append(`<label>Enter the type of transportation for this trip.
