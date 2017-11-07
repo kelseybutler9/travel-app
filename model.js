@@ -20,12 +20,13 @@ const tripSchema = mongoose.Schema({
 });
 
 tripSchema.methods.apiRepr = function() {
-  let transArray = [];
+    let transArray = [];
     let residenceArray = [];
     let restArray = [];
     let activityArray = [];
     function parseArrays(array, object, firstKey, secondKey) {
 //       this.object.forEach(function (item) {
+          console.log(array);
                 array.push({firstKey: this.item.firstKey, secondKey: this.item.secondKey});
         }
         return array;

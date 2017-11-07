@@ -74,6 +74,7 @@ app.get('/trips', (req, res) => {
   Trip
     .find()
     .then(trips => {
+      console.log(trips);
       res.json(trips.map(trip => trip.apiRepr()));
     })
     .catch(err => {
