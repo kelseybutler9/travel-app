@@ -1,22 +1,22 @@
-{
+Information{
   "title": "Vacation",
   "place": "Chicago, Illinois",
   "startDate": "10201992",
   "endDate": "10301992",
   "transportation": [{"transType": "Flight", "transInformation": "Afternoon flight, $700"}],
-  "residence": [{"residenceName": "Hilton Inn", "residenceComments": "nice staff,clean room"}],
-  "restaurants": [{"restaurantName": "Taco Bell", "restaurantComments": "great burritos"}],
+  "residence": [{"residenceName": "Hilton Inn", "residenceInformation": "nice staff,clean room"}],
+  "restaurants": [{"restaurantName": "Taco Bell", "restaurantInformation": "great burritos"}],
   "activities":[{"activityName": "Running", "activtiyInformation": "Fun!"}]
 }
 
-{"title": "Christmas", "place": "Cleveland, Ohio", "startDate": "12251992", "endDate": "12301992", "transportation": [{"transType": "Car", "transInformation": "6 Hour Drive"}], "residence": [{"residenceName": "Home","residenceComments": "Great!"}],
-"restaurants": [{"restaurantName": "Hunan", "restaurantComments": "great food"}], "activities":[{"activityName":"Chess","activtiyInformation": "Won"}]}
+{"title": "Christmas", "place": "Cleveland, Ohio", "startDate": "12251992", "endDate": "12301992", "transportation": [{"transType": "Car", "transInformation": "6 Hour Drive"}], "residence": [{"residenceName": "Home","residenceInformation": "Great!"}],
+"restaurants": [{"restaurantName": "Hunan", "restaurantInformation": "great food"}], "activities":[{"activityName":"Chess","activtiyInformation": "Won"}]}
 
-{"title": "Thanksgiving", "place": "Dallas, Texas", "startDate": "11231995", "endDate": "11241193", "transportation": [{"transType": "Train", "transInformation": "Long trip"}], "residence": [{"residenceName": "Grandparents House","residenceComments": "pleasant"}],
-"restaurants": [{"restaurantName": "Arbys", "restaurantComments": "meat"}], "activities":[{"activityName":"Sledding","activtiyInformation": "Crashed"}]}
+{"title": "Thanksgiving", "place": "Dallas, Texas", "startDate": "11231995", "endDate": "11241193", "transportation": [{"transType": "Train", "transInformation": "Long trip"}], "residence": [{"residenceName": "Grandparents House","residenceInformation": "pleasant"}],
+"restaurants": [{"restaurantName": "Arbys", "restaurantInformation": "meat"}], "activities":[{"activityName":"Sledding","activtiyInformation": "Crashed"}]}
 
-{"title": "Bahamas Beach Vacation", "place": "Bahamas", "startDate": "08202005", "endDate": "09012005", "transportation": [{"transType": "Flight", "transInformation": "Expensive"}], "residence": [{"residenceName": "Resort","residenceComments": "Fabulous"}],
-"restaurants": [{"restaurantName": "Hotel Restaurant", "restaurantComments": "very good"}], "activities":[{"activityName":"Swimming","activtiyInformation": "Pool and Ocean"}]}
+{"title": "Bahamas Beach Vacation", "place": "Bahamas", "startDate": "08202005", "endDate": "09012005", "transportation": [{"transType": "Flight", "transInformation": "Expensive"}], "residence": [{"residenceName": "Resort","residenceInformation": "Fabulous"}],
+"restaurants": [{"restaurantName": "Hotel Restaurant", "restaurantInformation": "very good"}], "activities":[{"activityName":"Swimming","activtiyInformation": "Pool and Ocean"}]}
 
-{"title": "Random Trip", "place": "Los Angeles, California", "startDate": "05202017", "endDate": "05252017", "transportation": [{"transType": "Flight", "transInformation": "4 hour flight"}], "residence": [{"residenceName": "Airbnb","residenceComments": "would stay again"}],
-"restaurants": [{"restaurantName": "PF Changs", "restaurantComments": "fancy"}], "activities":[{"activityName":"Surfing","activtiyInformation": "Great!"}]}
+{"title": "Random Trip", "place": "Los Angeles, California", "startDate": "05202017", "endDate": "05252017", "transportation": [{"transType": "Flight", "transInformation": "4 hour flight"}], "residence": [{"residenceName": "Airbnb","residenceInformation": "would stay again"}],
+"restaurants": [{"restaurantName": "PF Changs", "restaurantInformation": "fancy"}], "activities":[{"activityName":"Surfing","activtiyInformation": "Great!"}]}
