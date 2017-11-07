@@ -1,95 +1,93 @@
 (function (exports) {
   console.log(exports);
-  //const {FormHandler} = exports.app
-  const {FormHandler, DataStore, Trip, ArrayItem} = exports.app
+  const {FormHandler, DataStore, Trip} = exports.app;
   const formHandler = new FormHandler('[data-trips="form"]');
-  const url = "http://localhost:8080/trips"
+  const url = 'http://localhost:8080/trips';
   const formClass = $("form").attr('class');
   const trip = new Trip(new DataStore(url));
 
 
-  formHandler.addSubmitHandler((trip) => {
+  formHandler.addSubmitHandler((data) => {
     if(formClass === "new") {
       console.log("add to database");
-      trip.create(trip, displaySuccessScreen('success-screen'));
+      trip.createTrip(data);//clean up the function names
     }
     else {
       console.log("update database");
-      const tripId = $("form").attr('id');
-      console.log(tripId);
-      trip.update(tripId, trip, displaySuccessScreen('success-screen'));
+      trip.updateTrip(data);
     }
   });
 
   if(formClass === "edit") {
-    trip.viewItem(tripId, displayPastTrip);
     const tripId = $("form").attr('id');
     console.log(tripId);
+    trip.viewPastTrip(tripId, displayPastTrip);
   }
 
-  function displaySuccessScreen (screen) {  
-  $('`.${screen}`').prop("hidden", true);
-  //$('.delete-screen').prop("hidden", true); for success and delete screen classes
-  }
+  $('.success-screen').prop("hidden", true);
+  $('.delete-screen').prop("hidden", true);
+
   $('.button-delete').on("click", function() {
-    trip.removeItem(trip, tripId, displaySuccessScreen('delete-screen'));
+    trip.removeTrip(tripId);
   });
 
 
   $('.new-addTrans').click(function(event) {
   	event.preventDefault();
-    const newarrayItem = new ArrayItem('.new-trans');
+    createNewArrayItem('.new-addTrans', 'transType', 'transInformation');
+    //const newarrayItem = new ArrayItem('.new-trans');
     //sample for addarrayitem
-    newarrayItem.createNewTransItem("transportation", "transType", "transInformation");
+    //createNewResidenceItem('.new-trans');
+    //newarrayItem.createNewTransItem("transportation", "transType", "transInformation");
   });
 
   $('.new-addResidence').click(function(event) {
   	event.preventDefault();
-    createNewResidenceItem('.new-residence');
+    //createNewResidenceItem('.new-residence');
+    createNewArrayItem('.new-addResidence', 'residenceName', 'residenceInformation');
   });
 
   $('.new-addRestaurant').click(function(event) {
   	event.preventDefault();
-    createNewRestaurantItem('.new-restaurant');
+    createNewArrayItem('.new-addRestaurant', 'restaurantName', 'restaurantInformation');
+    //createNewRestaurantItem('.new-restaurant');
   });
 
   $('.new-addActivity').click(function(event) {
   	event.preventDefault();
-    createNewActivityItem('.new-activity');
+    createNewArrayItem('.new-addActivity', 'activityName', 'activityInformation');
+    //createNewActivityItem('.new-activity');
   });
-
 
   $('.edit-addTrans').click(function(event) {
   	event.preventDefault();
-    ArrayItem.createNewTransItem('.edit-trans');
+    createNewArrayItem('.edit-addTrans', 'transType', 'transInformation');
+    //ArrayItem.createNewTransItem('.edit-trans');
   });
 
   $('.edit-addResidence').click(function(event) {
   	event.preventDefault();
-    createNewResidenceItem('.edit-residence');
+    createNewArrayItem('.edit-addResidence', 'residenceName', 'residenceInformation');
+    //createNewResidenceItem('.edit-residence');
   });
 
   $('.edit-addRestaurant').click(function(event) {
   	event.preventDefault();
-    createNewRestaurantItem('.edit-restaurant');
+    createNewArrayItem('.edit-addRestaurant', 'restaurantName', 'restaurantInformation');
+    //createNewRestaurantItem('.edit-restaurant');
   });
 
   $('.edit-addActivity').click(function(event) {
   	event.preventDefault();
-    createNewActivityItem('.edit-activity');
+    createNewArrayItem('.edit-addActivity', 'activityName', 'activityInformation');
+    //createNewActivityItem('.edit-activity');
   });
-  
-  ///call this within the viewItems callback
-  function displayPastTrips (trips) {
-      $('.past-trips').html('');
-      for (index in data.trips) {
-        $('.past-trips').append(`<ls id="${index}"class="past-trip">
-        <a href = "/edit/${data.trips[index].id}">${data.trips[index].title}</a>
-        <p>${data.trips[index].place}</p><p>${data.trips[index].startDate}</p><p>${data.trips[index].endDate}</p>
-        </ls>`);
-      }
-    }
 
+  function createNewArrayItem(className, firstName, secondName) {
+    $(className).append(`<label>Enter the type of ${type} for this trip.
+      <input type="text" name="${firstName}"></label><label>Enter more information about your ${type}.
+      <input type="text" name="${secondName}"></label>`);
+  }
   // function createNewTransItem(classString) {
   //   $(classString).append(`<label>Enter the type of transportation for this trip.
   //     <input type="text" name="transType"></label><label>Enter more information about your transportation.

@@ -27,9 +27,9 @@ tripSchema.methods.apiRepr = function() {
     function parseArrays(array, object, firstKey, secondKey) {
 //       this.object.forEach(function (item) {
                 array.push({firstKey: this.item.firstKey, secondKey: this.item.secondKey});
-        }) 
+        }
         return array;
-          
+
 // }
   return {
     id: this._id,

@@ -2,7 +2,6 @@
 
   function DataStore (url) {
     this.url = url;
-
     if(!url) {
       throw new Error('no endpoint provided');
     }
