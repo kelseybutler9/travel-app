@@ -32,85 +32,53 @@
   });
 
 
-  $('.new-addTrans').click(function(event) {
+ $('.new-addTrans').click(function(event) {
   	event.preventDefault();
-    createNewArrayItem('.new-addTrans', 'transType', 'transInformation');
-    //const newarrayItem = new ArrayItem('.new-trans');
-    //sample for addarrayitem
-    //createNewResidenceItem('.new-trans');
-    //newarrayItem.createNewTransItem("transportation", "transType", "transInformation");
+  	console.log('ran');
+    createNewArrayItem('.new-trans', 'transportation', 'transType', 'transInformation');
+
   });
 
   $('.new-addResidence').click(function(event) {
   	event.preventDefault();
-    //createNewResidenceItem('.new-residence');
-    createNewArrayItem('.new-addResidence', 'residenceName', 'residenceInformation');
+    createNewArrayItem('.new-residence', 'residence', 'residenceName', 'residenceInformation');
   });
 
   $('.new-addRestaurant').click(function(event) {
   	event.preventDefault();
-    createNewArrayItem('.new-addRestaurant', 'restaurantName', 'restaurantInformation');
-    //createNewRestaurantItem('.new-restaurant');
+    createNewArrayItem('.new-restaurant', 'restaurant', 'restaurantName', 'restaurantInformation');
   });
 
   $('.new-addActivity').click(function(event) {
   	event.preventDefault();
-    createNewArrayItem('.new-addActivity', 'activityName', 'activityInformation');
-    //createNewActivityItem('.new-activity');
+    createNewArrayItem('.new-activity', 'activity', 'activityName', 'activityInformation');
   });
 
   $('.edit-addTrans').click(function(event) {
   	event.preventDefault();
-    createNewArrayItem('.edit-addTrans', 'transType', 'transInformation');
-    //ArrayItem.createNewTransItem('.edit-trans');
+    createNewArrayItem('.edit-trans', 'transportation', 'transType', 'transInformation');
   });
 
   $('.edit-addResidence').click(function(event) {
   	event.preventDefault();
-    createNewArrayItem('.edit-addResidence', 'residenceName', 'residenceInformation');
-    //createNewResidenceItem('.edit-residence');
+    createNewArrayItem('.edit-residence', 'residence', 'residenceName', 'residenceInformation');
   });
 
   $('.edit-addRestaurant').click(function(event) {
   	event.preventDefault();
-    createNewArrayItem('.edit-addRestaurant', 'restaurantName', 'restaurantInformation');
-    //createNewRestaurantItem('.edit-restaurant');
+    createNewArrayItem('.edit-restaurant', 'restaurant', 'restaurantName', 'restaurantInformation');
   });
 
   $('.edit-addActivity').click(function(event) {
   	event.preventDefault();
-    createNewArrayItem('.edit-addActivity', 'activityName', 'activityInformation');
-    //createNewActivityItem('.edit-activity');
+    createNewArrayItem('.edit-activity', 'activity', 'activityName', 'activityInformation');
   });
 
-  function createNewArrayItem(className, firstName, secondName) {
-    $(className).append(`<label>Enter the type of ${type} for this trip.
-      <input type="text" name="${firstName}"></label><label>Enter more information about your ${type}.
+  function createNewArrayItem(className, topic, firstName, secondName) {
+    $(className).append(`<label>Enter the type of ${topic} for this trip.
+      <input type="text" name="${firstName}"></label><label>Enter more information about your ${topic}.
       <input type="text" name="${secondName}"></label>`);
   }
-  // function createNewTransItem(classString) {
-  //   $(classString).append(`<label>Enter the type of transportation for this trip.
-  //     <input type="text" name="transType"></label><label>Enter more information about your transportation.
-  //     <input type="text" name="transInformation"></label>`);
-  // }
-  //
-  // function createNewResidenceItem(classString) {
-  //   $(classString).append(`<label>Enter the place you stayed at during your trip.
-  //     <input type="text" name="stay"></label><label>Enter more information about your place of stay.
-  //     <input type="text" name="residenceInformation"></label>`);
-  // }
-  //
-  // function createNewRestaurantItem(classString) {
-  //   $(classString).append(`<label>Enter a restaurant you visited during your trip.
-  //     <input type="text" name="restaurantName"></label><label>Enter more information about the restaurant.
-  //     <input type="text" name="restaurantInformation"></label>`);
-  // }
-  //
-  // function createNewActivityItem(classString) {
-  //   $(classString).append(`<label>Enter an activtiy you did during your trip.
-  //     <input type="text" name="activityName"></label><label>Enter more information about the activity.
-  //     <input type="text" name="activityInformation"></label>`);
-  // }
 
   function displayPastTrip(trip) {
     let transportationDetails = '';
