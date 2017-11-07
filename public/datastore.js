@@ -48,8 +48,8 @@
       console.log(res);
       callback(res);
       });
-    }
-  }
+   }
+ 
 
   exports.DataStore = DataStore;
 })(typeof exports === 'undefined' ? window.app : exports)
