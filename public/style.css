@@ -52,6 +52,13 @@ li a:hover {
     color: #fff;
 }
 
+.past-trip a {
+  font-weight: bold;
+  font-size: 20px;
+  color: #fff; 
+  background-color: #2A88AD;
+}
+
 form, .past-trips-list {
     width: 70%;
     padding:30px;
