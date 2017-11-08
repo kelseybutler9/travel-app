@@ -132,10 +132,11 @@ form button{
   -webkit-box-shadow: inset 0px 2px 2px rgba(0, 0, 0, 0.17);
 }
 
-form button[type="submit"] {
+form button[type="submit"], .button-delete {
   font: normal 20px 'Bitter', serif;
   margin: auto;
   display: block;
+  margin-bottom: 10px;
 }
 
 form button:hover{
