@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="FILL THIS IN LATER">
-    <!-- unique for each file description and title  -->
+    <meta name="description" content="edit past trip">
     <link href="style.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="/style.css">
   </head>
 <body id="edit">
+  <div class="background-image"></div>
   <header role="banner">
     <h1>Travel App</h1>
     <h1>Explore past, present, and future Travel</h1>
@@ -24,47 +24,57 @@
   <main role="main">
   <form data-trips="form" class="edit" id="0">
     <section>
-      <h3>General Trip Information</h3>
-        <label>Enter the title of your trip.
-          <input type="text" name="title">
-        </label>
-        <label>Enter the location of your trip.
-          <input type="text" name="place">
-        </label>
-        <label>Enter the start date of your trip.
-          <input type="text" name="startDate">
-        </label>
-        <label>Enter the end date of your trip.
-          <input type="text" name="endDate">
-        </label>
+      <div class="inner-wrap">
+        <h3>General Trip Information</h3>
+          <label>Enter the title of your trip.
+            <input type="text" name="title">
+          </label>
+          <label>Enter the location of your trip.
+            <input type="text" name="place">
+          </label>
+          <label>Enter the start date of your trip.
+            <input type="text" name="startDate">
+          </label>
+          <label>Enter the end date of your trip.
+            <input type="text" name="endDate">
+          </label>
+      </div>
     </section>
     <section>
       <h3>Transportation</h3>
-        <div class="edit-trans">
-           <!-- ${transDetails} -->
-        </div>
-        <button type="button" class="edit-addTrans">Add another transportation item</button>
+        <div class="inner-wrap">
+          <div class="edit-trans">
+             <!-- ${transDetails} -->
+          </div>
+          <button type="button" class="edit-addTrans">Add another transportation item</button>
+         </div">
     </section>
     <section>
       <h3>Residence</h3>
-      <div class="edit-residence">
-        <!-- ${residenceDetails} -->
+      <div class="inner-wrap">
+        <div class="edit-residence">
+          <!-- ${residenceDetails} -->
+        </div>
+        <button type="button" class="edit-addResidence">Add another residence item</button>
       </div>
-      <button type="button" class="edit-addResidence">Add another residence item</button>
     </section>
     <section>
       <h3>Restaurants</h3>
-      <div class="edit-restaurants">
-        <!-- ${restaurantDetails} -->
-      </div>
-      <button type="button" class="edit-addRestaurant">Add another restaurant</button>
+      <div class="inner-wrap">
+        <div class="edit-restaurants">
+          <!-- ${restaurantDetails} -->
+        </div>
+        <button type="button" class="edit-addRestaurant">Add another restaurant</button>
+       </div>
     </section>
     <section>
       <h3>Activties</h3>
+      <div class="inner-wrap">
         <div class="edit-activity">
           <!-- ${activityDetails} -->
         </div>
         <button type="button" class="edit-addActivity">Add another activity</button>
+       </div>
     </section>
     <button type="submit" class="button-edit">Submit Updates</button>
     <button type="button" class="button-delete">Delete Trip</button>
