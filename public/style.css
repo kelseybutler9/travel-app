@@ -43,13 +43,13 @@ li a {
 }
 
 li a:hover {
-    background: #FFF;
-    color: #888;
+    background: #ADADAD;
+    color: #fff;
 }
 
 .active {
-     background: #FFF;
-    color: #fff;
+    background: #FFF;
+    color: #888;
 }
 
 form {
