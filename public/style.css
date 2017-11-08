@@ -23,6 +23,7 @@ h1 {
   text-align: center;
   margin: 10px;
   font:normal 35px 'Bitter', serif;
+  color: #fff;
 }
 
 li {
@@ -132,7 +133,9 @@ form button{
 }
 
 form button[type="submit"] {
-  font: normal 30px 'Bitter', serif;
+  font: normal 20px 'Bitter', serif;
+  margin: auto;
+  display: block;
 }
 
 form button:hover{
