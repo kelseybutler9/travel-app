@@ -67,6 +67,7 @@ form, .past-trips-list {
 
 .past-trips {
   height: 400px;
+  border: 1px solid  #2A88AD;
 }
 
 .past-trip {
@@ -138,6 +139,10 @@ form input, .past-trip {
   box-shadow:inset 0px 1px 1px rgba(0, 0, 0, 0.33);
   -moz-box-shadow:inset 0px 1px 1px rgba(0, 0, 0, 0.33);
   -webkit-box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.33);
+}
+
+.past-trip {
+   border:1px solid #2A88AD;
 }
 
 form section{
