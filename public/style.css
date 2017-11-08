@@ -23,7 +23,7 @@ h1 {
   text-align: center;
   margin: 10px;
   font:normal 35px 'Bitter', serif;
-  color: #fff;
+  color:  #154f66;
 }
 
 li {
@@ -35,20 +35,20 @@ li {
 li a {
     display: block;
     padding: 8px;
-    background: #FFF;
-    color: #888;
     text-align: center;
     text-decoration: none;
     font-weight: bold;
-}
-
-li a:hover {
-    background: #ADADAD;
+    background-color: #2A88AD;
     color: #fff;
 }
 
+li a:hover {
+    background: #FFF;
+    color: #888;
+}
+
 .active {
-    background-color: #2A88AD;
+     background: #FFF;
     color: #fff;
 }
 
