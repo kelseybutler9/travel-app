@@ -59,7 +59,7 @@ li a:hover {
   background-color: #2A88AD;
 }
 
-form, .past-trips-list {
+form, .past-trips-list, .intro-text {
     width: 70%;
     padding:30px;
     margin:40px auto;
@@ -70,6 +70,10 @@ form, .past-trips-list {
      box-shadow: 0px 0px 10px rgba(0,0,0,0.13);
      -moz-box-shadow:0px 0px 10px rgba(0, 0, 0, 0.13);
      -webkit-box-shadow: 0px 0px 10px rgba(0,0,0,0.13);
+}
+
+.intro-text {
+  background: #2A88AD;
 }
 
 .past-trips {
@@ -121,7 +125,7 @@ form h3, h2 {
   border: 1px solid #257C9E;
 }
 
-h2 {
+h2, .intro-text div{
   text-align: center;
 }
 
@@ -132,7 +136,7 @@ form label {
   font: 13px Arial Helvetica, sans-serif;
 }
 
-form input, .past-trip {
+form input, .past-trip, intro-text div {
   display: block;
   box-sizing:border-box;
   -webkit-box-sizing:border-box;
@@ -146,6 +150,12 @@ form input, .past-trip {
   box-shadow:inset 0px 1px 1px rgba(0, 0, 0, 0.33);
   -moz-box-shadow:inset 0px 1px 1px rgba(0, 0, 0, 0.33);
   -webkit-box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.33);
+}
+
+.intro-text p {
+  color: #fff;
+  font: normal 25px 'Bitter', serif;
+
 }
 
 .past-trip {
