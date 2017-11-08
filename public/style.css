@@ -65,7 +65,32 @@ form, .past-trips-list {
      -webkit-box-shadow: 0px 0px 10px rgba(0,0,0,0.13);
 }
 
+.past-trips {
+  height: 400px;
+}
+
+.past-trip {
+  width: 100%;
+   border-radius:6px;
+  -webkit-border-radius:6px;
+  -moz-border-radius:6px;
+  border:2px solid #fff;
+  box-shadow:inset 0px 1px 1px rgba(0, 0, 0, 0.33);
+  -moz-box-shadow:inset 0px 1px 1px rgba(0, 0, 0, 0.33);
+  -webkit-box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.33);
+  text-align: center;
+  margin: auto;
+  display: block;
+}
+
 form .inner-wrap {
+  padding: 20px;
+  background: #F8F8F8;
+  border-radius: 6px;
+  margin: 15px;
+}
+
+.past-trips {
   padding: 20px;
   background: #F8F8F8;
   border-radius: 6px;
@@ -88,6 +113,10 @@ form h3, h2 {
   border: 1px solid #257C9E;
 }
 
+h2 {
+  text-align: center;
+}
+
 form label {
   display: block;
   color: #888;
@@ -95,7 +124,7 @@ form label {
   font: 13px Arial Helvetica, sans-serif;
 }
 
-form input {
+form input, .past-trip {
   display: block;
   box-sizing:border-box;
   -webkit-box-sizing:border-box;
