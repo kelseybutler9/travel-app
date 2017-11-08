@@ -17,9 +17,9 @@
       console.log("add submit ran");
       e.preventDefault();
       const inputs = $(this).serializeArray();
-      const data = handleInputs(inputs);
-      callback(data);
-      $('.success-screen').prop("hidden", false);
+      const item = handleInputs(inputs);
+      console.log(item);
+      callback(item);
       this.reset();
       this.elements[0].focus();
     })
@@ -27,43 +27,28 @@
 
   function handleInputs(inputs) {
     console.log(inputs);
-    let trip = {transportation: [{}], residence: [{}], restaurants: [{}], activities: [{}]};
-    console.log(trip);
-    inputs.forEach(field => {
-      console.log(field);
-      if(field.name === "transType") {
-        //trip.transportation.push({transType:field.value});
-        trip.transportation[trip.transportation.length - 1].transType = field.value;
-      }
-      else if (field.name === "transInformation") {
-        trip.transportation[trip.transportation.length - 1].transInformation = field.value;
-      }
-      else if(field.name === "residenceName") {
-        //trip.residence.push({residenceName:field.value});
-        trip.residence[trip.residence.length - 1].residenceName = field.value;
-      }
-      else if (field.name === "residenceInformation") {
-        trip.residence[trip.residence.length - 1].residenceInformation = field.value;
-      }
-      else if(field.name === "restaurantName") {
-        //trip.restaurants.push({restaurantName:field.value});
-        trip.restaurants[trip.restaurants.length - 1].restaurantName = field.value;
-      }
-      else if (field.name === "restaurantInformation") {
-        trip.restaurants[trip.restaurants.length - 1].restaurantInformation = field.value;
-      }
-      else if(field.name === "activityName") {
-        //trip.activities.push({activityName:field.value});
-        trip.activities[trip.activities.length - 1].activityName = field.value;
-      }
-      else if (field.name === "activityInformation") {
-        trip.activities[trip.activities.length - 1].activityInformation = field.value ;
-      }
-      else {
-        trip[`${field.name}`] = field.value;
-      }
-      console.log('trip:' + trip);
-    });
+    let trip = {transportation: [], residence: [], restaurants: [], activities: []};
+      for(let i=0; i < inputs.length; i++) {
+          if(inputs[i].name === "transType") {
+            let transObject = {transType: inputs[i].value, transInformation: inputs[i+1].value}
+            trip.transportation.push(transObject);
+          }
+          else if(inputs[i].name === "residenceName") {
+            let resObject = {residenceName: inputs[i].value, residenceInformation: inputs[i+1].value}
+            trip.residence.push(resObject);
+          }
+          else if(inputs[i].name === "restaurantName") {
+            let restObject = {restaurantName: inputs[i].value, restaurantInformation: inputs[i+1].value}
+            trip.restaurants.push(restObject);
+          }
+          else if(inputs[i].name === "activityName") {
+            let actObject = {activityName: inputs[i].value, activityInformation: inputs[i+1].value}
+            trip.activities.push(actObject);
+          }
+          else if(inputs[i].name === "title" || "place" || "startDate" || "endDate") {
+            trip[inputs[i].name] = inputs[i].value;
+          }
+    }
 
     return trip;
   }

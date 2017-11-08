@@ -7,10 +7,10 @@
     }
   }
 
-  DataStore.prototype.add = function (item, callback) {
+  DataStore.prototype.add = function (item, callback, param) {
       $.post(this.url, item, function (res) {
         console.log(res);
-        callback(res);
+        callback(param);
       })
   }
 
@@ -49,7 +49,7 @@
       callback(res);
       });
    }
- 
+
 
   exports.DataStore = DataStore;
 })(typeof exports === 'undefined' ? window.app : exports)

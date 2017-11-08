@@ -6,35 +6,41 @@
   const formClass = $("form").attr('class');
   const trip = new Trip(new DataStore(url));
 
+  hidePopup(`.delete-screen`);
+  hidePopup(`.success-screen`);
 
-  formHandler.addSubmitHandler((data) => {
+  function displayPopup(className) {
+    $(className).prop("hidden", false);
+  }
+
+  function hidePopup(className) {
+    $(className).prop("hidden", true);
+  }
+
+  formHandler.addSubmitHandler((trip) => {
     if(formClass === "new") {
       console.log("add to database");
-      trip.createTrip(data);//clean up the function names
+      trip.create(trip, displayPopup, '.success-screen');
     }
     else {
       console.log("update database");
-      trip.updateTrip(data);
+      trip.updateItem(data);
     }
   });
 
   if(formClass === "edit") {
-    const tripId = $("form").attr('id');
+    const tripId = $("form").attr("id");
     console.log(tripId);
-    trip.viewPastTrip(tripId, displayPastTrip);
+    trip.viewItem(tripId, displayPastTrip);
   }
 
-  $('.success-screen').prop("hidden", true);
-  $('.delete-screen').prop("hidden", true);
-
   $('.button-delete').on("click", function() {
-    trip.removeTrip(tripId);
+    trip.removeItem(tripId, displayPopup, '.delete-screen');
   });
 
 
  $('.new-addTrans').click(function(event) {
   	event.preventDefault();
-  	console.log('ran');
     createNewArrayItem('.new-trans', 'transportation', 'transType', 'transInformation');
 
   });
@@ -81,6 +87,7 @@
   }
 
   function displayPastTrip(trip) {
+    console.log(trip);
     let transportationDetails = '';
     trip.transportation.forEach(function (transportation) {
       transportationDetails += `<label>Enter the type of transportation for this trip.

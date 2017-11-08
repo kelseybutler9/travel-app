@@ -3,25 +3,26 @@
     this.db = db;
   }
 
-  Trip.prototype.create = function (trip, callback) {
-    this.db.add(trip, callback);
+  Trip.prototype.create = function (item, callback, param) {
+    this.db.add(item, callback, param);
+    console.log('create ran');
   }
 
-  Trip.prototype.updateItem = function (id, trip, callback) {
-    this.db.update(id, callback);
+  Trip.prototype.updateTrip = function (id, data) {
+    this.db.update(id, data);
   }
 
-  Trip.prototype.removeItem = function (trip, id, callback) {
-    this.db.remove(trip, id, callback);
+  Trip.prototype.removeTrip = function (id) {
+    this.db.remove(id);
   }
 
-  Trip.prototype.viewItem = function (id, callback) {
-    const item = this.db.get(id, callback);
-    console.log(item);
+  Trip.prototype.viewPastTrip = function (id, callback) {
+    const trip = this.db.get(id, callback);
+    console.log(trip);
   }
 
-  Trip.prototype.viewItems = function (callback) {
-    this.db.getAll(callback);
+  Trip.prototype.viewPastTrips = function () {
+    this.db.getAll();
   }
 
   exports.Trip = Trip;
