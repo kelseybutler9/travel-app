@@ -55,7 +55,11 @@ li a:hover {
 .past-trip a {
   font-weight: bold;
   font-size: 20px;
+<<<<<<< HEAD
   color: #fff;
+=======
+  color: #fff; 
+>>>>>>> 1384f382e912a97864a75ed5eabb3f6b72cd83e4
   background-color: #2A88AD;
 }
 
