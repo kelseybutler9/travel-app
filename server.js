@@ -2,14 +2,17 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 //const tripsRouter = require('./tripsRouter');
 const {Trip} = require('./model');
 mongoose.Promise = global.Promise;
 
 const {DATABASE_URL, PORT} = require('./config');
+const jsonParser = bodyParser.json();
 
 app.use(express.static('views'));
 app.use(express.static('public'));
+app.use(bodyParser.json());
 //app.use('/trips', tripsRouter)
 
 app.get("/", (request, response) => {
@@ -93,7 +96,7 @@ app.get('/trips/:id', (req, res) => {
     });
 });
 
-app.post('/trips', (req, res) => {
+app.post('/trips', jsonParser, (req, res) => {
   console.log(res);
     // if (!(req.body.title)) {
     //   const message = `Missing title in request body`
@@ -107,18 +110,22 @@ app.post('/trips', (req, res) => {
       place: req.body.place,
       startDate: req.body.startDate,
       endDate: req.body.endDate,
-      transportation: [{
-          transType: req.body.transType,
-          transInformation: req.body.transInformation}],
-      residence: [{
-          residenceName: req.body.residenceName,
-          residenceInformation: req.body.residenceInformation}],
-      restaurants: [{
-          restaurantName: req.body.restaurantName,
-          restaurantInformation: req.body.restaurantInformation}],
-      activities: [{
-          activityName: req.body.activityName,
-          activtiyInformation: req.body.activtiyInformation}]
+      transportation: parseArray('transType', 'transInformation', req.body.transportation);
+      residence: parseArray('residenceName', 'residenceInformation', req.body.residence);
+      restaurants: parseArray('restaurantName', 'restaurantInformation', req.body.restaurants);
+      activities: parseArray('activityName', 'activityInformation', req.body.activities);
+      // transportation: [{
+      //     transType: req.body.transType,
+      //     transInformation: req.body.transInformation}],
+      // residence: [{
+      //     residenceName: req.body.residenceName,
+      //     residenceInformation: req.body.residenceInformation}],
+      // restaurants: [{
+      //     restaurantName: req.body.restaurantName,
+      //     restaurantInformation: req.body.restaurantInformation}],
+      // activities: [{
+      //     activityName: req.body.activityName,
+      //     activtiyInformation: req.body.activtiyInformation}]
     })
     .then(trip => res.status(201).json(trip.apiRepr()))
     .catch(err => {
@@ -126,6 +133,13 @@ app.post('/trips', (req, res) => {
         res.status(500).json({error: 'Something went wrong'});
     });
 });
+
+function parseArray(firstKey, secondKey, keyObject) {
+  let array = [];
+
+  console.log(keyObject);
+  return array;
+}
 
 
 app.delete('/trips/:id', (req, res) => {
@@ -141,14 +155,14 @@ app.delete('/trips/:id', (req, res) => {
 });
 
 
-app.put('/trips/:id', (req, res) => {
+app.put('/trips/:id', jsonParser, (req, res) => {
   if (!(req.params.id && req.body.id && req.params.id === req.body.id)) {
     res.status(400).json({
       error: 'Request path id and request body id values must match'
     });
   }
   const updated = {};
-  const updateableFields = ['title', 'place', 'startDate', 'endDate', 'transType', 'transInformation', 'residenceName', 'residenceInformation', 'restaurantName', 'restaurantInformation', 'activityName', 'activityInformation'];
+  const updateableFields = ['id','title', 'place', 'startDate', 'endDate', 'transType', 'transInformation', 'residenceName', 'residenceInformation', 'restaurantName', 'restaurantInformation', 'activityName', 'activityInformation'];
   updateableFields.forEach(field => {
     if (field in req.body) {
       updated[field] = req.body[field];

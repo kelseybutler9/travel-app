@@ -7,16 +7,11 @@
   trip.viewItems(displayPastTrips);
 
   function displayPastTrips(data) {
-    console.log(data);
-    $('.past-trips').html('');
+    $('.container').html('');
     for (index in data) {
-      console.log(data[index].id);
-      console.log(data[index].title);
-      console.log(data[index].place);
-      console.log(data[index].startDate);
-      $('.past-trips').append(`<ls id="${data[index].id}"class="past-trip">
-      <a href = "/edit/${data.trips[index].id}">${data[index].title}</a>
-      <p>${data[index].place}</p><p>${data[index].startDate}</p><p>${data[index].endDate}</p>
+      item = data[index];
+      $('.past-trips').append(`<ls id="${item.id} "class="past-trip">
+      <a href = "/edit/${item.id}">${item.title}</a><p>${item.place}</p><p>${item.startDate}</p><p>${item.endDate}</p>
       </ls>`);
     }
   }
