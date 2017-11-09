@@ -110,10 +110,10 @@ app.post('/trips', jsonParser, (req, res) => {
       place: req.body.place,
       startDate: req.body.startDate,
       endDate: req.body.endDate,
-      transportation: parseArray('transType', 'transInformation', req.body.transportation);
-      residence: parseArray('residenceName', 'residenceInformation', req.body.residence);
-      restaurants: parseArray('restaurantName', 'restaurantInformation', req.body.restaurants);
-      activities: parseArray('activityName', 'activityInformation', req.body.activities);
+      transportation: parseArray('transType', 'transInformation', req.body.transportation),
+      residence: parseArray('residenceName', 'residenceInformation', req.body.residence),
+      restaurants: parseArray('restaurantName', 'restaurantInformation', req.body.restaurants),
+      activities: parseArray('activityName', 'activityInformation', req.body.activities)
       // transportation: [{
       //     transType: req.body.transType,
       //     transInformation: req.body.transInformation}],
