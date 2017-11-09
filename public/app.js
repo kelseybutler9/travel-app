@@ -30,6 +30,16 @@
     }
   });
 
+  $(`button`).click(function (e) {
+    e.preventDefault();
+    let myClass = this.className;
+    console.log(myClass);
+    const arrayOptions = {transportation: ['transType', 'transInformation'], residence: ['residenceName', 'residenceInformation'], restaurant: ['restaurantName', 'restaurantInformation'], activity: ['activityName', 'activityInformation']};
+    let option = arrayOptions[`${myClass}`];
+    console.log(option);
+    createNewArrayItem(`.add${myClass}`, myClass , option[0], option[1]);
+});
+
   if(formClass === "edit") {
     const tripId = $("form").attr("id");
     console.log(tripId);
@@ -38,48 +48,6 @@
 
   $('.button-delete').on("click", function() {
     trip.removeItem(tripId, displayPopup, '.delete-screen');
-  });
-
-
- $('.new-addTrans').click(function(event) {
-  	event.preventDefault();
-    createNewArrayItem('.new-trans', 'transportation', 'transType', 'transInformation');
-
-  });
-
-  $('.new-addResidence').click(function(event) {
-  	event.preventDefault();
-    createNewArrayItem('.new-residence', 'residence', 'residenceName', 'residenceInformation');
-  });
-
-  $('.new-addRestaurant').click(function(event) {
-  	event.preventDefault();
-    createNewArrayItem('.new-restaurant', 'restaurant', 'restaurantName', 'restaurantInformation');
-  });
-
-  $('.new-addActivity').click(function(event) {
-  	event.preventDefault();
-    createNewArrayItem('.new-activity', 'activity', 'activityName', 'activityInformation');
-  });
-
-  $('.edit-addTrans').click(function(event) {
-  	event.preventDefault();
-    createNewArrayItem('.edit-trans', 'transportation', 'transType', 'transInformation');
-  });
-
-  $('.edit-addResidence').click(function(event) {
-  	event.preventDefault();
-    createNewArrayItem('.edit-residence', 'residence', 'residenceName', 'residenceInformation');
-  });
-
-  $('.edit-addRestaurant').click(function(event) {
-  	event.preventDefault();
-    createNewArrayItem('.edit-restaurant', 'restaurant', 'restaurantName', 'restaurantInformation');
-  });
-
-  $('.edit-addActivity').click(function(event) {
-  	event.preventDefault();
-    createNewArrayItem('.edit-activity', 'activity', 'activityName', 'activityInformation');
   });
 
   function createNewArrayItem(className, topic, firstName, secondName) {

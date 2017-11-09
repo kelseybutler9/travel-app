@@ -10,36 +10,19 @@
     }
   }
 
-  ArrayItem.prototype.createNewItem = function(type, firstName, secondName) {
-    $(this.$element).append(`<label>Enter the type of ${type} for this trip.
-      <input type="text" name="${firstName}"></label><label>Enter more information about your ${type}.
-      <input type="text" name="${secondName}"></label>`);
+  ArrayItem.prototype.createNewItem = function(callback) {
+    $(`button`).click(function (e) {
+    e.preventDefault();
+    let myClass = this.className;
+    const arrayOptions = {Transportation: ['transType', 'transInformation'], Residence: ['residenceName', 'residenceInformation'], Restaurant: ['restaurantName', 'restaurantInformation'], Activity: ['activityName', 'activityInformation']};
+    let option = arrayOptions[`${this.element}`];
+    callback(`add${this.$element}`, this.element , option[0], option[1]);
+
+    // $(this.$element).append(`<label>Enter the type of ${type} for this trip.
+    //   <input type="text" name="${firstName}"></label><label>Enter more information about your ${type}.
+    //   <input type="text" name="${secondName}"></label>`);
   }
+
 })
 
-
-//////////////////////////////
-// function createNewTransItem(classString) {
-//   $(classString).append(`<label>Enter the type of transportation for this trip.
-//     <input type="text" name="transType"></label><label>Enter more information about your transportation.
-//     <input type="text" name="transInformation"></label>`);
-// }
-//
-// function createNewResidenceItem(classString) {
-//   $(classString).append(`<label>Enter the place you stayed at during your trip.
-//     <input type="text" name="stay"></label><label>Enter more information about your place of stay.
-//     <input type="text" name="residenceInformation"></label>`);
-// }
-//
-// function createNewRestaurantItem(classString) {
-//   $(classString).append(`<label>Enter a restaurant you visited during your trip.
-//     <input type="text" name="restaurantName"></label><label>Enter more information about the restaurant.
-//     <input type="text" name="restaurantInformation"></label>`);
-// }
-//
-// function createNewActivityItem(classString) {
-//   $(classString).append(`<label>Enter an activtiy you did during your trip.
-//     <input type="text" name="activityName"></label><label>Enter more information about the activity.
-//     <input type="text" name="activityInformation"></label>`);
-// }
-})(typeof exports === 'undefined' ? window.app = {} : exports, window.jQuery)
+})(typeof exports === 'undefined' ? window.app : exports)
