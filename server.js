@@ -69,10 +69,6 @@ if(require.main === module) {
   runServer().catch(err => console.error(err));
 };
 
-
-//////////////
-
-
 app.get('/trips', (req, res) => {
   Trip
     .find()
@@ -97,13 +93,13 @@ app.get('/trips/:id', (req, res) => {
 });
 
 app.post('/trips', jsonParser, (req, res) => {
-  console.log(res);
-    // if (!(req.body.title)) {
-    //   const message = `Missing title in request body`
-    //   console.error(message);
-    //   return res.status(400).send(message);
-    // }
-  //add in the parseArray function
+    console.log(req);
+    if (!(req.body.title)) {
+      const message = `Missing title in request body`;
+      console.error(message);
+      return res.status(400).send(message);
+    }
+
   Trip
     .create({
       title: req.body.title,
@@ -155,11 +151,22 @@ app.put('/trips/:id', jsonParser, (req, res) => {
     });
   }
   const updated = {};
-  const updateableFields = ['id','title', 'place', 'startDate', 'endDate', 'transType', 'transInformation', 'residenceName', 'residenceInformation', 'restaurantName', 'restaurantInformation', 'activityName', 'activityInformation'];
+  const updateableFields = ['title', 'place', 'startDate', 'endDate', 'transportation', 'residence', 'restaurants', 'activities'];
   updateableFields.forEach(field => {
-    if (field in req.body) {
+    if (field in req.body === 'title' || field in req.body === 'place' || field in req.body === 'startDate' || field in req.body === 'endDate') {
       updated[field] = req.body[field];
-      //add logic if it is within an array
+    }
+    else if (field in req.body === 'transportation') {
+      updated[`transportation`] = parseArray('transType', 'transInformation', req.body.transportation);
+    }
+    else if (field in req.body === 'residence') {
+      updated[`residence`] = parseArray('residenceName', 'residenceInformation', req.body.residence);
+    }
+    else if (field in req.body === 'activities') {
+      updated[`activities`] = parseArray('restaurantName', 'restaurantInformation', req.body.restaurants);
+    }
+    else if (field in req.body === 'activities') {
+      updated[`activities`] = parseArray('residenceName', 'residenceInformation', req.body.activities);
     }
   });
 
@@ -177,7 +184,6 @@ app.delete('/:id', (req, res) => {
       res.status(204).end();
     });
 });
-
 
 app.use('*', function(req, res) {
   res.status(404).json({message: 'Not Found'});

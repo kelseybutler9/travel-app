@@ -3,8 +3,8 @@
     this.db = db;
   }
 
-  Trip.prototype.create = function (item, callback, param) {
-    this.db.add(item, callback, param);
+  Trip.prototype.create = function (item) {
+    this.db.add(item);
     console.log('create ran');
   }
 

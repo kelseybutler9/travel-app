@@ -7,10 +7,9 @@
     }
   }
 
-  DataStore.prototype.add = function (item, callback, param) {
+  DataStore.prototype.add = function (item) {
       $.post(`${this.url}`, item, function (res) {
         console.log(res);
-        callback(param);
       })
   }
 

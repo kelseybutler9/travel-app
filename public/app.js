@@ -17,14 +17,16 @@
     $(className).prop("hidden", true);
   }
 
-  formHandler.addSubmitHandler((trip) => {
+  formHandler.addSubmitHandler((data) => {
     if(formClass === "new") {
       console.log("add to database");
-      trip.create(trip, displayPopup, '.success-screen');
+      trip.create(data);
+      displayPopup('.success-screen');
     }
     else {
       console.log("update database");
       trip.updateItem(data);
+      displayPopup('.success-screen');
     }
   });
 
