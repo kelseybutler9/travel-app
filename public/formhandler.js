@@ -1,4 +1,5 @@
 
+
 (function (exports, $) {
   function FormHandler (selector) {
     console.log(selector);
@@ -45,8 +46,11 @@
             let actObject = {activityName: inputs[i].value, activityInformation: inputs[i+1].value}
             trip.activities.push(actObject);
           }
-          else if(inputs[i].name === "title" || "place" || "startDate" || "endDate") {
+          else if(inputs[i].name === "title" || inputs[i].name === "place" || inputs[i].name === "startDate" || inputs[i].name === "endDate") {
             trip[inputs[i].name] = inputs[i].value;
+          }
+          else {
+            console.log('skipped');
           }
     }
 
