@@ -8,7 +8,7 @@
   }
 
   DataStore.prototype.add = function (item, callback, param) {
-      $.post(this.url, item, function (res) {
+      $.post(`${this.url}`, item, function (res) {
         console.log(res);
         callback(param);
       })
@@ -22,7 +22,7 @@
   }
 
   DataStore.prototype.getAll = function (callback) {
-    $.getJSON(TRIPS_URL, function(res) {
+    $.getJSON(`${this.url}`, function(res) {
         console.log(res);
         callback(res);
     });
@@ -32,7 +32,7 @@
       console.log('delete data in database');
       $.ajax({
            method: 'DELETE',
-           url: TRIPS_URL+ '/' + id,
+           url: `${this.url}/${id}`,
            data: JSON.stringify(item),
            success: function() {
                $(".delete-screen").prop("hidden", false);

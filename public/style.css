@@ -1,3 +1,198 @@
 * {
-  font-size: 8px;
+  box-sizing: border-box;
+}
+
+body {
+  background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfrqZANzN-bVMxylDwwbojFq_rCiNI5lywRy7EUMwBpk4ye_RaAA') no-repeat;
+  background-size: cover;
+  color: black;
+  height: auto;
+}
+
+
+ul, .past-trip {
+    list-style-type: none;
+    margin: auto;
+    padding: 0;
+    width: 70%;
+}
+
+
+h1 {
+  margin: auto;
+  text-align: center;
+  margin: 10px;
+  font:normal 35px 'Bitter', serif;
+  color:  #154f66;
+}
+
+li {
+  display: inline;
+  float: left;
+  width: 33.33%;
+}
+
+li a {
+    display: block;
+    padding: 8px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    background: #FFF;
+    color: #888;
+}
+
+li a:hover {
+    background: #ADADAD;
+    color: #fff;
+}
+
+.active {
+    background-color: #2A88AD;
+    color: #fff;
+}
+
+.past-trip a {
+  font-weight: bold;
+  font-size: 20px;
+  color: #fff;
+  background-color: #2A88AD;
+}
+
+form, .past-trips-list, .intro-text {
+    width: 70%;
+    padding:30px;
+    margin:40px auto;
+    background: #FFF;
+    border-radius: 10px;
+     -webkit-border-radius:10px;
+    -moz-border-radius: 10px;
+     box-shadow: 0px 0px 10px rgba(0,0,0,0.13);
+     -moz-box-shadow:0px 0px 10px rgba(0, 0, 0, 0.13);
+     -webkit-box-shadow: 0px 0px 10px rgba(0,0,0,0.13);
+}
+
+.intro-text {
+  background: #2A88AD;
+}
+
+.past-trips {
+  height: 400px;
+  border: 1px solid  #2A88AD;
+}
+
+.past-trip {
+  width: 100%;
+   border-radius:6px;
+  -webkit-border-radius:6px;
+  -moz-border-radius:6px;
+  border:2px solid #fff;
+  box-shadow:inset 0px 1px 1px rgba(0, 0, 0, 0.33);
+  -moz-box-shadow:inset 0px 1px 1px rgba(0, 0, 0, 0.33);
+  -webkit-box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.33);
+  text-align: center;
+  margin: auto;
+  display: block;
+}
+
+form .inner-wrap {
+  padding: 20px;
+  background: #F8F8F8;
+  border-radius: 6px;
+  margin: 15px;
+}
+
+.past-trips {
+  padding: 20px;
+  background: #F8F8F8;
+  border-radius: 6px;
+  margin: 15px;
+}
+
+form h3, h2 {
+  background: #2A88AD;
+  padding: 20px;
+  margin: -30px;
+  border-radius: 10px;
+  -webkit-border-radius:10px;
+  -moz-border-radius:10px;
+  color: #fff;
+  text-shadow:1px 1px 3px rgba(0,0,0,0.12);
+  font:normal 30px 'Bitter', serif;
+  -moz-box-shadow:inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
+  -webkit-box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
+  box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
+  border: 1px solid #257C9E;
+}
+
+h2, .intro-text div{
+  text-align: center;
+}
+
+form label {
+  display: block;
+  color: #888;
+  margin-bottom: 15px;
+  font: 13px Arial Helvetica, sans-serif;
+}
+
+form input, .past-trip, intro-text div {
+  display: block;
+  box-sizing:border-box;
+  -webkit-box-sizing:border-box;
+  -moz-box-sizing:border-box;
+  width:100%;
+  padding:8px;
+  border-radius:6px;
+  -webkit-border-radius:6px;
+  -moz-border-radius:6px;
+  border:2px solid #fff;
+  box-shadow:inset 0px 1px 1px rgba(0, 0, 0, 0.33);
+  -moz-box-shadow:inset 0px 1px 1px rgba(0, 0, 0, 0.33);
+  -webkit-box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.33);
+}
+
+.intro-text p {
+  color: #fff;
+  font: normal 25px 'Bitter', serif;
+
+}
+
+.past-trip {
+   border:1px solid #2A88AD;
+}
+
+form section{
+ font: normal 20px 'Bitter', serif;
+ color: #2A88AD;
+ margin-bottom: 5px;
+}
+
+form button{
+  background: #2A88AD;
+  padding: 8px;
+  border-radius: 5px;
+  -webkit-border-radius:5px;
+  -moz-border-radius:5px;
+  color: #fff;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.12);
+  font: normal 10px 'Bitter', serif;
+  border:1px solid #257C9E;
+  box-shadow:inset 0px 2px 2px rgba(0, 0, 0, 0.17);
+  -moz-box-shadow:inset 0px 2px 2px rgba(0, 0, 0, 0.17);
+  -webkit-box-shadow: inset 0px 2px 2px rgba(0, 0, 0, 0.17);
+}
+
+form button[type="submit"], .button-delete {
+  font: normal 20px 'Bitter', serif;
+  margin: auto;
+  display: block;
+  margin-bottom: 10px;
+}
+
+form button:hover{
+   box-shadow:inset 0px 2px 2px rgba(0, 0, 0, 0.30);
+  -moz-box-shadow:inset 0px 2px 2px rgba(0, 0, 0, 0.30);
+  -webkit-box-shadow: inset 0px 2px 2px rgba(0, 0, 0, 0.30);
+  background: #2A6881;
 }

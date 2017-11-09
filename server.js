@@ -94,36 +94,31 @@ app.get('/trips/:id', (req, res) => {
 });
 
 app.post('/trips', (req, res) => {
-  const requiredFields = ['title'];
-  for (let i=0; i<requiredFields.length; i++) {
-    const field = requiredFields[i];
-    if (!(field in req.body)) {
-      const message = `Missing \`${field}\` in request body`
-      console.error(message);
-      return res.status(400).send(message);
-    }
-  }
+  console.log(res);
+    // if (!(req.body.title)) {
+    //   const message = `Missing title in request body`
+    //   console.error(message);
+    //   return res.status(400).send(message);
+    // }
   //add in the parseArray function
   Trip
     .create({
       title: req.body.title,
       place: req.body.place,
-      "startDate": req.body.startDate,
-      "endDate": req.body.endDate,
-      "transportation": [{
+      startDate: req.body.startDate,
+      endDate: req.body.endDate,
+      transportation: [{
           transType: req.body.transType,
           transInformation: req.body.transInformation}],
-      "residence": [{
+      residence: [{
           residenceName: req.body.residenceName,
           residenceInformation: req.body.residenceInformation}],
-      "restaurants": [{
+      restaurants: [{
           restaurantName: req.body.restaurantName,
           restaurantInformation: req.body.restaurantInformation}],
-      "activities": [{
+      activities: [{
           activityName: req.body.activityName,
-          activtiyInformation: req.body.activtiyInformation
-      }]
-
+          activtiyInformation: req.body.activtiyInformation}]
     })
     .then(trip => res.status(201).json(trip.apiRepr()))
     .catch(err => {

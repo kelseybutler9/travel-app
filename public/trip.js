@@ -8,21 +8,21 @@
     console.log('create ran');
   }
 
-  Trip.prototype.updateTrip = function (id, data) {
+  Trip.prototype.updateItem = function (id, data) {
     this.db.update(id, data);
   }
 
-  Trip.prototype.removeTrip = function (id) {
+  Trip.prototype.removeItem = function (id) {
     this.db.remove(id);
   }
 
-  Trip.prototype.viewPastTrip = function (id, callback) {
+  Trip.prototype.viewItem = function (id, callback) {
     const trip = this.db.get(id, callback);
     console.log(trip);
   }
 
-  Trip.prototype.viewPastTrips = function () {
-    this.db.getAll();
+  Trip.prototype.viewItems = function (callback) {
+    this.db.getAll(callback);
   }
 
   exports.Trip = Trip;
