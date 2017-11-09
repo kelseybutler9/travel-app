@@ -114,18 +114,6 @@ app.post('/trips', jsonParser, (req, res) => {
       residence: parseArray('residenceName', 'residenceInformation', req.body.residence),
       restaurants: parseArray('restaurantName', 'restaurantInformation', req.body.restaurants),
       activities: parseArray('activityName', 'activityInformation', req.body.activities)
-      // transportation: [{
-      //     transType: req.body.transType,
-      //     transInformation: req.body.transInformation}],
-      // residence: [{
-      //     residenceName: req.body.residenceName,
-      //     residenceInformation: req.body.residenceInformation}],
-      // restaurants: [{
-      //     restaurantName: req.body.restaurantName,
-      //     restaurantInformation: req.body.restaurantInformation}],
-      // activities: [{
-      //     activityName: req.body.activityName,
-      //     activtiyInformation: req.body.activtiyInformation}]
     })
     .then(trip => res.status(201).json(trip.apiRepr()))
     .catch(err => {
@@ -136,8 +124,13 @@ app.post('/trips', jsonParser, (req, res) => {
 
 function parseArray(firstKey, secondKey, keyObject) {
   let array = [];
-
-  console.log(keyObject);
+  keyObject.forEach(function(item) {
+    let newObject = {};
+    newObject[`${firstKey}`] = item[`${firstKey}`];
+    newObject[`${secondKey}`] = item[`${secondKey}`];
+    array.push(newObject);
+  });
+  console.log(array);
   return array;
 }
 
