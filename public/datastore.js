@@ -8,9 +8,10 @@
   }
 
   DataStore.prototype.add = function (item) {
-      $.post(`${this.url}`, item, function (res) {
+      console.log(item);
+      $.post(`${this.url}`, JSON.stringify(item), function (res) {
         console.log(res);
-      })
+      });
   }
 
   DataStore.prototype.get = function (id, callback) {
@@ -49,27 +50,5 @@
       });
    }
 
-
   exports.DataStore = DataStore;
 })(typeof exports === 'undefined' ? window.app : exports)
-
-//similar to get
-      // $.ajax({
-      //     method: 'POST',
-      //     url: TRIPS_URL,
-      //     data: JSON.stringify(data),
-      //     success: function(data) {
-      //         $(".success-screen").prop("hidden", false);
-      //     },
-      //     dataType: 'json',
-      //     contentType: 'application/json'
-      //   });
-
- // $.ajax({
-          // method: 'PUT',
-          // url: TRIPS_URL + '/' + tripId,
-          // data: JSON.stringify(trip),
-          // success: function(trip) {
-          //     $(".success-screen").prop("hidden", false);
-          // }
-     // });

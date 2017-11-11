@@ -7,24 +7,6 @@ const should = chai.should();
 
 chai.use(chaiHttp);
 
-// describe('Users', function() {
-//   before(function() {
-//     return runServer();
-//   });
-//
-//   after(function() {
-//     return closeServer();
-//   });
-//
-//   it('should exist on GET', function() {
-//     return chai.request(app).get('/')
-//       .then(function(res) {
-//         res.should.have.status(200);
-//         res.should.be.html;
-//       });
-//   });
-// });
-
 describe('Trips', function() {
 
   before(function() {
@@ -37,7 +19,7 @@ describe('Trips', function() {
 
   it('should list trips on GET', function() {
     return chai.request(app)
-      .get('/history')
+      .get('/trips')
       .then(function(res) {
         res.should.have.status(200);
         res.should.be.json;
@@ -54,12 +36,12 @@ describe('Trips', function() {
   it('should add a trip on POST', function() {
     const newTrip = {
             title: "Vacation Test",
-            location: "Chicago, Illinois",
-            startDate: 10201992,
-            endDate: 10301992,
-            travel: [{
-              travelType: "Flight",
-              travelInformation: "Afternoon flight, $700" }],
+            place: "Chicago, Illinois",
+            startDate: "10201992",
+            endDate: "10301992",
+            transportation: [{
+              transType: "Flight",
+              transInformation: "Afternoon flight, $700" }],
             residence: [{
               residenceName: "Hilton Inn",
               residenceComments: "nice staff, clean room"}],
@@ -73,7 +55,7 @@ describe('Trips', function() {
     };
 
     return chai.request(app)
-      .post('/new')
+      .post('/trips')
       .send(newTrip)
       .then(function(res) {
         res.should.have.status(201);
@@ -81,11 +63,11 @@ describe('Trips', function() {
         res.body.should.be.a('object');
         res.body.should.include.keys('id', 'title', 'location', 'startDate', 'endDate', 'travel', 'residence', 'restaurants', 'activities');
         res.body.title.should.equal(newTrip.title);
-        res.body.location.should.equal(newTrip.location);
+        res.body.place.should.equal(newTrip.place);
         res.body.startDate.should.equal(newTrip.startDate);
         res.body.endDate.should.equal(newTrip.endDate);
-        res.body.travel.should.be.a('array');
-        res.body.travel.should.include.members(newTrip.travel);
+        res.body.transportation.should.be.a('array');
+        res.body.transportation.should.include.members(newTrip.transportation);
         res.body.residence.should.be.a('array');
         res.body.residence.should.include.members(newTrip.residence);
         res.body.restaurants.should.be.a('array');
@@ -98,12 +80,12 @@ describe('Trips', function() {
   it('should update trips on PUT', function() {
       const newTrip = {
             title: "Vacation Test",
-            location: "Cleveland, Ohio",
-            startDate: 10201992,
-            endDate: 10301992,
-            travel: [{
-              travelType: "Flight",
-              travelInformation: "Afternoon flight, $700" }],
+            place: "Cleveland, Ohio",
+            startDate: "10201992",
+            endDate: "10301992",
+            transportation: [{
+              transType: "Flight",
+              transInformation: "Afternoon flight, $700" }],
             residence: [{
               residenceName: "Hilton Inn",
               residenceComments: "nice staff, clean room"}],
@@ -117,13 +99,13 @@ describe('Trips', function() {
     };
 
     return chai.request(app)
-      .get('/trips')//would this be trips or edit??
+      .get('/trips')
       .then(function(res) {
         updateData.id = res.body[0].id;
 
         return chai.request(app)
           .put(`/trips/${updateData.id}`)
-          .send(updateData)
+          .send(updateData);
       })
       .then(function(res) {
         res.should.have.status(204);
@@ -132,7 +114,7 @@ describe('Trips', function() {
 
   it('should delete trips on DELETE', function() {
     return chai.request(app)
-      .get('/trips')//trips or edit??
+      .get('/trips')
       .then(function(res) {
         return chai.request(app)
           .delete(`/trips/${res.body[0].id}`)

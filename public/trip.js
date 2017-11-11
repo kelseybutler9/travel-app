@@ -4,8 +4,8 @@
   }
 
   Trip.prototype.create = function (item) {
-    this.db.add(item);
     console.log('create ran');
+    this.db.add(item);
   }
 
   Trip.prototype.updateItem = function (id, data) {

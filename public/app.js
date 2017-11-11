@@ -7,7 +7,6 @@
   const trip = new Trip(new DataStore(url));
   const arrayOptions = {transportation: ['transType', 'transInformation'], residence: ['residenceName', 'residenceInformation'], restaurant: ['restaurantName', 'restaurantInformation'], activity: ['activityName', 'activityInformation']};
   let currentLocation = window.location.pathname;
-  console.log(currentLocation);
 
   hidePopup(`.delete-screen`);
   hidePopup(`.success-screen`);
@@ -46,12 +45,10 @@
     return tripId;
   }
 
-  $(`button`).click(function (e) {
+  $(`button[type="button"]`).click(function (e) {
     e.preventDefault();
     let myClass = this.className;
-    console.log(myClass);
     let option = arrayOptions[`${myClass}`];
-    console.log(option);
     createNewArrayItem(`.add${myClass}`, myClass , option[0], option[1], "", "");
   });
 

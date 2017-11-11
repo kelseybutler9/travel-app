@@ -26,7 +26,7 @@
 
   function handleInputs(inputs) {
     console.log(inputs);
-    let trip = {transportation: [], residence: [], restaurants: [], activities: []};
+    let trip = {title: '', place: '', startDate: '', endDate: '', transportation: [], residence: [], restaurants: [], activities: []};
       for(let i=0; i < inputs.length; i++) {
           if(inputs[i].name === "transType") {
             let transObject = {transType: inputs[i].value, transInformation: inputs[i+1].value}
@@ -45,7 +45,7 @@
             trip.activities.push(actObject);
           }
           else if(inputs[i].name === "title" || inputs[i].name === "place" || inputs[i].name === "startDate" || inputs[i].name === "endDate") {
-            trip[inputs[i].name] = inputs[i].value;
+            trip[`${inputs[i].name}`] = inputs[i].value;
           }
           else {
             console.log('skipped');

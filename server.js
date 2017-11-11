@@ -3,7 +3,6 @@ const app = express();
 const path = require('path');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-//const tripsRouter = require('./tripsRouter');
 const {Trip} = require('./model');
 mongoose.Promise = global.Promise;
 
@@ -13,7 +12,6 @@ const jsonParser = bodyParser.json();
 app.use(express.static('views'));
 app.use(express.static('public'));
 app.use(bodyParser.json());
-//app.use('/trips', tripsRouter)
 
 app.get("/", (request, response) => {
   response.sendFile(__dirname + '/views/index.html');
