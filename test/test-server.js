@@ -28,7 +28,7 @@ describe('Trips', function() {
 
         res.body.forEach(function(item) {
           item.should.be.a('object');
-          item.should.include.keys('id', 'title', 'location', 'startDate', 'endDate', 'travel', 'residence', 'restaurants', 'activities');
+          item.should.include.keys('id', 'title', 'place', 'startDate', 'endDate', 'transportation', 'residence', 'restaurants', 'activities');
         });
       });
   });
@@ -61,7 +61,7 @@ describe('Trips', function() {
         res.should.have.status(201);
         res.should.be.json;
         res.body.should.be.a('object');
-        res.body.should.include.keys('id', 'title', 'location', 'startDate', 'endDate', 'travel', 'residence', 'restaurants', 'activities');
+        res.body.should.include.keys('id', 'title', 'place', 'startDate', 'endDate', 'transportation', 'residence', 'restaurants', 'activities');
         res.body.title.should.equal(newTrip.title);
         res.body.place.should.equal(newTrip.place);
         res.body.startDate.should.equal(newTrip.startDate);
