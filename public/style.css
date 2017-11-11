@@ -55,7 +55,7 @@ li a:hover {
 .past-trip a {
   font-weight: bold;
   font-size: 20px;
-  color: #fff; 
+  color: #fff;
   background-color: #2A88AD;
 }
 
@@ -95,6 +95,10 @@ form, .past-trips-list, .intro-text {
   display: block;
 }
 
+.container, .past-trips{
+  overflow: auto;
+}
+
 form .inner-wrap {
   padding: 20px;
   background: #F8F8F8;
@@ -106,7 +110,13 @@ form .inner-wrap {
   padding: 20px;
   background: #F8F8F8;
   border-radius: 6px;
-  margin: 15px;
+  width: 80%;
+  margin: auto;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+.past-trips p {
+  font-size: 10px;
 }
 
 form h3, h2 {
@@ -160,6 +170,11 @@ form input, .past-trip, intro-text div {
 
 .past-trip {
    border:1px solid #2A88AD;
+   background: #2A88AD;
+   color: #fff;
+   width: 75%;
+   margin-bottom: 5px;
+   margin-top: 5px;
 }
 
 form section{
