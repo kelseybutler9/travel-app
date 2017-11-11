@@ -26,30 +26,48 @@
 
   function handleInputs(inputs) {
     console.log(inputs);
+    let arrayOptions = {transportation: ['transType', 'transInformation'], residence: ['residenceName', 'residenceInformation'], restaurants: ['restaurantName', 'restaurantInformation'], activities: ['activityName', 'activityInformation']};
     let trip = {title: '', place: '', startDate: '', endDate: '', transportation: [], residence: [], restaurants: [], activities: []};
-      for(let i=0; i < inputs.length; i++) {
-          if(inputs[i].name === "transType") {
-            let transObject = {transType: inputs[i].value, transInformation: inputs[i+1].value}
-            trip.transportation.push(transObject);
-          }
-          else if(inputs[i].name === "residenceName") {
-            let resObject = {residenceName: inputs[i].value, residenceInformation: inputs[i+1].value}
-            trip.residence.push(resObject);
-          }
-          else if(inputs[i].name === "restaurantName") {
-            let restObject = {restaurantName: inputs[i].value, restaurantInformation: inputs[i+1].value}
-            trip.restaurants.push(restObject);
-          }
-          else if(inputs[i].name === "activityName") {
-            let actObject = {activityName: inputs[i].value, activityInformation: inputs[i+1].value}
-            trip.activities.push(actObject);
-          }
-          else if(inputs[i].name === "title" || inputs[i].name === "place" || inputs[i].name === "startDate" || inputs[i].name === "endDate") {
-            trip[`${inputs[i].name}`] = inputs[i].value;
-          }
-          else {
-            console.log('skipped');
-          }
+
+    for(let i=0; i < inputs.length; i++) {
+      arrayOptions.keys.forEach(key => {
+        let keyValue = key.value;
+        let tripArray = trip[`${key}`];
+        console.log(keyValue);
+        let newObject = {keyValue[0]: inputs[i].value, keyValue[1]: inputs[i+1].value};
+        tripArray.push(transObject);
+      });
+
+      if(inputs[i].name === "title" || inputs[i].name === "place" || inputs[i].name === "startDate" || inputs[i].name === "endDate") {
+        trip[`${inputs[i].name}`] = inputs[i].value;
+      }
+    }
+    console.log(trip);
+
+      //
+      // for(let i=0; i < inputs.length; i++) {
+      //     if(inputs[i].name === "transType") {
+      //       let transObject = {transType: inputs[i].value, transInformation: inputs[i+1].value}
+      //       trip.transportation.push(transObject);
+      //     }
+      //     else if(inputs[i].name === "residenceName") {
+      //       let resObject = {residenceName: inputs[i].value, residenceInformation: inputs[i+1].value}
+      //       trip.residence.push(resObject);
+      //     }
+      //     else if(inputs[i].name === "restaurantName") {
+      //       let restObject = {restaurantName: inputs[i].value, restaurantInformation: inputs[i+1].value}
+      //       trip.restaurants.push(restObject);
+      //     }
+      //     else if(inputs[i].name === "activityName") {
+      //       let actObject = {activityName: inputs[i].value, activityInformation: inputs[i+1].value}
+      //       trip.activities.push(actObject);
+      //     }
+      //     else if(inputs[i].name === "title" || inputs[i].name === "place" || inputs[i].name === "startDate" || inputs[i].name === "endDate") {
+      //       trip[`${inputs[i].name}`] = inputs[i].value;
+      //     }
+      //     else {
+      //       console.log('skipped');
+      //     }
     }
 
     return trip;
