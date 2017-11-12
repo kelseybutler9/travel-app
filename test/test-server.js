@@ -101,11 +101,11 @@ describe('Trips', function() {
     return chai.request(app)
       .get('/trips')
       .then(function(res) {
-        updateData.id = res.body[0].id;
+        newTrip.id = res.body[0].id;
 
         return chai.request(app)
-          .put(`/trips/${updateData.id}`)
-          .send(updateData);
+          .put(`/trips/${newTrip.id}`)
+          .send(newTrip);
       })
       .then(function(res) {
         res.should.have.status(204);
