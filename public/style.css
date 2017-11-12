@@ -22,8 +22,9 @@ h1 {
   margin: auto;
   text-align: center;
   margin: 10px;
-  font:normal 35px 'Bitter', serif;
+  font: 35px 'Bitter', serif;
   color:  #154f66;
+  font-style: oblique;
 }
 
 li {
@@ -79,10 +80,16 @@ form, .past-trips-list, .intro-text {
 .past-trips {
   height: 400px;
   border: 1px solid  #2A88AD;
+  border-radius:6px;
+ -webkit-border-radius:6px;
+ -moz-border-radius:6px;
+ border:2px solid #fff;
+ box-shadow:inset 0px 1px 1px rgba(0, 0, 0, 0.33);
+ -moz-box-shadow:inset 0px 1px 1px rgba(0, 0, 0, 0.33);
+ -webkit-box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.33);
 }
 
 .past-trip {
-  width: 100%;
    border-radius:6px;
   -webkit-border-radius:6px;
   -moz-border-radius:6px;
@@ -109,7 +116,6 @@ form .inner-wrap {
 .past-trips {
   padding: 20px;
   background: #F8F8F8;
-  border-radius: 6px;
   width: 80%;
   margin: auto;
   margin-bottom: 10px;

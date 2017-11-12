@@ -9,8 +9,15 @@
 
   DataStore.prototype.add = function (item) {
       console.log(item);
-      $.post(`${this.url}`, JSON.stringify(item), function (res) {
-        console.log(res);
+      $.ajax({
+           method: 'POST',
+           url: `${this.url}`,
+           data: JSON.stringify(item),
+           success: function() {
+               console.log('success');
+           },
+           dataType: 'json',
+           contentType: 'application/json'
       });
   }
 
@@ -44,9 +51,20 @@
 
   DataStore.prototype.update = function (id, item, callback) {
       console.log('update data in database');
-      $.put(`${this.url}/${id}`, item, function(res) {
-      console.log(res);
-      callback(res);
+      // $.put(`${this.url}/${id}`, item, function(res) {
+      // console.log(res);
+      // callback(res);
+      // });
+
+      $.ajax({
+           method: 'PUT',
+           url: `${this.url}/${id}`,
+           data: JSON.stringify(item),
+           success: function() {
+               console.log('successful update');
+           },
+           dataType: 'json',
+           contentType: 'application/json'
       });
    }
 
