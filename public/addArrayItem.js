@@ -21,8 +21,7 @@
     // $(this.$element).append(`<label>Enter the type of ${type} for this trip.
     //   <input type="text" name="${firstName}"></label><label>Enter more information about your ${type}.
     //   <input type="text" name="${secondName}"></label>`);
-  }
-
-})
+  })
+}
 
 })(typeof exports === 'undefined' ? window.app : exports)

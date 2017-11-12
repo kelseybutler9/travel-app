@@ -6,17 +6,17 @@
 
   trip.viewItems(displayPastTrips);
 
-  function displayPastTrips(data) {
+  function displayPastTrips (data) {
     $('.container').html('');
     for (index in data) {
-      item = data[index];
+      let item = data[index];
       $('.past-trips').append(`<ls id="${item.id} "class="past-trip">
       <a href = "/edit/${item.id}">${item.title}</a><p>${item.place}</p><p>${item.startDate}</p><p>${item.endDate}</p>
       </ls>`);
     }
   }
 
-})(typeof exports === 'undefined' ? window : exports)
+})(typeof exports === 'undefined' ? window : exports);
 //
 // let MOCK_TRIP_UPDATES = {
 //     "trips": [

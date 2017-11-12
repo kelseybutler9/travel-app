@@ -1,57 +1,56 @@
 const chai = require('chai');
 const chaiHttp = require('chai-http');
-const {app,runServer,closeServer} = require('../server.js');
+const {app, runServer, closeServer} = require('../server.js');
 
 const should = chai.should();
 
-
 chai.use(chaiHttp);
 
-describe('Trips', function() {
+describe('Trips', function () {
 
-  before(function() {
+  before(function () {
     return runServer();
   });
 
-  after(function() {
+  after(function () {
     return closeServer();
   });
 
-  it('should list trips on GET', function() {
+  it('should list trips on GET', function () {
     return chai.request(app)
       .get('/trips')
-      .then(function(res) {
+      .then(function (res) {
         res.should.have.status(200);
         res.should.be.json;
         res.body.should.be.a('array');
         res.body.should.have.length.of.at.least(1);
 
-        res.body.forEach(function(item) {
+        res.body.forEach(function (item) {
           item.should.be.a('object');
           item.should.include.keys('id', 'title', 'place', 'startDate', 'endDate', 'transportation', 'residence', 'restaurants', 'activities');
         });
       });
   });
 
-  it('should add a trip on POST', function() {
+  it('should add a trip on POST', function () {
     const newTrip = {
-            title: "Vacation Test",
-            place: "Chicago, Illinois",
-            startDate: "10201992",
-            endDate: "10301992",
-            transportation: [{
-              transType: "Flight",
-              transInformation: "Afternoon flight, $700" }],
-            residence: [{
-              residenceName: "Hilton Inn",
-              residenceComments: "nice staff, clean room"}],
-            restaurants: [{
-              restaurantName: "Taco Bell",
-              restaurantComments: "great burritos" }],
-            activities: [{
-              activityName: "Surfing",
-              activtiyInformation: "Fun!"
-            }]
+      title: 'Vacation Test',
+      place: 'Chicago, Illinois',
+      startDate: '10201992',
+      endDate: '10301992',
+      transportation: [{
+        transType: 'Flight',
+        transInformation: 'Afternoon flight, $700' }],
+      residence: [{
+        residenceName: 'Hilton Inn',
+        residenceComments: 'nice staff, clean room'}],
+      restaurants: [{
+        restaurantName: 'Taco Bell',
+        restaurantComments: 'great burritos' }],
+      activities: [{
+        activityName: 'Surfing',
+        activtiyInformation: 'Fun!'
+      }]
     };
 
     return chai.request(app)
@@ -78,36 +77,35 @@ describe('Trips', function() {
   });
 
   it('should update trips on PUT', function() {
-      const newTrip = {
-            title: "Vacation Test",
-            place: "Cleveland, Ohio",
-            startDate: "10201992",
-            endDate: "10301992",
-            transportation: [{
-              transType: "Flight",
-              transInformation: "Afternoon flight, $700" }],
-            residence: [{
-              residenceName: "Hilton Inn",
-              residenceComments: "nice staff, clean room"}],
-            restaurants: [{
-              restaurantName: "Taco Bell",
-              restaurantComments: "great burritos" }],
-            activities: [{
-              activityName: "Surfing",
-              activtiyInformation: "Fun!"
-            }]
+    const newTrip = {
+      title: 'Vacation Test',
+      place: 'Cleveland, Ohio',
+      startDate: '10201992',
+      endDate: '10301992',
+      transportation: [{
+        transType: 'Flight',
+        transInformation: 'Afternoon flight, $700' }],
+      residence: [{
+        residenceName: 'Hilton Inn',
+        residenceComments: 'nice staff, clean room'}],
+      restaurants: [{
+        restaurantName: 'Taco Bell',
+        restaurantComments: 'great burritos' }],
+      activities: [{
+        activityName: 'Surfing',
+        activtiyInformation: 'Fun!'
+      }]
     };
 
     return chai.request(app)
       .get('/trips')
-      .then(function(res) {
+      .then(function (res) {
         newTrip.id = res.body[0].id;
-
         return chai.request(app)
           .put(`/trips/${newTrip.id}`)
           .send(newTrip);
       })
-      .then(function(res) {
+      .then(function (res) {
         res.should.have.status(204);
       });
   });
@@ -115,11 +113,11 @@ describe('Trips', function() {
   it('should delete trips on DELETE', function() {
     return chai.request(app)
       .get('/trips')
-      .then(function(res) {
+      .then(function (res) {
         return chai.request(app)
           .delete(`/trips/${res.body[0].id}`)
       })
-      .then(function(res) {
+      .then(function (res) {
         res.should.have.status(204);
       });
   });

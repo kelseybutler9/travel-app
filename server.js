@@ -13,31 +13,31 @@ app.use(express.static('views'));
 app.use(express.static('public'));
 app.use(bodyParser.json());
 
-app.get("/", (request, response) => {
+app.get('/', (request, response) => {
   response.sendFile(__dirname + '/views/index.html');
 });
 
-app.get("/new", (request, response) => {
+app.get('/new', (request, response) => {
   response.sendFile(path.join(__dirname + '/views/new.html'));
 });
 
-app.get("/history", (request, response) => {
+app.get('/history', (request, response) => {
   response.sendFile(path.join(__dirname + '/views/history.html'));
 });
 
-app.get("/edit/:id", (request, response) => {
+app.get('/edit/:id', (request, response) => {
   response.sendFile(path.join(__dirname + '/views/edit.html'));
 });
 
 let server;
 
-function runServer() {
+function runServer () {
   return new Promise((resolve, reject) => {
     mongoose.connect(DATABASE_URL, err => {
-      if(err) {
+      if (err) {
         return reject(err);
       }
-    })
+  });
 
     server = app.listen(PORT, () => {
       console.log(`Your app is listening on port ${PORT}`);
@@ -54,7 +54,7 @@ function closeServer() {
     return new Promise((resolve, reject) => {
       console.log('Closing server');
       server.close(err => {
-        if(err) {
+        if (err) {
           return reject(err);
         }
         resolve();
@@ -63,9 +63,9 @@ function closeServer() {
   });
 }
 
-if(require.main === module) {
+if (require.main === module) {
   runServer().catch(err => console.error(err));
-};
+}
 
 app.get('/trips', (req, res) => {
   Trip
@@ -91,12 +91,12 @@ app.get('/trips/:id', (req, res) => {
 });
 
 app.post('/trips', jsonParser, (req, res) => {
-    console.log(req.body.title);
-    if (!(req.body.title)) {
-      const message = `Missing title in request body`;
-      console.error(message);
-      return res.status(400).send(message);
-    }
+  console.log(req.body.title);
+  if (!(req.body.title)) {
+    const message = `Missing title in request body`;
+    console.error(message);
+    return res.status(400).send(message);
+  }
 
   Trip
     .create({
@@ -116,9 +116,9 @@ app.post('/trips', jsonParser, (req, res) => {
     });
 });
 
-function parseArray(firstKey, secondKey, keyObject) {
+function parseArray (firstKey, secondKey, keyObject) {
   let array = [];
-  keyObject.forEach(function(item) {
+  keyObject.forEach(function (item) {
     let newObject = {};
     newObject[`${firstKey}`] = item[`${firstKey}`];
     newObject[`${secondKey}`] = item[`${secondKey}`];
@@ -127,7 +127,6 @@ function parseArray(firstKey, secondKey, keyObject) {
   console.log(array);
   return array;
 }
-
 
 app.delete('/trips/:id', (req, res) => {
   Trip
@@ -140,7 +139,6 @@ app.delete('/trips/:id', (req, res) => {
       res.status(500).json({error: 'something went terribly wrong'});
     });
 });
-
 
 app.put('/trips/:id', jsonParser, (req, res) => {
   if (!(req.params.id && req.body.id && req.params.id === req.body.id)) {
@@ -183,9 +181,8 @@ app.delete('/:id', (req, res) => {
     });
 });
 
-app.use('*', function(req, res) {
+app.use('*', function (req, res) {
   res.status(404).json({message: 'Not Found'});
 });
-
 
 module.exports = {app, runServer, closeServer};

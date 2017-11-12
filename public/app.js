@@ -21,7 +21,7 @@
 
   if(formClass === "edit") {
     let tripId = getEditId();
-    $("form").attr("id") = tripId;
+    // $("form").attr("id") = tripId;
     console.log(tripId);
     trip.viewItem(tripId, displayPastTrip);
   }
@@ -78,8 +78,7 @@
     });
 
     console.log(trip);
-
-    $("form").attr('id') = trip.id;
+    // $("form").attr('id') = trip.id;
     const updateFields = ["title", "place", "startDate", "endDate"];
     updateFields.forEach(field => {
       let input = `input[name=${field}]`;
