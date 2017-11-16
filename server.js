@@ -1,4 +1,5 @@
 const express = require('express');
+
 const app = express();
 const path = require('path');
 const mongoose = require('mongoose');
@@ -9,8 +10,7 @@ mongoose.Promise = global.Promise;
 const {DATABASE_URL, PORT} = require('./config');
 const jsonParser = bodyParser.json();
 
-app.use(express.static('views'));
-app.use(express.static('public'));
+app.use('/static', express.static(_dirname + '/public'));
 app.use(bodyParser.json());
 
 app.get('/', (request, response) => {
@@ -24,6 +24,7 @@ app.get('/new', (request, response) => {
 app.get('/history', (request, response) => {
   response.sendFile(path.join(__dirname + '/views/history.html'));
 });
+
 
 app.get('/edit/:id', (request, response) => {
   response.sendFile(path.join(__dirname + '/views/edit.html'));
@@ -149,6 +150,8 @@ app.put('/trips/:id', jsonParser, (req, res) => {
   const updated = {};
   const updateableFields = ['title', 'place', 'startDate', 'endDate', 'transportation', 'residence', 'restaurants', 'activities'];
   updateableFields.forEach(field => {
+    console.log(field);
+    console.log(req.body[field]);
     if (field in req.body === 'title' || field in req.body === 'place' || field in req.body === 'startDate' || field in req.body === 'endDate') {
       updated[field] = req.body[field];
     }

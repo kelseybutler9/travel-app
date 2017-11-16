@@ -29,7 +29,7 @@
     for (let i = 0; i < inputs.length; i++) {
       let arrayKeys = Object.keys(arrayOptions);
       let inputOne = inputs[i];
-      let inputTwo = inputs[i+1];
+      let inputTwo = inputs[i + 1];
       if (inputOne.name === 'title' || inputOne.name === 'place' || inputOne.name === 'startDate' || inputOne.name === 'endDate') {
         trip[`${inputOne.name}`] = inputOne.value;
       }

@@ -40,7 +40,7 @@
       url: `${this.url}/${id}`,
       data: JSON.stringify(item),
       success: function () {
-        $('.delete-screen').prop('hidden', false);
+        console.log('delete data in database successful');
       },
       dataType: 'json',
       contentType: 'application/json'

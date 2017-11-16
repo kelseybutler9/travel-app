@@ -66,13 +66,14 @@ describe('Trips', function () {
         res.body.startDate.should.equal(newTrip.startDate);
         res.body.endDate.should.equal(newTrip.endDate);
         res.body.transportation.should.be.a('array');
-        res.body.transportation.should.include.members(newTrip.transportation);
+        console.log(res.body.transportation);
+        res.body.transportation.should.include.members(newTrip.transType);//add in parameters
         res.body.residence.should.be.a('array');
-        res.body.residence.should.include.members(newTrip.residence);
+        res.body.residence.should.include.members(newTrip.residenceName);
         res.body.restaurants.should.be.a('array');
-        res.body.restaurants.should.include.members(newTrip.restaurants);
+        res.body.restaurants.should.include.members(newTrip.restaurantName);
         res.body.activities.should.be.a('array');
-        res.body.activities.should.include.members(newTrip.activities);
+        res.body.activities.should.include.members(newTrip.activityName);
       });
   });
 

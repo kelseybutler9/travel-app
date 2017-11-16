@@ -6,7 +6,7 @@
   const formClass = $("form").attr('class');
   const trip = new Trip(new DataStore(url));
   const arrayOptions = {transportation: ['transType', 'transInformation'], residence: ['residenceName', 'residenceInformation'], restaurant: ['restaurantName', 'restaurantInformation'], activity: ['activityName', 'activityInformation']};
-  let currentLocation = window.location.pathname;
+  // let currentLocation = window.location.pathname;
 
   hidePopup(`.delete-screen`);
   hidePopup(`.success-screen`);
@@ -20,15 +20,13 @@
   }
 
   if(formClass === "edit") {
-    let tripId = getEditId();
-    // $("form").attr("id") = tripId;
+    let tripId = getEditId(window.location.pathname);
     console.log(tripId);
     trip.viewItem(tripId, displayPastTrip);
   }
 
   formHandler.addSubmitHandler((data) => {
     if(formClass === "new") {
-      console.log("add to database");
       trip.create(data);
       displayPopup('.success-screen');
     }
@@ -39,7 +37,7 @@
     }
   });
 
-  function getEditId() {
+  function getEditId(currentLocation) {
     tripId = currentLocation.split("/").pop();
     console.log(tripId);
     return tripId;
@@ -53,7 +51,10 @@
   });
 
   $('.button-delete').on("click", function() {
-    trip.removeItem(tripId, displayPopup, '.delete-screen');
+    e.preventDefault();
+    let tripId = getEditId(window.location.pathname);
+    trip.removeItem(tripId);
+    displayPopup('.delete-screen');
   });
 
   function createNewArrayItem(className, topic, firstName, secondName, valOne, valTwo) {
@@ -76,9 +77,7 @@
         createNewArrayItem(`.add${key}`, key , keyOne, keyTwo, valOne, valTwo);
       });
     });
-
     console.log(trip);
-    // $("form").attr('id') = trip.id;
     const updateFields = ["title", "place", "startDate", "endDate"];
     updateFields.forEach(field => {
       let input = `input[name=${field}]`;
