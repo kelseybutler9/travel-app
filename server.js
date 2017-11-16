@@ -1,4 +1,5 @@
 const express = require('express');
+
 const app = express();
 const path = require('path');
 const mongoose = require('mongoose');
@@ -9,8 +10,7 @@ mongoose.Promise = global.Promise;
 const {DATABASE_URL, PORT} = require('./config');
 const jsonParser = bodyParser.json();
 
-app.use(express.static('views'));
-app.use(express.static('public'));
+app.use('/static', express.static(__dirname + '/public'));
 app.use(bodyParser.json());
 
 app.get('/', (request, response) => {
