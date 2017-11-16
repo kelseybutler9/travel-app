@@ -10,7 +10,7 @@ mongoose.Promise = global.Promise;
 const {DATABASE_URL, PORT} = require('./config');
 const jsonParser = bodyParser.json();
 
-app.use('/static', express.static(_dirname + '/public'));
+app.use('/static', express.static(__dirname + '/public'));
 app.use(bodyParser.json());
 
 app.get('/', (request, response) => {
