@@ -5,7 +5,7 @@
   const url = 'http://localhost:8080/trips';
   const formClass = $("form").attr('class');
   const trip = new Trip(new DataStore(url));
-  const arrayOptions = {transportation: ['transType', 'transInformation'], residence: ['residenceName', 'residenceInformation'], restaurant: ['restaurantName', 'restaurantInformation'], activity: ['activityName', 'activityInformation']};
+  const arrayOptions = {transportation: ['transType', 'transInformation'], residence: ['residenceName', 'residenceInformation'], restaurants: ['restaurantName', 'restaurantInformation'], activities: ['activityName', 'activityInformation']};
 
   hidePopup(`.delete-screen`);
   hidePopup(`.success-screen`);
@@ -20,8 +20,7 @@
 
   if(formClass === "edit") {
     let tripId = getEditId(window.location.pathname);
-    console.log(tripId);
-    // trip.viewItem(tripId, displayPastTrip);
+    trip.viewItem(tripId, displayPastTrip);
   }
 
   formHandler.addSubmitHandler((data) => {
@@ -31,14 +30,14 @@
     }
     else {
       console.log("update database");
-      trip.updateItem(data);
+      let tripId = getEditId(window.location.pathname);
+      trip.updateItem(tripId, data);
       displayPopup('.success-screen');
     }
   });
 
   function getEditId(currentLocation) {
     tripId = currentLocation.split("/").pop();
-    console.log(tripId);
     return tripId;
   }
 
@@ -63,66 +62,31 @@
   }
 
   function displayPastTrip(trip) {
-    arrayOptions.keys.forEach(key => {
-      console.log(key);
+    let arrayKeys = Object.keys(arrayOptions);
+    arrayKeys.forEach(key => {
       let tripItem = trip[`${key}`];
       tripItem.forEach(item => {
-        console.log(item);
-        let keyOne = key[0];
-        let keyTwo = key[1];
-        let valOne = item[`${keyOne}`].val();
-        let valTwo = item[`${keyTwo}`].val();
-        console.log(option);
+        let itemKeys = Object.keys(item);
+        // console.log(itemKeys);
+        let keyOne = itemKeys[0];
+        let keyTwo = itemKeys[1];
+        // console.log(item[`${keyOne}`]);
+        let valOne = item[`${keyOne}`];
+        let valTwo = item[`${keyTwo}`];
+        // console.log(option);
+        console.log(`key: ${key}, keyOne: ${keyOne}, ${keyTwo}, ${valOne}, ${valTwo}`);
         createNewArrayItem(`.add${key}`, key , keyOne, keyTwo, valOne, valTwo);
       });
     });
+
     console.log(trip);
     const updateFields = ["title", "place", "startDate", "endDate"];
     updateFields.forEach(field => {
-      let input = `input[name=${field}]`;
-      $("input").val(`${trip.field}`);
-
+      let inputField = `input[name=${field}]`;
+      let tripField = trip[field];
+      console.log(tripField);
+      $(`${inputField}`).val(tripField);
     });
-    //
-    // let transportationDetails = '';
-    // trip.transportation.forEach(function (transportation) {
-    //   transportationDetails += `<label>Enter the type of transportation for this trip.
-    //     <input type="text" name="transType" value=${transportation.transType}>
-    //   </label>
-    //   <label>Enter more information about your transportation.
-    //     <input type="text" name="transInformation" value=${transportation.transInformation}>
-    //   </label>`
-    // });
-    //
-    // let residenceDetails = '';
-    // trip.residence.forEach(function (item) {
-    //   residenceDetails += `<label>Enter the place you stayed at during your trip.
-    //       <input type="text" name="residenceName" value=${item.stay}>
-    //      </label>
-    //      <label>Enter more information about your place of stay.
-    //        <input type="text" name="residenceInformation" value=${item.residenceComments}>
-    //      </label>`
-    // });
-    //
-    // let restaurantDetails = '';
-    // trip.restaurants.forEach(function (item) {
-    //   restaurantDetails += `<label>Enter a restaurant you visited during your trip.
-    //         <input type="text" name="restaurantName" value=${item.restaurantName}>
-    //       </label>
-    //       <label>Enter more information about the restaurant.
-    //          <input type="text" name="restaurantInformation" value=${item.restaurantComments}>
-    //       </label>`
-    // });
-    //
-    // let activityDetails = '';
-    // trip.activities.forEach(function (item) {
-    //   activityDetails += `<label>Enter an activtiy you did during your trip.
-    //       <input type="text" name="activityName" value=${item.activityName}>
-    //     </label>
-    //     <label>Enter more information about the activity.
-    //       <input type="text" name="activityInformation" value=${item.activtiyInformation}>
-    //     </label>`
-    // });
   }
 
 })(typeof exports === 'undefined' ? window : exports)

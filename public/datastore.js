@@ -47,7 +47,7 @@
     });
   };
 
-  DataStore.prototype.update = function (id, item, callback) {
+  DataStore.prototype.update = function (id, item) {
     console.log('update data in database');
     $.ajax({
       method: 'PUT',
