@@ -161,8 +161,8 @@ app.put('/trips/:id', jsonParser, (req, res) => {
     else if (field in req.body === 'residence') {
       updated[`residence`] = parseArray('residenceName', 'residenceInformation', req.body.residence);
     }
-    else if (field in req.body === 'activities') {
-      updated[`activities`] = parseArray('restaurantName', 'restaurantInformation', req.body.restaurants);
+    else if (field in req.body === 'restaurants') {
+      updated[`restaurants`] = parseArray('restaurantName', 'restaurantInformation', req.body.restaurants);
     }
     else if (field in req.body === 'activities') {
       updated[`activities`] = parseArray('residenceName', 'residenceInformation', req.body.activities);
