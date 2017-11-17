@@ -6,7 +6,6 @@
   const formClass = $("form").attr('class');
   const trip = new Trip(new DataStore(url));
   const arrayOptions = {transportation: ['transType', 'transInformation'], residence: ['residenceName', 'residenceInformation'], restaurant: ['restaurantName', 'restaurantInformation'], activity: ['activityName', 'activityInformation']};
-  // let currentLocation = window.location.pathname;
 
   hidePopup(`.delete-screen`);
   hidePopup(`.success-screen`);
@@ -22,7 +21,7 @@
   if(formClass === "edit") {
     let tripId = getEditId(window.location.pathname);
     console.log(tripId);
-    trip.viewItem(tripId, displayPastTrip);
+    // trip.viewItem(tripId, displayPastTrip);
   }
 
   formHandler.addSubmitHandler((data) => {

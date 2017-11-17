@@ -18,25 +18,10 @@
     for (index in data) {
       let item = data[index];
       $('.past-trips').append(`<ls class="past-trip">
-      <a href = "/edit">${item.title}</a><p>${item.place}</p><p>${item.startDate}</p><p>${item.endDate}</p>
-      <button type="submit" id=${item.id}>View Trip</button></ls>`);
-      // :${item.id}
+      <a href = "/edit/${item.id}">View ${item.title}</a><p>${item.place}</p><p>${item.startDate}</p><p>${item.endDate}</p>
+      </ls>`);
     }
   }
-  //
-  $('.container').on('submit', 'button', function(e) {
-      let uid = this.id;
-      e.preventDefault();
-      console.log('click ran');
-      trip.viewItem(uid, function (res) {
-         res.redirect(`/history/:id`);
-
-
-      });
-  });
-
-  //add in function to view trip on edit
-  // trip.viewItem(tripId);
 
   exports.PastTrip = PastTrip;
 
