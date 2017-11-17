@@ -31,6 +31,8 @@
     else {
       console.log("update database");
       let tripId = getEditId(window.location.pathname);
+      data.id = tripId;
+      console.log(data);
       trip.updateItem(tripId, data);
       displayPopup('.success-screen');
     }
@@ -67,13 +69,10 @@
       let tripItem = trip[`${key}`];
       tripItem.forEach(item => {
         let itemKeys = Object.keys(item);
-        // console.log(itemKeys);
         let keyOne = itemKeys[0];
         let keyTwo = itemKeys[1];
-        // console.log(item[`${keyOne}`]);
         let valOne = item[`${keyOne}`];
         let valTwo = item[`${keyTwo}`];
-        // console.log(option);
         console.log(`key: ${key}, keyOne: ${keyOne}, ${keyTwo}, ${valOne}, ${valTwo}`);
         createNewArrayItem(`.add${key}`, key , keyOne, keyTwo, valOne, valTwo);
       });

@@ -46,7 +46,6 @@
         });
       }
     }
-    console.log(trip);
     return trip;
   }
 
