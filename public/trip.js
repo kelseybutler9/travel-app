@@ -11,8 +11,8 @@
     this.db.update(id, data);
   };
 
-  Trip.prototype.removeItem = function (id) {
-    this.db.remove(id);
+  Trip.prototype.removeItem = function (item, id) {
+    this.db.remove(item, id);
   };
 
   Trip.prototype.viewItem = function (id, callback) {

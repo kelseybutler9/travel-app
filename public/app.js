@@ -50,10 +50,13 @@
     createNewArrayItem(`.add${myClass}`, myClass , option[0], option[1], "", "");
   });
 
-  $('.button-delete').on("click", function() {
+  $('.button-delete').on("click", function(e) {
     e.preventDefault();
     let tripId = getEditId(window.location.pathname);
-    trip.removeItem(tripId);
+    trip.viewItem(tripId, function(res) {
+      console.log(res);
+      trip.removeItem(res, tripId);
+    });
     displayPopup('.delete-screen');
   });
 
@@ -78,12 +81,10 @@
       });
     });
 
-    console.log(trip);
     const updateFields = ["title", "place", "startDate", "endDate"];
     updateFields.forEach(field => {
       let inputField = `input[name=${field}]`;
       let tripField = trip[field];
-      console.log(tripField);
       $(`${inputField}`).val(tripField);
     });
   }

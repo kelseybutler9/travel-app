@@ -155,7 +155,8 @@ form input, .past-trip, intro-text div {
 
 .intro-text p {
   color: #fff;
-  font: normal 25px 'Bitter', serif;
+  font: 25px 'Bitter', serif;
+  font-style: oblique;
 
 }
 
