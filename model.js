@@ -16,7 +16,7 @@ const tripSchema = mongoose.Schema({
     'restaurantInformation': String}],
   'activities': [{
     'activityName': String,
-    'activtiyInformation': String}]
+    'activityInformation': String}]
 });
 
 tripSchema.methods.apiRepr = function () {

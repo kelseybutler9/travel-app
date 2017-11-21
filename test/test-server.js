@@ -94,7 +94,7 @@ describe('Trips', function () {
         restaurantComments: 'great burritos' }],
       activities: [{
         activityName: 'Surfing',
-        activtiyInformation: 'Fun!'
+        activityInformation: 'Fun!'
       }]
     };
 

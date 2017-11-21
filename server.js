@@ -150,26 +150,16 @@ app.put('/trips/:id', jsonParser, (req, res) => {
     });
   }
   const updated = {};
-  const updateableFields = ['title', 'place', 'startDate', 'endDate', 'transportation', 'residence', 'restaurants', 'activities'];
+  const updateableFields = ['title', 'place', 'startDate', 'endDate'];
   updateableFields.forEach(field => {
     console.log(field);
-    console.log(req.body[field]);
-    if (field in req.body === 'title' || field in req.body === 'place' || field in req.body === 'startDate' || field in req.body === 'endDate') {
-      updated[field] = req.body[field];
-    }
-    else if (field in req.body === 'transportation') {
-      updated[`transportation`] = parseArray('transType', 'transInformation', req.body.transportation);
-    }
-    else if (field in req.body === 'residence') {
-      updated[`residence`] = parseArray('residenceName', 'residenceInformation', req.body.residence);
-    }
-    else if (field in req.body === 'restaurants') {
-      updated[`restaurants`] = parseArray('restaurantName', 'restaurantInformation', req.body.restaurants);
-    }
-    else if (field in req.body === 'activities') {
-      updated[`activities`] = parseArray('residenceName', 'residenceInformation', req.body.activities);
-    }
+    updated[field] = req.body[field];
   });
+
+  updated[`transportation`] = parseArray('transType', 'transInformation', req.body.transportation);
+  updated[`residence`] = parseArray('residenceName', 'residenceInformation', req.body.residence);
+  updated[`restaurants`] = parseArray('restaurantName', 'restaurantInformation', req.body.restaurants);
+  updated[`activities`] = parseArray('activityName', 'activityInformation', req.body.activities);
 
   Trip
     .findByIdAndUpdate(req.params.id, {$set: updated}, {new: true})

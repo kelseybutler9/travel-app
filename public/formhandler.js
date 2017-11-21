@@ -42,6 +42,7 @@
             newObject[item[0]] = inputOne.value;
             newObject[item[1]] = inputTwo.value;
             tripArray.push(newObject);
+            console.log(newObject);
           }
         });
       }
