@@ -12,7 +12,7 @@
       url: this.url,
       data: JSON.stringify(item),
       success: function () {
-        console.log('success');
+        console.log('successful add to database');
       },
       dataType: 'json',
       contentType: 'application/json'

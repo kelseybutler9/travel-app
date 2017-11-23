@@ -1,6 +1,5 @@
 (function (exports, $) {
   function FormHandler (selector) {
-    console.log(selector);
     if (!selector) {
       throw new Error('No selector provided.');
     }
@@ -42,7 +41,6 @@
             newObject[item[0]] = inputOne.value;
             newObject[item[1]] = inputTwo.value;
             tripArray.push(newObject);
-            console.log(newObject);
           }
         });
       }

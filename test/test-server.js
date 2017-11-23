@@ -43,13 +43,13 @@ describe('Trips', function () {
         transInformation: 'Afternoon flight, $700' }],
       residence: [{
         residenceName: 'Hilton Inn',
-        residenceComments: 'nice staff, clean room'}],
+        residenceInformation: 'nice staff, clean room'}],
       restaurants: [{
         restaurantName: 'Taco Bell',
-        restaurantComments: 'great burritos' }],
+        restaurantInformation: 'great burritos' }],
       activities: [{
         activityName: 'Surfing',
-        activtiyInformation: 'Fun!'
+        activityInformation: 'Fun!'
       }]
     };
 
@@ -66,14 +66,13 @@ describe('Trips', function () {
         res.body.startDate.should.equal(newTrip.startDate);
         res.body.endDate.should.equal(newTrip.endDate);
         res.body.transportation.should.be.a('array');
-        console.log(res.body.transportation);
-        res.body.transportation.should.include.members(Object.keys(newTrip[`${newTrip.transportation[0]}`]));
         res.body.residence.should.be.a('array');
-        res.body.residence.should.include.members([{residenceName: newTrip.residenceName, residenceInformation: newTrip.residenceInformation}]);
         res.body.restaurants.should.be.a('array');
-        res.body.restaurants.should.include.members([{restaurantName: newTrip.restaurantName, restaurantInformation: newTrip.restaurantInformation}]);
         res.body.activities.should.be.a('array');
-        res.body.activities.should.include.members([{activityName: newTrip.activityName, activityInformation: newTrip.activityInformation}]);
+        res.body.transportation.should.have.deep.members(newTrip.transportation);
+        res.body.residence.should.have.deep.members(newTrip.residence);
+        res.body.restaurants.should.have.deep.members(newTrip.restaurants);
+        res.body.activities.should.have.deep.members(newTrip.activities);
       });
   });
 

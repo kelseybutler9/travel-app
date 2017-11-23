@@ -1,5 +1,4 @@
 (function (exports) {
-  console.log(exports);
   const {FormHandler, DataStore, Trip} = exports.app;
   const formHandler = new FormHandler('[data-trips="form"]');
   const url = 'http://localhost:8080/trips';
@@ -29,10 +28,8 @@
       displayPopup('.success-screen');
     }
     else {
-      console.log("update database");
       let tripId = getEditId(window.location.pathname);
       data.id = tripId;
-      console.log(data);
       trip.updateItem(tripId, data);
       displayPopup('.success-screen');
     }
@@ -54,7 +51,6 @@
     e.preventDefault();
     let tripId = getEditId(window.location.pathname);
     trip.viewItem(tripId, function(res) {
-      console.log(res);
       trip.removeItem(res, tripId);
     });
     displayPopup('.delete-screen');
@@ -76,7 +72,6 @@
         let keyTwo = itemKeys[1];
         let valOne = item[`${keyOne}`];
         let valTwo = item[`${keyTwo}`];
-        console.log(`key: ${key}, keyOne: ${keyOne}, ${keyTwo}, ${valOne}, ${valTwo}`);
         createNewArrayItem(`.add${key}`, key , keyOne, keyTwo, valOne, valTwo);
       });
     });

@@ -125,7 +125,6 @@ function parseArray (firstKey, secondKey, keyObject) {
     newObject[`${secondKey}`] = item[`${secondKey}`];
     array.push(newObject);
   });
-  console.log(array);
   return array;
 }
 
@@ -142,8 +141,6 @@ app.delete('/trips/:id', (req, res) => {
 });
 
 app.put('/trips/:id', jsonParser, (req, res) => {
-  console.log(req.params.id);
-  console.log(req.body.id);
   if (!(req.params.id && req.body.id && req.params.id === req.body.id)) {
     res.status(400).json({
       error: `Request path id and request body id values must match ${req.body.id} and ${req.params.id}`
@@ -152,7 +149,6 @@ app.put('/trips/:id', jsonParser, (req, res) => {
   const updated = {};
   const updateableFields = ['title', 'place', 'startDate', 'endDate'];
   updateableFields.forEach(field => {
-    console.log(field);
     updated[field] = req.body[field];
   });
 
