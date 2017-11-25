@@ -1,6 +1,8 @@
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 const {app, runServer, closeServer} = require('../server.js');
+const newTrip = require('./fixtures/new-trip');
+const updateTrip = require('./fixtures/update-trip');
 
 const should = chai.should();
 
@@ -33,25 +35,6 @@ describe('Trips', function () {
   });
 
   it('should add a trip on POST', function () {
-    const newTrip = {
-      title: 'Vacation Test',
-      place: 'Chicago, Illinois',
-      startDate: '10201992',
-      endDate: '10301992',
-      transportation: [{
-        transType: 'Flight',
-        transInformation: 'Afternoon flight, $700' }],
-      residence: [{
-        residenceName: 'Hilton Inn',
-        residenceInformation: 'nice staff, clean room'}],
-      restaurants: [{
-        restaurantName: 'Taco Bell',
-        restaurantInformation: 'great burritos' }],
-      activities: [{
-        activityName: 'Surfing',
-        activityInformation: 'Fun!'
-      }]
-    };
 
     return chai.request(app)
       .post('/trips')
@@ -77,33 +60,14 @@ describe('Trips', function () {
   });
 
   it('should update trips on PUT', function() {
-    const newTrip = {
-      title: 'Vacation Test',
-      place: 'Cleveland, Ohio',
-      startDate: '10201992',
-      endDate: '10301992',
-      transportation: [{
-        transType: 'Flight',
-        transInformation: 'Afternoon flight, $700' }],
-      residence: [{
-        residenceName: 'Hilton Inn',
-        residenceComments: 'nice staff, clean room'}],
-      restaurants: [{
-        restaurantName: 'Taco Bell',
-        restaurantComments: 'great burritos' }],
-      activities: [{
-        activityName: 'Surfing',
-        activityInformation: 'Fun!'
-      }]
-    };
 
     return chai.request(app)
       .get('/trips')
       .then(function (res) {
-        newTrip.id = res.body[0].id;
+        updateTrip.id = res.body[0].id;
         return chai.request(app)
-          .put(`/trips/${newTrip.id}`)
-          .send(newTrip);
+          .put(`/trips/${updateTrip.id}`)
+          .send(updateTrip);
       })
       .then(function (res) {
         res.should.have.status(204);

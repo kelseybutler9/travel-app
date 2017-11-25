@@ -56,10 +56,12 @@
     displayPopup('.delete-screen');
   });
 
+  // <input type="text" name="transportation[transType][0]">
+
   function createNewArrayItem(className, topic, firstName, secondName, valOne, valTwo) {
     $(className).append(`<label>Enter the type of ${topic} for this trip.
-      <input type="text" name="${firstName}" value="${valOne}"></label><label>Enter more information about your ${topic}.
-      <input type="text" name="${secondName}" value="${valTwo}"></label>`);
+      <input type="text" name="${topic}[${firstName}][1]" value="${valOne}"></label><label>Enter more information about your ${topic}.
+      <input type="text" name="${topic}[${secondName}][1]" value="${valTwo}"></label>`);
   }
 
   function displayPastTrip(trip) {

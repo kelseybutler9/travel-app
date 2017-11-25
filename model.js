@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const parseArray = require('./helpers/parsearray');
 
 const tripSchema = mongoose.Schema({
   'title': {type: String, required: true},
@@ -20,19 +21,6 @@ const tripSchema = mongoose.Schema({
 });
 
 tripSchema.methods.apiRepr = function () {
-  function parseArrays (topic, firstKey, secondKey) {
-    let itemArray = [];
-    for (let i = 0; i < topic.length; i++) {
-      let item = topic[i];
-      let newObject = {};
-      newObject[firstKey] = item[firstKey];
-      newObject[secondKey] = item[secondKey];
-      console.log(newObject);
-      itemArray.push(newObject);
-    }
-
-    return itemArray;
-  }
 
   return {
     id: this._id,
@@ -40,10 +28,10 @@ tripSchema.methods.apiRepr = function () {
     place: this.place,
     startDate: this.startDate,
     endDate: this.endDate,
-    transportation: parseArrays(this.transportation, 'transType', 'transInformation'),
-    residence: parseArrays(this.residence, 'residenceName', 'residenceInformation'),
-    restaurants: parseArrays(this.restaurants, 'restaurantName', 'restaurantInformation'),
-    activities: parseArrays(this.activities, 'activityName', 'activityInformation')
+    transportation: parseArray(this.transportation, 'transType', 'transInformation'),
+    residence: parseArray(this.residence, 'residenceName', 'residenceInformation'),
+    restaurants: parseArray(this.restaurants, 'restaurantName', 'restaurantInformation'),
+    activities: parseArray(this.activities, 'activityName', 'activityInformation')
   };
 };
 

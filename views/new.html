@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/static/style.css">
   </head>
   <body id="new">
-    <div class="background-image"></div>
+    <!-- <div class="background-image"></div> -->
     <header role="banner">
       <h1>Travel in Time</h1>
       <h1>Explore past, present, and future trips.</h1>
@@ -40,16 +40,17 @@
                 </label>
               </div>
         </section>
-        <section new-transportation="repeating">
+        <section>
           <h3>Transportation</h3>
             <div class="inner-wrap">
               <label>Enter the type of transportation for this trip.
-                <input type="text" name="transType">
+                <input type="text" name="transportation[transType][0]">
               </label>
               <label>Enter more information about your transportation.
-                <input type="text" name="transInformation">
+                <input type="text" name="transportation[transInformation][0]">
               </label>
             <div class="addtransportation">
+
             </div>
             <button type="button" class="transportation">Add another transportation item</button>
           </div>
@@ -58,10 +59,10 @@
           <h3>Residence</h3>
             <div class="inner-wrap">
               <label>Enter the the type of residence for this trip.
-                  <input type="text" name="residenceName">
+                  <input type="text" name="residence[residenceName][0]">
                 </label>
                 <label>Enter more information about your residence.
-                  <input type="text" name="residenceInformation">
+                  <input type="text" name="residence[residenceInformation][0]">
                 </label>
               <div class="addresidence">
               </div>
@@ -72,10 +73,10 @@
           <h3>Restaurants</h3>
             <div class="inner-wrap">
               <label>Enter the type of restaurant for this trip.
-                <input type="text" name="restaurantName">
+                <input type="text" name="restaurants[restaurantName][0]">
               </label>
               <label>Enter more information about your restaurant.
-                <input type="text" name="restaurantInformation">
+                <input type="text" name="restaurants[restaurantInformation][0]">
               </label>
               <div class="addrestaurant">
               </div>
@@ -86,10 +87,10 @@
           <h3>Activities</h3>
             <div class="inner-wrap">
               <label>Enter the type of activtiy for this trip.
-                <input type="text" name="activityName">
+                <input type="text" name="activities[activityName][0]">
               </label>
               <label>Enter more information about your activity.
-                <input type="text" name="activityInformation">
+                <input type="text" name="activities[activityInformation][0]">
               </label>
               <div class="addactivity">
               </div>
@@ -107,6 +108,8 @@
       <script src="https://code.jquery.com/jquery-3.2.1.min.js"
             integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
             crossorigin="anonymous"></script>
+      <script src="/static/form-serialize.js"></script>
+      <script src="/static/handle-inputs.js"></script>
       <script src="/static/formhandler.js"></script>
      <script src="/static/trip.js"></script>
      <script src="/static/datastore.js"></script>

@@ -1,4 +1,5 @@
 const express = require('express');
+const parseArray = require('./helpers/parsearray');
 
 const app = express();
 const path = require('path');
@@ -105,10 +106,10 @@ app.post('/trips', jsonParser, (req, res) => {
       place: req.body.place,
       startDate: req.body.startDate,
       endDate: req.body.endDate,
-      transportation: parseArray('transType', 'transInformation', req.body.transportation),
-      residence: parseArray('residenceName', 'residenceInformation', req.body.residence),
-      restaurants: parseArray('restaurantName', 'restaurantInformation', req.body.restaurants),
-      activities: parseArray('activityName', 'activityInformation', req.body.activities)
+      transportation: parseArray(req.body.transportation, 'transType', 'transInformation'),
+      residence: parseArray(req.body.residence, 'residenceName', 'residenceInformation'),
+      restaurants: parseArray(req.body.restaurants, 'restaurantName', 'restaurantInformation'),
+      activities: parseArray(req.body.activities, 'activityName', 'activityInformation')
     })
     .then(trip => res.status(201).json(trip.apiRepr()))
     .catch(err => {
@@ -116,17 +117,6 @@ app.post('/trips', jsonParser, (req, res) => {
         res.status(500).json({error: 'Something went wrong'});
     });
 });
-
-function parseArray (firstKey, secondKey, keyObject) {
-  let array = [];
-  keyObject.forEach(function (item) {
-    let newObject = {};
-    newObject[`${firstKey}`] = item[`${firstKey}`];
-    newObject[`${secondKey}`] = item[`${secondKey}`];
-    array.push(newObject);
-  });
-  return array;
-}
 
 app.delete('/trips/:id', (req, res) => {
   Trip
@@ -152,10 +142,10 @@ app.put('/trips/:id', jsonParser, (req, res) => {
     updated[field] = req.body[field];
   });
 
-  updated[`transportation`] = parseArray('transType', 'transInformation', req.body.transportation);
-  updated[`residence`] = parseArray('residenceName', 'residenceInformation', req.body.residence);
-  updated[`restaurants`] = parseArray('restaurantName', 'restaurantInformation', req.body.restaurants);
-  updated[`activities`] = parseArray('activityName', 'activityInformation', req.body.activities);
+  updated[`transportation`] = parseArray(req.body.transportation,'transType', 'transInformation');
+  updated[`residence`] = parseArray(req.body.residence,'residenceName', 'residenceInformation');
+  updated[`restaurants`] = parseArray(req.body.restaurants,'restaurantName', 'restaurantInformation');
+  updated[`activities`] = parseArray(req.body.activities,'activityName', 'activityInformation');
 
   Trip
     .findByIdAndUpdate(req.params.id, {$set: updated}, {new: true})

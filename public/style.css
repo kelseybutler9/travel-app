@@ -11,10 +11,10 @@ body {
 
 
 ul, .past-trip {
-    list-style-type: none;
-    margin: auto;
-    padding: 0;
-    width: 70%;
+  list-style-type: none;
+  margin: auto;
+  padding: 0;
+  width: 70%;
 }
 
 
@@ -49,8 +49,8 @@ li a:hover {
 }
 
 .active {
-    background-color: #2A88AD;
-    color: #fff;
+  background-color: #2A88AD;
+  color: #fff;
 }
 
 .past-trip a {
@@ -61,16 +61,16 @@ li a:hover {
 }
 
 form, .past-trips-list, .intro-text {
-    width: 70%;
-    padding:30px;
-    margin:40px auto;
-    background: #FFF;
-    border-radius: 10px;
-     -webkit-border-radius:10px;
-    -moz-border-radius: 10px;
-     box-shadow: 0px 0px 10px rgba(0,0,0,0.13);
-     -moz-box-shadow:0px 0px 10px rgba(0, 0, 0, 0.13);
-     -webkit-box-shadow: 0px 0px 10px rgba(0,0,0,0.13);
+  width: 70%;
+  padding:30px;
+  margin:40px auto;
+  background: #FFF;
+  border-radius: 10px;
+  -webkit-border-radius:10px;
+  -moz-border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0,0,0,0.13);
+  -moz-box-shadow:0px 0px 10px rgba(0, 0, 0, 0.13);
+  -webkit-box-shadow: 0px 0px 10px rgba(0,0,0,0.13);
 }
 
 .intro-text {
