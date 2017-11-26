@@ -8,19 +8,15 @@ describe('handleInputs', function () {
 
   it('should return a trip object', function () {
     const data =
-    {
-      {name:'title',value:'New Trip'},
-      {name:'place',value:'Chicago'},
-      {name:'startDate',value:'October 2017'},
-      {name:'endDate',value:'November 2017'},
-      {name:'transType',value:'Flight'},
-      {name:'transInformation',value:'Afternoon, 3pm'}
-      {name:'residenceName',value:'Parents House'}
-      {name:'residenceInformation',value:'Cozy'}
-      {name:'restaurantName',value:'Hunans'}
-      {name:'restaurantInformation',value:'Chinese Food'}
-      {name:'activityName',value:'Sledding'}
-      {name:'activityInformation',value:'Fun!'}
+    { {title: "New Trip", place: "lkjsdflkj", startDate: "sdkljfkls", endDate: "sldkjf", transportation: {…}, …}
+      {title:'New Trip',
+       place:'Chicago',
+       startDate:'October 2017',
+       endDate:'November 2017',
+       transportation: {transType: ['Flight'], activityInformation: ['Afternoon, 3pm']},
+       residence: {residenceName: ['Parents Home'], residenceInformation: ['Cozy']},
+       restaurants: {restaurantName: ['Hunans'], restaurantInformation: ['Chinese Food']},
+       activities: {activityName: ['Sledding'], activityInformation: ['Fun!']}
     };
 
     const trip = handleInputs(data);

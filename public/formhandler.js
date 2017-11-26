@@ -1,6 +1,5 @@
 (function (exports, $) {
-  console.log(exports.app);
-  const handleInputs = exports.app.handleInputs;
+  const handleInputs = exports.handleInputs;
   function FormHandler (selector) {
     if (!selector) {
       throw new Error('No selector provided.');
@@ -17,7 +16,6 @@
       e.preventDefault();
       const inputs = serialize(this, { hash: true});
       const item = handleInputs(inputs);
-      console.log(item);
       callback(item);
       this.reset();
       this.elements[0].focus();
@@ -25,4 +23,4 @@
   }
 
   exports.FormHandler = FormHandler;
-})(typeof exports === 'undefined' ? window.app : exports, window.jQuery, window.serialize);
+})(typeof exports === 'undefined' ? window.app: exports, window.jQuery, window.serialize);

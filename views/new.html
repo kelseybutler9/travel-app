@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="/static/style.css">
   </head>
   <body id="new">
-    <!-- <div class="background-image"></div> -->
     <header role="banner">
       <h1>Travel in Time</h1>
       <h1>Explore past, present, and future trips.</h1>
@@ -27,16 +26,16 @@
           <h3>General Info</h3>
               <div class="inner-wrap">
                 <label>Enter the title of your trip.
-                  <input type="text" name="title">
+                  <input type="text" name="title" required>
                 </label>
                 <label>Enter the location of your trip.
-                  <input type="text" name="place">
+                  <input type="text" name="place" required>
                 </label>
                 <label>Enter the start date of your trip.
-                  <input type="text" name="startDate">
+                  <input type="text" name="startDate" required>
                 </label>
                 <label>Enter the end date of your trip.
-                  <input type="text" name="endDate">
+                  <input type="text" name="endDate" required>
                 </label>
               </div>
         </section>
@@ -44,10 +43,10 @@
           <h3>Transportation</h3>
             <div class="inner-wrap">
               <label>Enter the type of transportation for this trip.
-                <input type="text" name="transportation[transType][0]">
+                <input type="text" name="transportation[transType][0]" required>
               </label>
               <label>Enter more information about your transportation.
-                <input type="text" name="transportation[transInformation][0]">
+                <input type="text" name="transportation[transInformation][0]" required>
               </label>
             <div class="addtransportation">
 
@@ -55,42 +54,42 @@
             <button type="button" class="transportation">Add another transportation item</button>
           </div>
         </section>
-        <section new-residence="repeating">
+        <section>
           <h3>Residence</h3>
             <div class="inner-wrap">
               <label>Enter the the type of residence for this trip.
-                  <input type="text" name="residence[residenceName][0]">
+                  <input type="text" name="residence[residenceName][0]" required>
                 </label>
                 <label>Enter more information about your residence.
-                  <input type="text" name="residence[residenceInformation][0]">
+                  <input type="text" name="residence[residenceInformation][0]" required>
                 </label>
               <div class="addresidence">
               </div>
               <button type="button" class="residence">Add another residence item</button>
             </div>
         </section>
-        <section new-restaurant="repeating">
+        <section>
           <h3>Restaurants</h3>
             <div class="inner-wrap">
               <label>Enter the type of restaurant for this trip.
-                <input type="text" name="restaurants[restaurantName][0]">
+                <input type="text" name="restaurants[restaurantName][0]" required>
               </label>
               <label>Enter more information about your restaurant.
-                <input type="text" name="restaurants[restaurantInformation][0]">
+                <input type="text" name="restaurants[restaurantInformation][0]" required>
               </label>
               <div class="addrestaurants">
               </div>
               <button type="button" class="restaurants">Add another restaurant</button>
             </div>
         </section>
-        <section new-activity="repeating">
+        <section>
           <h3>Activities</h3>
             <div class="inner-wrap">
               <label>Enter the type of activtiy for this trip.
-                <input type="text" name="activities[activityName][0]">
+                <input type="text" name="activities[activityName][0]" required>
               </label>
               <label>Enter more information about your activity.
-                <input type="text" name="activities[activityInformation][0]">
+                <input type="text" name="activities[activityInformation][0]" required>
               </label>
               <div class="addactivities">
               </div>
