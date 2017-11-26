@@ -22,4 +22,4 @@
   }
 
 exports.handleInputs = handleInputs;
-})(typeof exports === 'undefined' ? window.app = {} : exports, window.serialize);
+})(typeof exports === 'undefined' ? window.app = {} : exports);
