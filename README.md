@@ -48,6 +48,8 @@ The application is fully responsive for all mobile, tablet, and desktop views.
 
 I incorporated Node.js and Mongodb to store all trip information. All testing was performed using Mocha and Chai.
 
+For serializing the form data on submit, I used the javascript library "Form-serialize" from source: https://github.com/defunctzombie/form-serialize. This allowed for a manageable object to be returned on submit.
+
 ##Enhancements
 
 This is the initial draft of my application. I plan to include a few enhancements below"
