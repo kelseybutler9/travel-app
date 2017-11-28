@@ -17,6 +17,12 @@
         })
         newInputs[key] = newArray;
       }
+      if(key ==='startDate' || key ==='endDate') {
+        let date = newInputs[key];
+        date= date.split('T')[0];
+        newInputs[key] = date;
+        console.log(newInputs[key]);
+      }
     })
     return newInputs;
   }

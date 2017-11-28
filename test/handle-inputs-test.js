@@ -11,8 +11,8 @@ describe('handleInputs', function () {
     {
        title:'New Trip',
        place:'Chicago',
-       startDate:'October 2017',
-       endDate:'November 2017',
+       startDate:'2017-10-20',
+       endDate:'2017-10-31',
        transportation: {transType: ['Flight'], transInformation: ['Afternoon, 3pm']},
        residence: {residenceName: ['Parents Home'], residenceInformation: ['Cozy']},
        restaurants: {restaurantName: ['Hunans'], restaurantInformation: ['Chinese Food']},

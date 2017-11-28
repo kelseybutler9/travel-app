@@ -1,8 +1,8 @@
 const newTrip = {
   title: 'Vacation Test',
   place: 'Chicago, Illinois',
-  startDate: '10201992',
-  endDate: '10301992',
+  startDate: '1992-10-21',
+  endDate: '1992-10-30',
   transportation: [{
     transType: 'Flight',
     transInformation: 'Afternoon flight, $700' }],

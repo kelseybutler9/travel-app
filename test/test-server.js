@@ -44,6 +44,10 @@ describe('Trips', function () {
         res.should.be.json;
         res.body.should.be.a('object');
         res.body.should.include.keys('id', 'title', 'place', 'startDate', 'endDate', 'transportation', 'residence', 'restaurants', 'activities');
+        res.body.title.should.be.a('string');
+        res.body.place.should.be.a('string');
+        res.body.startDate.should.be.a('string');
+        res.body.endDate.should.be.a('string');
         res.body.title.should.equal(newTrip.title);
         res.body.place.should.equal(newTrip.place);
         res.body.startDate.should.equal(newTrip.startDate);
