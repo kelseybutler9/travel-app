@@ -9,6 +9,17 @@
   hidePopup(`.delete-screen`);
   hidePopup(`.success-screen`);
 
+  const fpStartDate = flatpickr('[name="startDate"]', {dateFormat: "m-d-Y"});
+  const fpEndDate = flatpickr('[name="endDate"]', {dateFormat: "m-d-Y"});
+
+  $('[name="startDate"]').on("blur", function(e) {
+      fpEndDate.set('disable', [function(date) {
+          let endDate = moment(date);
+          let startDate = moment(fpStartDate.selectedDates[fpStartDate.selectedDates.length - 1]);
+         return endDate < startDate;
+       }]);
+  });
+
   function displayPopup(className) {
     $(className).prop("hidden", false);
   }
@@ -82,6 +93,9 @@
     updateFields.forEach(field => {
       let inputField = `input[name=${field}]`;
       let tripField = trip[field];
+      if(field === 'startDate' || field === 'endDate') {
+        tripField = moment(tripField).format("MM-DD-YYYY");
+      }
       $(`${inputField}`).val(tripField);
     });
   }

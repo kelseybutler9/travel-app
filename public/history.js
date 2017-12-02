@@ -17,8 +17,10 @@
     $('.container').html('');
     for (index in data) {
       let item = data[index];
+      let startDate = moment(item.startDate).format('MM-DD-YYYY');
+      let endDate = moment(item.endDate).format('MM-DD-YYYY');
       $('.past-trips').append(`<ls class="past-trip">
-      <a href = "/edit/${item.id}">View ${item.title}</a><p>${item.place}</p><p>${item.startDate}</p><p>${item.endDate}</p>
+      <a href = "/edit/${item.id}">View ${item.title}</a><p>${item.place}</p><p>${startDate}</p><p>${endDate}</p>
       </ls>`);
     }
   }

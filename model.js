@@ -4,8 +4,8 @@ const parseArray = require('./helpers/parsearray');
 const tripSchema = mongoose.Schema({
   'title': {type: String, required: true},
   'place': String,
-  'startDate': String,
-  'endDate': String,
+  'startDate': Date,
+  'endDate': Date,
   'transportation': [{
     'transType': String,
     'transInformation': String}],

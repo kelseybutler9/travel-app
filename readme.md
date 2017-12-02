@@ -38,8 +38,6 @@ Past Trips Details Screen | Next Screen
 User updates form and submits | popup success message
 User selects new activity/restaurant | new inputs added to form
 
-##Add in Screenshots for each
-
 ##Technical
 
 This application was built using a variety of languages. HTML, CSS, Javascript, and jQuery were used for the front-end of this project.

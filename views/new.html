@@ -6,6 +6,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="new trip creation form">
+    <link rel="stylesheet" href="https://unpkg.com/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" href="/static/style.css">
   </head>
   <body id="new">
@@ -32,10 +33,10 @@
                   <input type="text" name="place" required>
                 </label>
                 <label>Enter the start date of your trip.
-                  <input type="date" name="startDate" required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}">
+                  <input type="date" name="startDate" required>
                 </label>
                 <label>Enter the end date of your trip.
-                  <input type="date" name="endDate" required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}">
+                  <input type="date" name="endDate" required>
                 </label>
               </div>
         </section>
@@ -107,6 +108,8 @@
       <script src="https://code.jquery.com/jquery-3.2.1.min.js"
             integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
             crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.3/moment.min.js"></script>
+      <script src="https://unpkg.com/flatpickr"></script>
       <script src="/static/form-serialize.js"></script>
       <script src="/static/handle-inputs.js"></script>
       <script src="/static/form-handler.js"></script>
