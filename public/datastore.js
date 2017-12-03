@@ -21,7 +21,6 @@
 
   DataStore.prototype.get = function (id, callback) {
     $.get(`${this.url}/${id}`, function (res) {
-      console.log(res);
       callback(res);
     });
   };

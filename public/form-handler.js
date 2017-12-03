@@ -15,6 +15,7 @@
     this.$formElement.on('submit', function (e) {
       e.preventDefault();
       const inputs = serialize(this, { hash: true});
+      console.log(inputs);
       //const item = handleInputs(inputs);
       callback(inputs);
       this.reset();

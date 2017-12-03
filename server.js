@@ -92,7 +92,6 @@ app.get('/trips/:id', (req, res) => {
 });
 
 app.post('/trips', jsonParser, (req, res) => {
-  console.log(req.body.title);
   if (!(req.body.title)) {
     const message = `Missing title in request body`;
     console.error(message);

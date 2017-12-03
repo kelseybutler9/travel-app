@@ -75,6 +75,7 @@
   }
 
   function displayPastTrip (trip) {
+    console.log(trip);
     let arrayKeys = Object.keys(arrayOptions);
     arrayKeys.forEach(key => {
       let tripItem = trip[`${key}`];

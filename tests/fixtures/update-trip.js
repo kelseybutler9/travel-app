@@ -1,21 +1,23 @@
 const updateTrip = {
-  title: 'Vacation Test',
-  place: 'Cleveland, Ohio',
-  startDate: '1992-25-09',
-  endDate: '1992-30-09',
+  title: 'Fourth of July Camping Trip',
+  place: 'Yosemite National Park',
+  startDate: '2017-07-02T06:00:00.000Z',
+  endDate: '2017-07-06T06:00:00.000Z',
   transportation: [{
     transType: 'Flight',
     transInformation: 'Afternoon flight, $700' }],
   residence: [{
-    residenceName: 'Hilton Inn',
-    residenceComments: 'nice staff, clean room'}],
+    residenceName: 'Cathedral Lakes',
+    residenceComments: 'camping ground'}],
   restaurants: [{
-    restaurantName: 'Taco Bell',
-    restaurantComments: 'great burritos' }],
+    restaurantName: 'Campfire meals!',
+    restaurantComments: 'hot dogs' }],
   activities: [{
-    activityName: 'Surfing',
-    activityInformation: 'Fun!'
-  }]
+    activityName: 'Hiking',
+    activityInformation: 'Fantastic views'}, {
+    activityName: 'Swimming',
+    activityInformation: 'Freezing cold!'
+    }]
 };
 
 module.exports = updateTrip;
