@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
-    "test": "mocha",
+    "test": "mocha 'tests/**/*.js'",
     "lint": "semistandard | snazzy"
   },
   "author": "",
@@ -21,5 +21,10 @@
     "morgan": "^1.9.0",
     "semistandard": "^11.0.0",
     "snazzy": "^7.0.0"
+  },
+  "semistandard": {
+    "ignore": [
+      "/public/vendor/"
+    ]
   }
 }

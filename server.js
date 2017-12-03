@@ -26,7 +26,6 @@ app.get('/history', (request, response) => {
   response.sendFile(path.join(__dirname + '/views/history.html'));
 });
 
-
 app.get('/edit/:id', (request, response) => {
   response.sendFile(path.join(__dirname + '/views/edit.html'));
 });
@@ -39,7 +38,7 @@ function runServer () {
       if (err) {
         return reject(err);
       }
-  });
+    });
 
     server = app.listen(PORT, () => {
       console.log(`Your app is listening on port ${PORT}`);
@@ -51,7 +50,7 @@ function runServer () {
   });
 }
 
-function closeServer() {
+function closeServer () {
   return mongoose.disconnect().then(() => {
     return new Promise((resolve, reject) => {
       console.log('Closing server');
@@ -113,8 +112,8 @@ app.post('/trips', jsonParser, (req, res) => {
     })
     .then(trip => res.status(201).json(trip.apiRepr()))
     .catch(err => {
-        console.error(err);
-        res.status(500).json({error: 'Something went wrong'});
+      console.error(err);
+      res.status(500).json({error: 'Something went wrong'});
     });
 });
 
@@ -142,10 +141,10 @@ app.put('/trips/:id', jsonParser, (req, res) => {
     updated[field] = req.body[field];
   });
 
-  updated[`transportation`] = parseArray(req.body.transportation,'transType', 'transInformation');
-  updated[`residence`] = parseArray(req.body.residence,'residenceName', 'residenceInformation');
-  updated[`restaurants`] = parseArray(req.body.restaurants,'restaurantName', 'restaurantInformation');
-  updated[`activities`] = parseArray(req.body.activities,'activityName', 'activityInformation');
+  updated[`transportation`] = parseArray(req.body.transportation, 'transType', 'transInformation');
+  updated[`residence`] = parseArray(req.body.residence, 'residenceName', 'residenceInformation');
+  updated[`restaurants`] = parseArray(req.body.restaurants, 'restaurantName', 'restaurantInformation');
+  updated[`activities`] = parseArray(req.body.activities, 'activityName', 'activityInformation');
 
   Trip
     .findByIdAndUpdate(req.params.id, {$set: updated}, {new: true})

@@ -15,12 +15,12 @@
     this.$formElement.on('submit', function (e) {
       e.preventDefault();
       const inputs = serialize(this, { hash: true});
-      const item = handleInputs(inputs);
-      callback(item);
+      //const item = handleInputs(inputs);
+      callback(inputs);
       this.reset();
       this.elements[0].focus();
-    })
-  }
+    });
+  };
 
   exports.FormHandler = FormHandler;
-})(typeof exports === 'undefined' ? window.app: exports, window.jQuery, window.serialize);
+})(typeof exports === 'undefined' ? window.app : exports, window.jQuery, window.serialize);

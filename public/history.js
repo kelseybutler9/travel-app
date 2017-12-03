@@ -26,5 +26,4 @@
   }
 
   exports.PastTrip = PastTrip;
-
 })(typeof exports === 'undefined' ? window : exports);
