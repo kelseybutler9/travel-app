@@ -1,8 +1,17 @@
 (function (exports) {
-  console.log(exports);
   const {DataStore, Trip} = exports.app;
-  const url = 'https://lit-peak-71949.herokuapp.com/trips ';
+  const url = checkUrl() ;
   const trip = new Trip(new DataStore(url));
+
+  function checkUrl() {
+    let url = `${window.location.pathname}`;
+    if(url.contains('localhost')) {
+      return 'http://localhost:8080/trips ';
+    }
+    else {
+      return `https://lit-peak-71949.herokuapp.com/trips`;
+    }
+  }
 
   function PastTrip (id) {
     this.id = id;
