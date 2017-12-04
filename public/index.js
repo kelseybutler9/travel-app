@@ -46,7 +46,7 @@
   });
 
   function getEditId (currentLocation) {
-    tripId = currentLocation.split('/').pop();
+    let tripId = currentLocation.split('/').pop();
     return tripId;
   }
 

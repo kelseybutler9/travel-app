@@ -6,13 +6,11 @@
       let newItem = newInputs[key];
       if (typeof newItem === 'object') {
         let arrayKeys = Object.keys(newItem);
-        let firstKey = arrayKeys[0];
-        let secondKey = arrayKeys[1];
         let newArray = [];
-        newItem[firstKey].forEach((item, index) => {
+        newItem[arrayKeys[0]].forEach((item, index) => {
           let newObject = {};
-          newObject[`${firstKey}`] = item;
-          newObject[`${secondKey}`] = newItem[secondKey][index];
+          newObject[arrayKeys[0]] = item;
+          newObject[arrayKeys[1]] = newItem[arrayKeys[1]][index];
           newArray.push(newObject);
         });
         newInputs[key] = newArray;

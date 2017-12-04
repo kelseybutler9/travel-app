@@ -14,10 +14,9 @@
   FormHandler.prototype.addSubmitHandler = function (callback) {
     this.$formElement.on('submit', function (e) {
       e.preventDefault();
-      const inputs = serialize(this, { hash: true});
-      console.log(inputs);
-      //const item = handleInputs(inputs);
-      callback(inputs);
+      const inputs = serialize(this, {hash: true});
+      const item = handleInputs(inputs);
+      callback(item);
       this.reset();
       this.elements[0].focus();
     });

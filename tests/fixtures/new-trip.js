@@ -5,8 +5,8 @@ const newTrip = {
   endDate: '2017-10-31T06:00:00.000Z',
   transportation: [{
     transType: 'Flight',
-    transInformation: 'Afternoon flight, $700' },
-    {transType: 'Flight Home',
+    transInformation: 'Afternoon flight, $700' }, {
+    transType: 'Flight Home',
     transInformation: 'Morning flight, $500' }],
   residence: [{
     residenceName: 'Hilton Inn',

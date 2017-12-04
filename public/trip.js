@@ -16,7 +16,7 @@
   };
 
   Trip.prototype.viewItem = function (id, callback) {
-    const trip = this.db.get(id, callback);
+    this.db.get(id, callback);
   };
 
   Trip.prototype.viewItems = function (callback) {
