@@ -75,21 +75,17 @@
   }
 
   function displayPastTrip (trip) {
-    console.log(trip);
     let arrayKeys = Object.keys(arrayOptions);
+    const updateFields = ['title', 'place', 'startDate', 'endDate'];
+
     arrayKeys.forEach(key => {
       let tripItem = trip[`${key}`];
       tripItem.forEach(item => {
         let itemKeys = Object.keys(item);
-        let keyOne = itemKeys[0];
-        let keyTwo = itemKeys[1];
-        let valOne = item[`${keyOne}`];
-        let valTwo = item[`${keyTwo}`];
-        createNewArrayItem(`.add${key}`, key, keyOne, keyTwo, valOne, valTwo);
+        createNewArrayItem(`.add${key}`, key, itemKeys[0], itemKeys[1], item[itemKeys[0]], item[itemKeys[1]]);
       });
     });
 
-    const updateFields = ['title', 'place', 'startDate', 'endDate'];
     updateFields.forEach(field => {
       let inputField = `input[name=${field}]`;
       let tripField = trip[field];
