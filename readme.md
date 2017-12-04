@@ -46,9 +46,10 @@ The application is fully responsive for all mobile, tablet, and desktop views.
 
 I incorporated Node.js and Mongodb to store all trip information. All testing was performed using Mocha and Chai.
 
-Additionally, I included the Flatpickr library to add styling for the date picker and functionality behind date
+Additionally, I included the Flatpickr library to add styling for the date picker and functionality behind date. I also added the library Form-serialize, to properly bring back a usable object from the edit and new form inputs.
 
 https://chmln.github.io/flatpickr/
+https://github.com/defunctzombie/form-serialize
 
 ##Enhancements
 
