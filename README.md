@@ -38,8 +38,6 @@ Past Trips Details Screen | Next Screen
 User updates form and submits | popup success message
 User selects new activity/restaurant | new inputs added to form
 
-##Add in Screenshots for each
-
 ##Technical
 
 This application was built using a variety of languages. HTML, CSS, Javascript, and jQuery were used for the front-end of this project.
@@ -47,6 +45,11 @@ This application was built using a variety of languages. HTML, CSS, Javascript, 
 The application is fully responsive for all mobile, tablet, and desktop views.
 
 I incorporated Node.js and Mongodb to store all trip information. All testing was performed using Mocha and Chai.
+
+Additionally, I included the Flatpickr library to add styling for the date picker and functionality behind date. I also added the library Form-serialize, to properly bring back a usable object from the edit and new form inputs.
+
+https://chmln.github.io/flatpickr/
+https://github.com/defunctzombie/form-serialize
 
 ##Enhancements
 
