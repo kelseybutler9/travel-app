@@ -21,15 +21,13 @@
   });
 
   function checkUrl() {
-    let url = window.location.pathname;
-    console.log(typeof url);
+    let url = window.location.href;
+
     if(url.includes('localhost')) {
-      url = 'http://localhost:8080/trips';
+      return 'http://localhost:8080/trips';
     }
-    else {
-      url = 'https://lit-peak-71949.herokuapp.com/trips';
-    }
-    return url;
+
+    return 'https://lit-peak-71949.herokuapp.com/trips';
   }
 
   function displayPopup (className) {
