@@ -2,7 +2,7 @@ Travel in Time - a responsive application used to store past, present, and futur
 
 ##Introduction
 Travel in Time allows users to create, update, delete, and view personal trips. The goal of this application is for users to access specific details about each trip.
-I found a personal need for this due to my passion for travel. Each trip includes information about the location, dates, transportation, place of residence, restaurants, and activities. If a user revisits a location, they would be able to reference their past trip for recommendations.
+I found a personal need for this due to my passion for travel. Each trip includes information about the location, dates, transportation, place of residence, restaruants, and actvities. If a user revisits a location, they would be able to reference their past trip for recommendations.
 While on a trip, a user can update the details of their trip in real-time. All the user needs to create a trip is a title. If a user plans their trip ahead of time, they can use Travel in Time to view their hotel details or flight itinerary.
 
 ##User Stories
