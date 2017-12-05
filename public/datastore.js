@@ -27,7 +27,6 @@
 
   DataStore.prototype.getAll = function (callback) {
     $.getJSON(this.url, function (res) {
-      console.log(res);
       callback(res);
     });
   };
