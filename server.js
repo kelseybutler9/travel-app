@@ -11,23 +11,23 @@ mongoose.Promise = global.Promise;
 const {DATABASE_URL, PORT} = require('./config');
 const jsonParser = bodyParser.json();
 
-app.use('/static', express.static(__dirname + '/public'));
+app.use('/static', express.static(path.join(__dirname,'public')));
 app.use(bodyParser.json());
 
 app.get('/', (request, response) => {
-  response.sendFile(__dirname + '/views/index.html');
+  response.sendFile(path.join(__dirname, '/views/index.html');
 });
 
 app.get('/new', (request, response) => {
-  response.sendFile(path.join(__dirname + '/views/new.html'));
+  response.sendFile(path.join(__dirname, '/views/new.html'));
 });
 
 app.get('/history', (request, response) => {
-  response.sendFile(path.join(__dirname + '/views/history.html'));
+  response.sendFile(path.join(__dirname, '/views/history.html'));
 });
 
 app.get('/edit/:id', (request, response) => {
-  response.sendFile(path.join(__dirname + '/views/edit.html'));
+  response.sendFile(path.join(__dirname, '/views/edit.html'));
 });
 
 let server;

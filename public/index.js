@@ -1,4 +1,4 @@
-(function (exports) {
+(function (exports, flatpickr, $, moment) {
   const {FormHandler, DataStore, Trip} = exports.app;
   const formHandler = new FormHandler('[data-trips="form"]');
   const url = checkUrl() ;
@@ -23,7 +23,7 @@
   function checkUrl() {
     let url = window.location.href;
 
-    if(url.includes('localhost')) {
+    if (url.includes('localhost')) {
       return 'http://localhost:8080/trips';
     }
 
@@ -105,4 +105,4 @@
       $(`${inputField}`).val(tripField);
     });
   }
-})(typeof exports === 'undefined' ? window : exports);
+})(typeof exports === 'undefined' ? window : exports, window.flatpickr, window.jQuery, window.moment);

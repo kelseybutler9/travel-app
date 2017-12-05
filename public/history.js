@@ -1,11 +1,11 @@
-(function (exports) {
+(function (exports, $, moment) {
   const {DataStore, Trip} = exports.app;
   const url = checkUrl() ;
   const trip = new Trip(new DataStore(url));
 
   function checkUrl() {
     let url = window.location.href;
-    
+
     if(url.includes('localhost')) {
       return 'http://localhost:8080/trips';
     }
@@ -35,4 +35,4 @@
   }
 
   exports.PastTrip = PastTrip;
-})(typeof exports === 'undefined' ? window : exports);
+})(typeof exports === 'undefined' ? window : exports, window.jQuery, window.moment);
