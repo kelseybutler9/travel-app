@@ -1,4 +1,4 @@
-(function (exports) {
+(function (exports, $, serialize) {
   function DataStore (url) {
     this.url = url;
     if (!url) {
@@ -60,4 +60,4 @@
   };
 
   exports.DataStore = DataStore;
-})(typeof exports === 'undefined' ? window.app : exports);
+})(typeof exports === 'undefined' ? window.app : exports, window.jQuery, window.serialize);

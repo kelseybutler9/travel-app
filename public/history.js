@@ -3,14 +3,10 @@
   const url = checkUrl() ;
   const trip = new Trip(new DataStore(url));
 
-  function checkUrl() {
-    let url = window.location.href;
-
-    if(url.includes('localhost')) {
-      return 'http://localhost:8080/trips';
-    }
-
-    return 'https://lit-peak-71949.herokuapp.com/trips';
+  function checkUrl () {
+    return window.location.href.includes('localhost')
+      ? 'http://localhost:8080/trips'
+      : 'https://lit-peak-71949.herokuapp.com/trips';
   }
 
   function PastTrip (id) {
@@ -24,7 +20,7 @@
 
   function displayPastTrips (data) {
     $('.container').html('');
-    for (index in data) {
+    for (let index in data) {
       let item = data[index];
       let startDate = moment(item.startDate).format('MM-DD-YYYY');
       let endDate = moment(item.endDate).format('MM-DD-YYYY');

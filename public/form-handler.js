@@ -1,4 +1,4 @@
-(function (exports, $) {
+(function (exports, $, serialize) {
   const handleInputs = exports.handleInputs;
   function FormHandler (selector) {
     if (!selector) {

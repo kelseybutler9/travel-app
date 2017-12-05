@@ -20,14 +20,10 @@
     }]);
   });
 
-  function checkUrl() {
-    let url = window.location.href;
-
-    if (url.includes('localhost')) {
-      return 'http://localhost:8080/trips';
-    }
-
-    return 'https://lit-peak-71949.herokuapp.com/trips';
+  function checkUrl () {
+    return window.location.href.includes('localhost')
+      ? 'http://localhost:8080/trips'
+      : 'https://lit-peak-71949.herokuapp.com/trips';
   }
 
   function displayPopup (className) {
