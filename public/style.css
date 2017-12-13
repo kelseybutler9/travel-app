@@ -3,9 +3,8 @@
 }
 
 body {
-  background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfrqZANzN-bVMxylDwwbojFq_rCiNI5lywRy7EUMwBpk4ye_RaAA') no-repeat;
+  background: url('http://www.powerpointhintergrund.com/uploads/ocean-water-background-29.jpeg') no-repeat;
   background-size: cover;
-  color: black;
   height: auto;
 }
 
@@ -21,10 +20,11 @@ ul, .past-trip {
 h1 {
   margin: auto;
   text-align: center;
-  margin: 10px;
-  font: 50px 'Bitter', serif;
-  color:  #154f66;
-  font-style: oblique;
+  margin: 20px;
+  font: 3.5em 'Bitter', serif;
+  text-decoration: bold;
+  color: #0a394c;
+  line-height: 120%;
 }
 
 li {
@@ -40,8 +40,9 @@ li a {
   text-decoration: none;
   font-weight: bold;
   background: #FFF;
-  color: #888;
-  font-size: 20px;
+  font-size: 1.5em;
+  color: #0a394c;
+  margin-top: 2px;
 }
 
 li a:hover {
@@ -67,8 +68,6 @@ form, .past-trips-list, .intro-text {
   margin:40px auto;
   background: #FFF;
   border-radius: 10px;
-  -webkit-border-radius:10px;
-  -moz-border-radius: 10px;
   box-shadow: 0px 0px 10px rgba(0,0,0,0.13);
   -moz-box-shadow:0px 0px 10px rgba(0, 0, 0, 0.13);
   -webkit-box-shadow: 0px 0px 10px rgba(0,0,0,0.13);
@@ -94,6 +93,18 @@ form, .past-trips-list, .intro-text {
   margin: auto;
   margin-bottom: 10px;
   margin-top: 10px;
+}
+
+.past-trips {
+  background-color: #2A88AD;
+  margin: auto;
+  width: 100%;
+  margin-top: 0;
+  border: 2px solid #2A88AD;
+}
+
+.past-trips-list {
+    padding: 0;
 }
 
 .container, .past-trips{
@@ -127,18 +138,20 @@ form h3, h2 {
   border: 1px solid #257C9E;
 }
 
-h2, .intro-text div{
+h2, .intro-text div {
   text-align: center;
+  color: #fff;
+  font: normal 1.4em 'Bitter', serif;
 }
 
 form label {
   display: block;
   color: #888;
   margin-bottom: 15px;
-  font: 13px Arial Helvetica, sans-serif;
+  font: 1em Arial Helvetica, sans-serif;
 }
 
-form input, .past-trip, intro-text div {
+form input, .past-trip {
   display: block;
   box-sizing:border-box;
   -webkit-box-sizing:border-box;
@@ -155,9 +168,7 @@ form input, .past-trip, intro-text div {
 }
 
 .intro-text p {
-  color: #fff;
-  font: 25px 'Bitter', serif;
-  font-style: oblique;
+  font: normal 1.3em 'Bitter', serif;
 }
 
 .past-trip {
@@ -171,11 +182,18 @@ form input, .past-trip, intro-text div {
   margin: auto;
   display: block;
   border:1px solid #2A88AD;
-  background: #2A88AD;
-  color: #fff;
+  /*background: #2A88AD;*/
+  background: #fff;
+  color: #0a394c;
+  /*color: #fff;*/
   width: 75%;
   margin-bottom: 5px;
   margin-top: 5px;
+}
+
+.past-trip a {
+  color: #0a394c;
+  background:#fff;
 }
 
 form section {
@@ -192,15 +210,15 @@ form button {
   -moz-border-radius:5px;
   color: #fff;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.12);
-  font: normal 10px 'Bitter', serif;
-  border:1px solid #257C9E;
+  font: normal .8em 'Bitter', serif;
+  border: 1px solid #257C9E;
   box-shadow:inset 0px 2px 2px rgba(0, 0, 0, 0.17);
   -moz-box-shadow:inset 0px 2px 2px rgba(0, 0, 0, 0.17);
   -webkit-box-shadow: inset 0px 2px 2px rgba(0, 0, 0, 0.17);
 }
 
 form button[type="submit"], .button-delete {
-  font: normal 20px 'Bitter', serif;
+  font: normal 1.2em 'Bitter', serif;
   margin: auto;
   display: block;
   margin-bottom: 10px;
