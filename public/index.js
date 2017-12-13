@@ -72,6 +72,12 @@
     displayPopup('.delete-screen');
   });
 
+  $('.close').on('click', function (e) {
+    e.preventDefault();
+    hidePopup(`.delete-screen`);
+    hidePopup(`.success-screen`);
+  })
+
   function createNewArrayItem (className, topic, firstName, secondName, valOne, valTwo) {
     let value = $(`${className}`).children().length;
     value = (value / 2) + 1;

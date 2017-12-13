@@ -73,6 +73,20 @@ form, .past-trips-list, .intro-text {
   -webkit-box-shadow: 0px 0px 10px rgba(0,0,0,0.13);
 }
 
+.intro-text {
+  background: #2A88AD;
+  height: 300px;
+}
+
+.close {
+  display: block;
+  position: relative;
+  float: right;
+  padding: 5px;
+  font: 1.5em;
+  border: .75px solid #154f66;
+}
+
 .past-trips, .success-screen, .delete-screen {
   height: 400px;
   border: 1px solid  #2A88AD;
@@ -228,7 +242,7 @@ form button:hover{
 .success-screen, .delete-screen {
   width: 70%;
   height: 200px;
-  padding-top: 50px;
+  padding-top: 20px;
   text-align: center;
   background: #2A88AD;
   color: #fff;
@@ -242,7 +256,7 @@ form button:hover{
 }
 
 @media only screen and (max-width : 480px) {
-  h2, form h3, .past-trip a , .intro-text p, form input, form label {
+  h2, form h3, .past-trip a , .intro-text p, form input, form label, .success-screen, .close, .delete-screen {
    font-size: .8em;
   }
 
@@ -282,6 +296,10 @@ form button:hover{
     font-size: 1em;
   }
 
+  .success-screen, .delete-screen {
+    height: 180px;
+  }
+
 }
 
 @media only screen and (max-width : 650px) and (min-width : 481px) {
@@ -289,12 +307,16 @@ form button:hover{
     font-size: 1em;
   }
 
-  h2, form h3, .past-trip a , .intro-text p, form input, form label {
+  h2, form h3, .past-trip a , .intro-text p, form input, form label, .success-screen, .close, .delete-screen {
    font-size: 1em;
   }
 
   ul, form, .intro-text, .past-trips-list {
     width: 90%;
+  }
+
+  .success-screen, .delete-screen {
+    height: 180px;
   }
 
   h1 {
